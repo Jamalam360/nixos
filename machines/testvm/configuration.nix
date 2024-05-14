@@ -9,6 +9,8 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/base.nix
+
+    ./../../services/reposilite.nix
   ];
 
   home-manager = {
