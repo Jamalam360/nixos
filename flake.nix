@@ -22,7 +22,7 @@
     ...
   } @ inputs: let
       inherit (self) outputs;
-    in{
+    in {
     formatter = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     nixosConfigurations = {

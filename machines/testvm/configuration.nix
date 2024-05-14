@@ -25,8 +25,10 @@
     };
   };
 
+  sops.secrets.testvm-password = {};
+
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
 
-  networking.hostName = "nixos";
+  networking.hostName = "testvm";
 }

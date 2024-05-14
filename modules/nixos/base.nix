@@ -37,8 +37,6 @@
     defaultSopsFile = ./../../secrets/secrets.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     secrets.user-password.neededForUsers = true;
-    # TODO: make this password unique per machine
-    secrets.user-password = {};
   };
 
   users.mutableUsers = false;
@@ -51,7 +49,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIkcgwjYMHqUDnx0JIOSXQ/TN80KEaFvvUWA2qH1AHFC"
     ];
     shell = pkgs.zsh;
-    hashedPasswordFile = config.sops.secrets.user-password.path;
+    # hashedPasswordFile = config.sops.secrets.user-password.path;
+    hashedPasswordFile = builtins.getAttr ( networking.hostname // "-password.path" ) config.sops.secrets;
   };
 
   services = {
