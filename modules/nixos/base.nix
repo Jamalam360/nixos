@@ -44,8 +44,7 @@
     description = "james";
     extraGroups = ["networkmanager" "wheel"];
     openssh.authorizedKeys.keys = [
-      # TODO: replace with my key. Also add my key to 1password
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIkcgwjYMHqUDnx0JIOSXQ/TN80KEaFvvUWA2qH1AHFC"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFhtjY3U8EsdEmrwbYJQQNwNqQHinZp1kQLqF7wdUkXI"
     ];
     shell = pkgs.zsh;
     hashedPasswordFile = config.sops.secrets."${config.networking.hostName}-password".path;
