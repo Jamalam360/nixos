@@ -35,7 +35,7 @@
 
   sops = {
     defaultSopsFile = ./../../secrets/secrets.yaml;
-    age.sshKeyPaths = ["/nix/secret/initrd/ssh_host_ed25519_key"];
+    age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     secrets.user-password.neededForUsers = true;
     # TODO: make this password unique per machine
     secrets.user-password = {};
