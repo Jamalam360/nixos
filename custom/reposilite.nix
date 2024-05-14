@@ -1,4 +1,4 @@
-{ stdenv, makeWrapper, openjdk_17_headless }:
+{ stdenv, fetchurl, makeWrapper, openjdk_17_headless }:
 
 stdenv.mkDerivation {
   pname = "reposilite";
