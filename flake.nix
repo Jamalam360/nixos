@@ -40,10 +40,10 @@
         ];
       };
 
-      testVm = nixpkgs.lib.nixosSystem {
+      testvm = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./machines/test-vm/configuration.nix
+          ./machines/testvm/configuration.nix
         ];
       };
     };
