@@ -1,0 +1,7 @@
+keys:
+  - &testvm age1j4jezxenwhnt5whj9n98yzee5phzgyq2qgfvpyd2znp9h9f4pdxqc8rjvz
+creation_rules:
+  - path_regex: secrets/[^/]+(\.(yaml|json|env|ini|conf))?$
+    key_groups:
+      - age:
+          - *testvm
