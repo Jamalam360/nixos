@@ -25,6 +25,7 @@
     };
   };
 
+  sops.secrets.testvm-password.neededForUsers = true;
   sops.secrets.testvm-password = {};
 
   boot.loader.grub.enable = true;

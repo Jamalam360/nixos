@@ -36,7 +36,6 @@
   sops = {
     defaultSopsFile = ./../../secrets/secrets.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-    builtins.getAttr ( config.networking.hostName // "-password.neededForUsers" ) secrets = true;
   };
 
   users.mutableUsers = false;
