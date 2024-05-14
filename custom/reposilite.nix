@@ -1,4 +1,4 @@
-{ stdenv, openjdk_17_headless }:
+{ stdenv, makeWrapper, openjdk_17_headless }:
 
 stdenv.mkDerivation {
   pname = "reposilite";
@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   };
 
   dontUnpack = true;
-  nativeBuildInputs = [ pkgs.makeWrapper ];
+  nativeBuildInputs = [ makeWrapper ];
   installPhase = ''
     runHook preInstall
     makeWrapper ${openjdk_17_headless}/bin/java $out/bin/reposilite \
