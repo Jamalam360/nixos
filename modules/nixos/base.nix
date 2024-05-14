@@ -50,7 +50,7 @@
     ];
     shell = pkgs.zsh;
     # hashedPasswordFile = config.sops.secrets.user-password.path;
-    hashedPasswordFile = builtins.getAttr ( networking.hostName // "-password.path" ) config.sops.secrets;
+    hashedPasswordFile = builtins.getAttr ( config.networking.hostName // "-password.path" ) config.sops.secrets;
   };
 
   services = {

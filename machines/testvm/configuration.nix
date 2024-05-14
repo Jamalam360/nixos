@@ -3,8 +3,6 @@
   outputs,
   ...
 }: {
-  networking.hostName = "testvm";
-
   imports = [
     # inputs.impermanence.nixosModules.impermanence
     inputs.home-manager.nixosModules.home-manager
@@ -31,4 +29,6 @@
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
+
+  networking.hostName = "testvm";
 }
