@@ -48,8 +48,6 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIkcgwjYMHqUDnx0JIOSXQ/TN80KEaFvvUWA2qH1AHFC"
     ];
     shell = pkgs.zsh;
-    # hashedPasswordFile = config.sops.secrets.user-password.path;
-    # hashedPasswordFile = builtins.getAttr ( config.networking.hostName // "-password.path" ) config.sops.secrets;
     hashedPasswordFile = config.sops.secrets."${config.networking.hostName}-password".path;
   };
 
