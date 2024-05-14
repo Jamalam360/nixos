@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    inputs.impermanence.nixosModules.impermanence
     inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
