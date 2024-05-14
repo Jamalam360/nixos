@@ -10,14 +10,15 @@
     ./_packages.nix
   ];
 
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 5;
-    };
-    efi.canTouchEfiVariables = true;
-    timeout = 10;
-  };
+  # FIXME: this needs moving to the specific config files for machines
+  # boot.loader = {
+  #   systemd-boot = {
+  #     enable = true;
+  #     configurationLimit = 5;
+  #   };
+  #   efi.canTouchEfiVariables = true;
+  #   timeout = 10;
+  # };
 
   nixpkgs.config.allowUnfree = true;
   nix = {
