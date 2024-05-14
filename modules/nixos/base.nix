@@ -82,22 +82,22 @@
   security.sudo.wheelNeedsPassword = false;
   time.timeZone = "Europe/London";
 
-  environment.persistence."/nix/persist" = {
-    # Hide these mounts from the sidebar of file managers
-    hideMounts = true;
+  # environment.persistence."/nix/persist" = {
+  #   # Hide these mounts from the sidebar of file managers
+  #   hideMounts = true;
 
-    directories = [
-      "/var/log"
-    ];
+  #   directories = [
+  #     "/var/log"
+  #   ];
 
-    files = [
-      "/etc/machine-id"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
-      "/etc/ssh/ssh_host_rsa_key"
-    ];
-  };
+  #   files = [
+  #     "/etc/machine-id"
+  #     "/etc/ssh/ssh_host_ed25519_key.pub"
+  #     "/etc/ssh/ssh_host_ed25519_key"
+  #     "/etc/ssh/ssh_host_rsa_key.pub"
+  #     "/etc/ssh/ssh_host_rsa_key"
+  #   ];
+  # };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
