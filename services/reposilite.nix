@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let 
-  reposilite = callPackage ../custom/reposilite.nix { }; 
+  reposilite = import ../custom/reposilite.nix { inherit pkgs; }; 
   cfg = { 
     user = "reposilite"; 
     group = "reposilite"; 
