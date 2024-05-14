@@ -1,6 +1,6 @@
 { stdenv, makeWrapper, openjdk_17_headless }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "reposilite";
   version = "3.5.12";
 
