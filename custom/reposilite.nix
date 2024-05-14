@@ -1,4 +1,4 @@
-{ stdenv, makeWrapper, openjdk_17_headless }:
+{ stdenv, makeWrapper, openjdk17_headless }:
 
 stdenv.mkDerivation rec {
   pname = "reposilite";
@@ -13,9 +13,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ makeWrapper ];
   installPhase = ''
     runHook preInstall
-    makeWrapper ${openjdk_17_headless}/bin/java $out/bin/reposilite \
+    makeWrapper ${openjdk17_headless}/bin/java $out/bin/reposilite \
       --add-flags "-Xmx40m -jar ${src}" \
-      --set JAVA_HOME ${openjdk_17_headless}
+      --set JAVA_HOME ${openjdk17_headless}
     runHook postInstall
   '';
 }

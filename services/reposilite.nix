@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let 
-  reposilite = import ../custom/reposilite.nix { inherit (pkgs) stdenv makeWrapper openjdk_17_headless; }; 
+  reposilite = import ../custom/reposilite.nix { inherit (pkgs) stdenv makeWrapper openjdk17_headless; }; 
   cfg = { 
     user = "reposilite"; 
     group = "reposilite"; 
