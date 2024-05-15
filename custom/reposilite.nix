@@ -18,4 +18,11 @@ stdenv.mkDerivation rec {
       --set JAVA_HOME ${openjdk17_headless}
     runHook postInstall
   '';
+
+  meta = with stdenv.lib; {
+    description = "Lightweight and easy-to-use repository management software dedicated for the Maven based artifacts in the JVM ecosystem 📦";
+    homepage = "https://reposilite.com/";
+    license = licenses.apache20;
+    mainProgram = "reposilite";
+  };
 }
