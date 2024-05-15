@@ -33,4 +33,12 @@
   boot.loader.grub.device = "/dev/vda";
 
   networking.hostName = "testvm";
+
+  config.services.reposilite = {
+    enable = true;
+    package = import ../../custom-reposilite.nix { inherit (inputs) stdenv makeWrapper openjdk17_headless; };
+    settings = {
+      port = 8084;
+    };
+  };
 }
