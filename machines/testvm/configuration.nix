@@ -34,7 +34,7 @@
 
   networking.hostName = "testvm";
 
-  config.services.reposilite = {
+  services.reposilite = {
     enable = true;
     package = import ../../custom-reposilite.nix { inherit (inputs) stdenv makeWrapper openjdk17_headless; };
     settings = {
