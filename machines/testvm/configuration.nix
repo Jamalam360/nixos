@@ -37,9 +37,14 @@
 
   services.reposilite = {
     enable = true;
-    package = import ../../custom/reposilite.nix { inherit (pkgs) stdenv makeWrapper openjdk17_headless; };
+    package = import ../../custom/reposilite.nix { inherit (pkgs) stdenv lib makeWrapper openjdk17_headless; };
     settings = {
       port = 8084;
     };
+  };
+
+  services.discord-github-releases = {
+    enable = true;
+    
   };
 }

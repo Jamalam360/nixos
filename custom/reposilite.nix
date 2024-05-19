@@ -1,4 +1,4 @@
-{ stdenv, makeWrapper, openjdk17_headless }:
+{ stdenv, lib, makeWrapper, openjdk17_headless }:
 
 stdenv.mkDerivation rec {
   pname = "reposilite";
@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Lightweight and easy-to-use repository management software dedicated for the Maven based artifacts in the JVM ecosystem 📦";
     homepage = "https://reposilite.com/";
     license = licenses.apache20;
