@@ -46,7 +46,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFhtjY3U8EsdEmrwbYJQQNwNqQHinZp1kQLqF7wdUkXI"
     ];
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     hashedPasswordFile = config.sops.secrets."${config.networking.hostName}-password".path;
   };
 
@@ -74,7 +74,6 @@
     };
   };
 
-  programs.zsh.enable = true;
   security.sudo.wheelNeedsPassword = false;
   time.timeZone = "Europe/London";
 
