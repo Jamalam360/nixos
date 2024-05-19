@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Lightweight and easy-to-use repository management software dedicated for the Maven based artifacts in the JVM ecosystem 📦";
     homepage = "https://reposilite.com/";
-    license = licenses.apache20;
+    license = licenses.asl20;
     mainProgram = "reposilite";
   };
 }
