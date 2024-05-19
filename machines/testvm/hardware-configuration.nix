@@ -11,7 +11,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-label/nixos-gnome-23.11-x86_64";
+    { device = "/dev/disk/by-uuid/216da152-4821-4e68-a125-b8257dc20b55";
       fsType = "ext4";
     };
 
