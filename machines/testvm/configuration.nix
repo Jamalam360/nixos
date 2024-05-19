@@ -43,8 +43,8 @@
     };
   };
 
-  services.discord-github-releases = {
-    enable = true;
+  # services.discord-github-releases = {
+  #   enable = true;
     
-  };
+  # };
 }
