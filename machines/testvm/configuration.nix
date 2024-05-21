@@ -2,6 +2,7 @@
   inputs,
   outputs,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -12,6 +13,7 @@
     ./../../modules/nixos/base.nix
 
     ./../../services/reposilite.nix
+    ./../../services/discord-github-releases.nix
   ];
 
   home-manager = {
@@ -50,7 +52,7 @@
     package = import ../../custom/discord-github-releases.nix { inherit (pkgs) stdenv lib makeWrapper deno fetchFromGitHub; };
     settings = {
       discord_webhook_urls = [
-        sops.secrets.test-discord-webhook-url
+        config.sops.secrets.test-discord-webhook-url
       ];
       port = 8085;
       message = {
