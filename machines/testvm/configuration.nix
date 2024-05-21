@@ -2,7 +2,6 @@
   inputs,
   outputs,
   pkgs,
-  config,
   ...
 }: {
   imports = [
@@ -51,7 +50,7 @@
     package = import ../../custom/discord-github-releases.nix { inherit (pkgs) stdenv lib makeWrapper deno fetchFromGitHub; };
     settings = {
       discord_webhook_urls = [
-        config.sops.secrets.test-discord-webhook-url
+        sops.secrets.test-discord-webhook-url
       ];
       port = 8085;
       message = {
