@@ -4,7 +4,7 @@ let
   cfg = config.services.discord-github-releases;
 in
 {
-  options.services.reposilite = {
+  options.services.discord-github-releases = {
     enable = mkEnableOption "discord-github-releases";
 
     package = mkOption {
