@@ -29,6 +29,8 @@
 
   sops.secrets.testvm-password.neededForUsers = true;
   sops.secrets.testvm-password = {};
+  sops.secrets.test-discord-webhook-url.neededForUsers = true;
+  sops.secrets.test-discord-webhook-url = {};
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
@@ -43,8 +45,17 @@
     };
   };
 
-  # services.discord-github-releases = {
-  #   enable = true;
-    
-  # };
+  services.discord-github-releases = {
+    enable = true;
+    package = import ../../custom/discord-github-releases.nix { inherit (pkgs) stdenv lib makeWrapper deno fetchFromGitHub; };
+    settings = {
+      discord_webhook_urls = [
+        sops.secrets.test-discord-webhook-url
+      ];
+      port = 8085;
+      message = {
+        content = "Test!";
+      };
+    };
+  };
 }
