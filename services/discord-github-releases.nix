@@ -89,9 +89,10 @@ in
   config = mkIf cfg.enable {
     environment = {
       systemPackages = [cfg.package];
-      cfg.dataDir."config.json" = mkIf (cfg.settings != {}) {
-        text = builtins.toJSON cfg.settings;
-      };
+    };
+
+    cfg.dataDir."config.json" = mkIf (cfg.settings != {}) {
+      text = builtins.toJSON cfg.settings;
     };
 
     networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [
