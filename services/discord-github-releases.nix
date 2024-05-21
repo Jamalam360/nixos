@@ -91,10 +91,6 @@ in
       systemPackages = [cfg.package];
     };
 
-    cfg.dataDir."config.json" = mkIf (cfg.settings != {}) {
-      text = builtins.toJSON cfg.settings;
-    };
-
     networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [
       cfg.settings.port
     ];
@@ -125,6 +121,12 @@ in
         TimeoutStopSec = 10;
         Restart = "on-failure";
         RestartSec = 5;
+
+        ExecStartPre = ''
+          mkdir -p ${cfg.dataDir}
+          chown ${cfg.user}:${cfg.group} ${cfg.dataDir}
+          echo ${builtins.toJSON cfg.settings} > ${cfg.dataDir}/config.json
+        '';
       };
     };
   };
