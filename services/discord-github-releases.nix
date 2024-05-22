@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (lib) mkEnableOption mkOption mkIf types getExe;
   cfg = config.services.discord-github-releases;
@@ -113,6 +113,11 @@ in
 
     systemd.services."discord-github-releases" = let
         configLocation = "/etc/discord-github-releases/config.json";
+        replaceConfigValues = pkgs.writeShellScript "replace-config-values" ''
+          for webhook in ${lib.concatStringsSep " " cfg.settings.discord_webhook_urls}; do
+            sed -i "s|$webhook|$(cat $webhook)|g" ${configLocation}
+          done
+        '';
       in {
       description = "Discord GitHub Releases";
       wantedBy = [ "multi-user.target" ];
@@ -129,12 +134,7 @@ in
         Restart = "on-failure";
         RestartSec = 5;
 
-        ExecStartPre = ''
-        # For each item in the list of webhook URL pfile paths, replace the path with the actual URL from the file
-        for webhook in ${lib.concatStringsSep " " cfg.settings.discord_webhook_urls}; do
-          sed -i "s|$webhook|$(cat $webhook)|g" ${configLocation}
-        done
-        '';
+        ExecStartPre = replaceConfigValues;
       };
     };
   };
