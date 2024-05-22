@@ -132,7 +132,7 @@ in
         ExecStartPre = ''
         # For each item in the list of webhook URL pfile paths, replace the path with the actual URL from the file
         for webhook in ${lib.concatStringsSep " " cfg.settings.discord_webhook_urls}; do
-          sed -i "s|$${webhook}|$(cat $${webhook})|g" ${configLocation}
+          sed -i "s|$webhook|$(cat $webhook)|g" ${configLocation}
         done
         '';
       };
