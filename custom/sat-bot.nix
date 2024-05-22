@@ -11,7 +11,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-MUhjaQs+FdI30gWfU+cOeKcBtihNuGo2UBVGdJxRd8M=";
   };
 
-  cargoHash = lib.fakeHash;
+  cargoHash = "sha256-fqL0In45oPzC7zVbtBdFHESqbOnhzk34fyu6uNGDX6M";
 
   meta = with lib; {
     description = "A super quickly made Discord bot that notifies you of satellite passes.";
