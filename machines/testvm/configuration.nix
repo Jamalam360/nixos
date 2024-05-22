@@ -31,6 +31,12 @@
   sops.secrets.testvm-password = {};
   sops.secrets.test-discord-webhook-url.neededForUsers = true;
   sops.secrets.test-discord-webhook-url = {};
+  sops.secrets.sat-bot-discord-token.neededForUsers = true;
+  sops.secrets.sat-bot-discord-token = {};
+  sops.secrets.sat-bot-guild-id.neededForUsers = true;
+  sops.secrets.sat-bot-guild-id = {};
+  sops.secrets.sat-bot-n2yo-key.neededForUsers = true;
+  sops.secrets.sat-bot-n2yo-key = {};
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
