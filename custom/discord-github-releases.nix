@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "discord-github-releases";
-  version = "99d58586ac97c8f591fe7a8f9d6972f795d4e9b5";
+  version = "6ab9a84a98c789c021873ca06bfeeea4790a7977";
 
   src = fetchFromGitHub {
     owner = "Jamalam360";
     repo = "${pname}";
     rev = "${version}";
-    hash = "sha256-AnryICKLJGOmZK770q1gp1tDB091GOYPHFpg9h3id4E=";
+    hash = "sha256-KvtM71EpfjXNWrxWSClfmMTgx0JUNnmlFUxZQ/Pba+0=').";
   };
 
   nativeBuildInputs = [ makeWrapper ];

@@ -89,6 +89,9 @@ in
   config = mkIf cfg.enable {
     environment = {
       systemPackages = [cfg.package];
+      etc."discord-github-releases/config.json" = mkIf (cfg.settings != {}) {
+        text = builtins.toJSON cfg.settings;
+      };
     };
 
     networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [
@@ -111,8 +114,12 @@ in
     systemd.services."discord-github-releases" = {
       description = "Discord GitHub Releases";
       wantedBy = [ "multi-user.target" ];
-      script = "${getExe cfg.package}";
-
+      script = let
+        configLocation = "/etc/discord-github-releases/config.json";
+      in ''
+        ${getExe cfg.package} ${configLocation}
+      '';
+      
       serviceConfig = {
         inherit (cfg) user group;
 
@@ -121,12 +128,6 @@ in
         TimeoutStopSec = 10;
         Restart = "on-failure";
         RestartSec = 5;
-
-        ExecStartPre = ''
-          mkdir -p ${cfg.dataDir}
-          chown ${cfg.user}:${cfg.group} ${cfg.dataDir}
-          echo ${builtins.toJSON cfg.settings} > ${cfg.dataDir}/config.json
-        '';
       };
     };
   };
