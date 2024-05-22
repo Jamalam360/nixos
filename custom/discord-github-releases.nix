@@ -14,8 +14,10 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ makeWrapper ];
   installPhase = ''
     runHook preInstall
-    makeWrapper ${deno}/bin/deno $out/index.ts \
-      --add-flags "--allow-net --allow-read"
+    cp $src/index.ts $out/lib/discord-github-releases.ts
+    makeWrapper ${lib.getExe deno} $out/bin/discord-github-releases \
+      --set DENO_NO_UPDATE_CHECK "1" \
+      --add-flags "run --allow-net --allow-read ${placeholder "out"}/lib/discord-github-releases.ts"
     runHook postInstall
   '';
 
