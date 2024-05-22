@@ -14,6 +14,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ makeWrapper ];
   installPhase = ''
     runHook preInstall
+    mkdir -p $out/lib $out/bin
     cp $src/index.ts $out/lib/discord-github-releases.ts
     makeWrapper ${lib.getExe deno} $out/bin/discord-github-releases \
       --set DENO_NO_UPDATE_CHECK "1" \
