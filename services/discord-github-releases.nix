@@ -45,9 +45,9 @@ in
           freeformType = attrs;
           options = {
             discord_webhook_urls = mkOption {
-              type = types.listOf types.str;
+              type = types.listOf types.path;
               default = [];
-              description = "The URLs of the Discord webhooks to send the message to";
+              description = "A list of text file paths containing URLs of the Discord webhooks to send the message to";
             };
 
             port = mkOption {
@@ -111,15 +111,15 @@ in
       };
     };
 
-    systemd.services."discord-github-releases" = {
+    systemd.services."discord-github-releases" = let
+        configLocation = "/etc/discord-github-releases/config.json";
+      in {
       description = "Discord GitHub Releases";
       wantedBy = [ "multi-user.target" ];
-      script = let
-        configLocation = "/etc/discord-github-releases/config.json";
-      in ''
+      script =  ''
         ${getExe cfg.package} ${configLocation}
       '';
-      
+
       serviceConfig = {
         inherit (cfg) user group;
 
@@ -128,6 +128,13 @@ in
         TimeoutStopSec = 10;
         Restart = "on-failure";
         RestartSec = 5;
+
+        ExecStartPre = ''
+        # For each item in the list of webhook URL pfile paths, replace the path with the actual URL from the file
+        for webhook in ${lib.concatStringsSep " " cfg.settings.discord_webhook_urls}; do
+          sed -i "s|$${webhook}|$(cat $${webhook})|g" ${configLocation}
+        done
+        '';
       };
     };
   };
