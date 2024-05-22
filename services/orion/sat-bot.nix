@@ -90,8 +90,8 @@ in
           # Set env vars from config
           export DISCORD_TOKEN=$(cat "${cfg.settings.discordToken}");
           export DATABASE_PATH="${cfg.settings.databasePath}";
-          export GUILD_ID=$(cat "${cfg.settings.guildId})";
-          export N2YO_KEY=$(cat "${cfg.settings.n2yoKey})";
+          export GUILD_ID=$(cat "${cfg.settings.guildId}");
+          export N2YO_KEY=$(cat "${cfg.settings.n2yoKey}");
           ${getExe cfg.package}
         '';
       in {
