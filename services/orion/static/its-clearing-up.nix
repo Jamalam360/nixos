@@ -10,8 +10,8 @@ let
 in
 {
   services.nginx.virtualHosts."weather.jamalam.tech" =  {
-    # enableACME = true;
-    # forceSSL = true;
+    enableACME = true;
+    forceSSL = true;
     root = src;
   };
 }

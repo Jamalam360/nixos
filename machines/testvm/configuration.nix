@@ -11,11 +11,7 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/base.nix
-
-    ./../../services/nginx.nix
-    ./../../services/reposilite.nix
-    ./../../services/discord-github-releases.nix
-    ./../../services/its-clearing-up.nix
+    ./../../services/orion/sat-bot.nix
   ];
 
   home-manager = {
@@ -41,25 +37,35 @@
 
   networking.hostName = "testvm";
 
-  services.reposilite = {
-    enable = true;
-    package = import ../../custom/reposilite.nix { inherit (pkgs) stdenv lib makeWrapper openjdk17_headless; };
-    settings = {
-      port = 8084;
-    };
-  };
+  # services.reposilite = {
+  #   enable = true;
+  #   package = import ../../custom/reposilite.nix { inherit (pkgs) stdenv lib makeWrapper openjdk17_headless; };
+  #   settings = {
+  #     port = 8084;
+  #   };
+  # };
 
-  services.discord-github-releases = {
+  # services.discord-github-releases = {
+  #   enable = true;
+  #   package = import ../../custom/discord-github-releases.nix { inherit (pkgs) stdenv lib makeWrapper deno fetchFromGitHub; };
+  #   settings = {
+  #     discord_webhook_urls = [
+  #       config.sops.secrets.test-discord-webhook-url.path
+  #     ];
+  #     port = 8085;
+  #     message = {
+  #       content = "Test!";
+  #     };
+  #   };
+  # };
+
+  services.sat-bot = {
     enable = true;
-    package = import ../../custom/discord-github-releases.nix { inherit (pkgs) stdenv lib makeWrapper deno fetchFromGitHub; };
+    package = import ../../custom/sat-bot.nix { inherit (pkgs) lib fetchFromGitHub rustPlatform; };
     settings = {
-      discord_webhook_urls = [
-        config.sops.secrets.test-discord-webhook-url.path
-      ];
-      port = 8085;
-      message = {
-        content = "Test!";
-      };
+      discordToken = config.sops.secrets.sat-bot-discord-token.path;
+      guildId = config.sops.secrets.sat-bot-guild-id.path;
+      n2yoKey = config.sops.secrets.sat-bot-n2yo-key.path;
     };
   };
 }
