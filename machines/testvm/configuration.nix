@@ -12,6 +12,7 @@
 
     ./../../modules/nixos/base.nix
 
+    ./../../services/nginx.nix
     ./../../services/reposilite.nix
     ./../../services/discord-github-releases.nix
     ./../../services/its-clearing-up.nix
