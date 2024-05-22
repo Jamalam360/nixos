@@ -97,7 +97,7 @@ in
       in {
       description = "Sat Bot";
       wantedBy = [ "multi-user.target" ];
-      script = runner;
+      # script = runner;
 
       serviceConfig = {
         inherit (cfg) user group;
@@ -107,6 +107,7 @@ in
         TimeoutStopSec = 10;
         Restart = "on-failure";
         RestartSec = 5;
+        ExecStart = "${runner}";
       };
     };
   };
