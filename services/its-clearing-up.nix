@@ -11,7 +11,7 @@ in
 {
   services.nginx.virtualHosts."weather.jamalam.tech" =  {
     # enableACME = true;
-    forceSSL = true;
+    # forceSSL = true;
     root = src;
   };
 }
