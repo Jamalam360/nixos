@@ -5,6 +5,9 @@
   services.restic.backups = {
     remote = {
       repository = "s3:s3.us-west-004.backblazeb2.com/jamalam-orion-backup";
+
+      paths = ["/home/james/backup-test.txt"];
+
       initialize = true;
       environmentFile = config.sops.secrets.restic-remote-env.path;
       passwordFile = config.sops.secrets.restic-remote-password.path;
