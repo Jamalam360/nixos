@@ -72,7 +72,8 @@
 
   services.sat-bot = {
     enable = true;
-    package = import ../../custom/sat-bot.nix { inherit (pkgs) lib fetchFromGitHub rustPlatform openssl pkg-config; };
+    # package = import ../../custom/sat-bot.nix { inherit (pkgs) lib fetchFromGitHub rustPlatform openssl pkg-config; };
+    package = pkgs.callPackage ./../../custom/sat-bot.nix {};
     settings = {
       discordToken = config.sops.secrets.sat-bot-discord-token.path;
       guildId = config.sops.secrets.sat-bot-guild-id.path;
