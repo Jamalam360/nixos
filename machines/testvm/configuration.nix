@@ -12,6 +12,7 @@
 
     ./../../modules/nixos/base.nix
     ./../../services/orion/sat-bot.nix
+    ./../../services/orion/restic.nix
   ];
 
   home-manager = {
@@ -37,6 +38,10 @@
   sops.secrets.sat-bot-guild-id = {};
   sops.secrets.sat-bot-n2yo-key.neededForUsers = true;
   sops.secrets.sat-bot-n2yo-key = {};
+  sops.secrets.restic-remote-env.neededForUsers = true;
+  sops.secrets.restic-remote-env = {};
+  sops.secrets.restic-remote-password.neededForUsers = true;
+  sops.secrets.restic-remote-password = {};
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";

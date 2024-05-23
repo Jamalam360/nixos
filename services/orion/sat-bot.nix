@@ -87,7 +87,6 @@ in
 
     systemd.services."sat-bot" = let
         runner = pkgs.writeShellScript "run-sat-bot" ''
-          # Set env vars from config
           export DISCORD_TOKEN=$(cat "${cfg.settings.discordToken}");
           export DATABASE_PATH="${cfg.settings.databasePath}";
           export GUILD_ID=$(cat "${cfg.settings.guildId}");
@@ -97,7 +96,6 @@ in
       in {
       description = "Sat Bot";
       wantedBy = [ "multi-user.target" ];
-      # script = runner;
 
       serviceConfig = {
         inherit (cfg) user group;
