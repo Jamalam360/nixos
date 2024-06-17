@@ -4,8 +4,8 @@ let
   src = pkgs.fetchFromGitHub {
     owner = "Jamalam360";
     repo = "cdn";
-    rev = "12519bc1f3d204ad8f1899c6aa9f3c3769b4d7cb";
-    hash = "sha256-bFr0lEd3A61YMTRRw93QjPVTht8bOyK/1wfSViJ1CBQ=";
+    rev = "f04f5dc1738905a859febeee1edaf7364605edb0";
+    hash = "sha256-L9w6LNYDTM6gGSfnnt4AmuHSowDjUOcIVTddNCP4P+g=";
   };
 in
 {

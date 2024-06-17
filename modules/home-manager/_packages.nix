@@ -7,9 +7,12 @@
       # development
       just
       sops
+      nix-prefetch-github
 
       # quality of life
       croc
+      unzip
+      wget
     ];
   };
 }
