@@ -1,3 +1,4 @@
 {
-	"nix.enableLanguageServer": true
+	"nix.enableLanguageServer": true,
+	"deno.enable": true
 }

@@ -1,0 +1,31 @@
+name: Update Static Sites
+
+on:
+  schedule:
+    - cron: 0 6 * * *
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+  
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v26
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - run: deno run --allow-read --allow-write --allow-run .github/workflows/update_static_sites.ts
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update static sites"
+          commit_user_name: GitHub Actions
+          commit_options: --no-verify --signoff
+          commit_author: GitHub Actions <actions@github.com>
+          branch: main
+          skip_dirty_check: false
+          skip_fetch: true
