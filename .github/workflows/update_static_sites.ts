@@ -1,7 +1,7 @@
 const REGEX_OWNER = /owner\s*=\s*"(.+)"/g;
 const REGEX_REPO = /repo\s*=\s*"(.+)"/g;
 const REGEX_REV = /rev\s*=\s*"(.+)"/g;
-const REGEX_HASH = /path\s*=\s*"(.+)"/g;
+const REGEX_HASH = /hash\s*=\s*"(.+)"/g;
 
 async function gh<T>(url: string): Promise<T> {
 	const headers = new Headers();
