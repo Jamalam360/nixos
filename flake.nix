@@ -14,6 +14,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -33,10 +38,10 @@
         ];
       };
 
-      orion = nixpkgs.lib.nixosSystem {
+      lyra = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./machines/orion/configuration.nix
+          ./machines/lyra/configuration.nix
         ];
       };
 

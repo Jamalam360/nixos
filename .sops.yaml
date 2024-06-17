@@ -1,9 +1,9 @@
 keys:
-  - &testvm age1j4jezxenwhnt5whj9n98yzee5phzgyq2qgfvpyd2znp9h9f4pdxqc8rjvz
   - &hercules age1hrrvg0fe0zy52cds0w6y4dznamuatx6tx0uwh4yrwgzl8upj9vqs6hxtkk
+  - &lyra age1p34gq7amcr8ue6uwavxq45mg9fxvwgnr7uraul6juyyhqhqfmggs28p6gu
 creation_rules:
   - path_regex: secrets/[^/]+(\.(yaml|json|env|ini|conf))?$
     key_groups:
       - age:
-          - *testvm
           - *hercules
+          - *lyra
