@@ -1,7 +1,7 @@
-const REGEX_OWNER = /owner\s*=\s*"(.+)"/gm;
-const REGEX_REPO = /repo\s*=\s*"(.+)"/gm;
-const REGEX_REV = /rev\s*=\s*"(.+)"/gm;
-const REGEX_HASH = /hash\s*=\s*"(.+)"/gm;
+const REGEX_OWNER = `owner\\s*=\\s*"(.+)"`;
+const REGEX_REPO = `repo\\s*=\\s*"(.+)"`;
+const REGEX_REV = `rev\\s*=\\s*"(.+)"`;
+const REGEX_HASH = `hash\\s*=\\s*"(.+)"`;
 
 async function gh<T>(url: string): Promise<T> {
   const headers = new Headers();
@@ -12,11 +12,11 @@ async function gh<T>(url: string): Promise<T> {
 
 async function update_static_site(path: string) {
   console.log(`Updating static site at ${path}`);
-  const config = await Deno.readTextFile(path);
-  const owner = REGEX_OWNER.exec(config)![1];
-  const repo = REGEX_REPO.exec(config)![1];
-  const rev = REGEX_REV.exec(config)![1];
-  const hash = REGEX_HASH.exec(config)![1];
+  const config = await Deno.readTextFile(path);    
+  const owner = new RegExp(REGEX_OWNER).exec(config)![1];
+  const repo = new RegExp(REGEX_REPO).exec(config)![1];
+  const rev = new RegExp(REGEX_REV).exec(config)![1];
+  const hash = new RegExp(REGEX_HASH).exec(config)![1];
   console.log(`--> Owner: ${owner}`);
   console.log(`--> Repo: ${repo}`);
   console.log(`--> Rev: ${rev}`);
