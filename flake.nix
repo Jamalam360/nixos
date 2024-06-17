@@ -21,6 +21,15 @@
     };
   };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nixcache.jamalam.tech"
+    ];
+    extra-trusted-public-keys = [
+      "nixcache.jamalam.tech:kK0ZbqNEnH1UMq3LJk8EDsLbI1H2K8ooQAqiiU7/5s0="
+    ];
+  };
+
   outputs = {
     self,
     nixpkgs,

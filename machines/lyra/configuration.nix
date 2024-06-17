@@ -12,6 +12,7 @@
     ./disk-configuration.nix
 
     ./../../modules/nixos/base.nix
+    ./../../services/lyra/nginx.nix
     ./../../services/lyra/sat-bot.nix
   ];
 
@@ -41,6 +42,18 @@
   sops.secrets.sat-bot-guild-id = {};
   sops.secrets.sat-bot-n2yo-key.neededForUsers = true;
   sops.secrets.sat-bot-n2yo-key = {};
+  
+  # https://nixos.wiki/wiki/Binary_Cache
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = "/var/cache-private-key.pem";
+  };
+
+  services.nginx.virtualHosts."nixcache.jamalam.tech" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+  };
 
   services.sat-bot = {
     enable = true;
