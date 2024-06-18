@@ -71,7 +71,6 @@ in {
     # TODO: backup Minecraft
   ];
 
-
   # == Nix Cache (https://nixos.wiki/wiki/Binary_Cache) ==
   services.nix-serve = {
     enable = true;
@@ -136,6 +135,17 @@ in {
       modpackHash = "sha256-CGpq7t+tTFckyTa4iDYsJNC5PZdhdJUobmXSpDrg8SE=";
       derivationHash = "sha256-80u1fwyrjAIXBKVgTy4D3wXIJR7fbkdmYQAM6EbsWC0=";
     };
+
+    # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
+    collectFiles = let
+      inherit (pkgs) lib;
+      mapListToAttrs = fn: fv: list:
+        lib.listToAttrs (map (x: lib.nameValuePair (fn x) (fv x)) list);
+    in
+      path: prefix:
+        mapListToAttrs
+        (x: builtins.unsafeDiscardStringContext (lib.removePrefix "${path}/" x))
+        (lib.id) (lib.filesystem.listFilesRecursive "${path}/${prefix}");
   in {
     enable = true;
     eula = true;
@@ -150,10 +160,7 @@ in {
       symlinks = {
         "mods" = "${modpack}/mods";
       };
-      files = {
-        # FIXME: make dynamic
-        "config/fabric_loader_dependencies.json" = "${modpack}/config/fabric_loader_dependencies.json";
-      };
+      files = collectFiles "${modpack}" "config";
       serverProperties = {
         server-port = 25565;
         white-list = true;
