@@ -14,4 +14,4 @@ sync-secrets:
 	sops updatekeys secrets/secrets.yaml
 
 deploy-lyra:
-	nix-shell -p '(nixos{}).nixos-rebuild' --command 'nixos-rebuild switch --fast --flake .#lyra --use-remote-sudo --target-host "james@176.9.22.221" --build-host "james@176.9.22.221"'
+	git add . && nix-shell -p '(nixos{}).nixos-rebuild' --command 'nixos-rebuild switch --fast --flake .#lyra --use-remote-sudo --target-host "james@176.9.22.221" --build-host "james@176.9.22.221"'

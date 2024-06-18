@@ -131,9 +131,9 @@ in {
     modpack = fetchSculkModpack {
       modpackOwner = "Jamalam360";
       modpackRepo = "pack";
-      modpackRev = "1bf7c574ac05c12436c138b6147f635100570a98";
-      modpackHash = "sha256-CGpq7t+tTFckyTa4iDYsJNC5PZdhdJUobmXSpDrg8SE=";
-      derivationHash = "sha256-80u1fwyrjAIXBKVgTy4D3wXIJR7fbkdmYQAM6EbsWC0=";
+      modpackRev = "e1546639bec2a8500e28bc5e4d848d1ee76fad88";
+      modpackHash = "sha256-MuV+u2azaOqszYQOJdn9Y8srDCwvlvHZf/qUG2TUdys=";
+      derivationHash = "sha256-CGkx1IfGpSAK6UdzKGCkU0bGojLBaIVc8/eAkA4zv3Q=";
     };
 
     # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
@@ -160,7 +160,9 @@ in {
       symlinks = {
         "mods" = "${modpack}/mods";
       };
-      files = collectFiles "${modpack}" "config";
+      files = collectFiles "${modpack}" "config" // {
+        "config/Discord-Integration.toml" = "/var/lib/Discord-Integration.toml";
+      };
       serverProperties = {
         server-port = 25565;
         white-list = true;
