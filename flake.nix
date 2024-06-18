@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    impermanence.url = "github:nix-community/impermanence";
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -35,9 +35,9 @@
     nixpkgs,
     ...
   } @ inputs: let
-      inherit (self) outputs;
-    in {
-    formatter = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    inherit (self) outputs;
+  in {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     nixosConfigurations = {
       hercules = nixpkgs.lib.nixosSystem {

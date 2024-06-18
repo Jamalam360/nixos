@@ -1,6 +1,9 @@
 #inspo: https://github.com/NotAShelf/nyx/blob/main/modules/extra/shared/nixos/reposilite/default.nix
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkEnableOption mkOption mkIf types getExe;
 
   writeServiceConfig = config:
@@ -14,8 +17,7 @@ let
       config);
 
   cfg = config.services.reposilite;
-in
-{
+in {
   options.services.reposilite = {
     enable = mkEnableOption "reposilite - maven repository manager";
 
@@ -180,7 +182,7 @@ in
       cfg.settings.port
     ];
 
-    services.nginx.virtualHosts."maven.jamalam.tech" =  {
+    services.nginx.virtualHosts."maven.jamalam.tech" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
@@ -203,7 +205,7 @@ in
 
     systemd.services."reposilite" = {
       description = "Reposilite - Maven repository";
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
       script = let
         inherit (cfg) dataDir;
         staticConfig = ''--local-config "/etc/reposilite/configuration.cdn" --local-configuration-mode none'';

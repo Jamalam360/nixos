@@ -1,5 +1,10 @@
-{ lib, fetchFromGitHub, rustPlatform, openssl, pkg-config }:
-
+{
+  lib,
+  fetchFromGitHub,
+  rustPlatform,
+  openssl,
+  pkg-config,
+}:
 rustPlatform.buildRustPackage rec {
   pname = "sat-bot";
   version = "38cc4da14671b1d0cc65793f963526fd042f8744";
@@ -13,8 +18,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-fqL0In45oPzC7zVbtBdFHESqbOnhzk34fyu6uNGDX6M";
 
-  buildInputs = [ openssl ];
-  nativeBuildInputs = [ pkg-config ];
+  buildInputs = [openssl];
+  nativeBuildInputs = [pkg-config];
 
   meta = with lib; {
     description = "A super quickly made Discord bot that notifies you of satellite passes.";

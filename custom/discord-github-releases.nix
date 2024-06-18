@@ -1,5 +1,10 @@
-{ stdenv, lib, makeWrapper, fetchFromGitHub, deno }:
-
+{
+  stdenv,
+  lib,
+  makeWrapper,
+  fetchFromGitHub,
+  deno,
+}:
 stdenv.mkDerivation rec {
   pname = "discord-github-releases";
   version = "cd112fc9720c33f049938ea9797faefabe2c3475";
@@ -11,7 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-dSOkNp7m1H4LloLsgPPlA7RPo4sP6BL5SxT2AzxzA+M=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [makeWrapper];
   installPhase = ''
     runHook preInstall
     mkdir -p $out/lib $out/bin

@@ -1,10 +1,12 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkOption mkIf types getExe;
   cfg = config.services.sat-bot;
-in
-{
+in {
   options.services.sat-bot = {
     enable = mkEnableOption "sat-bot";
 
@@ -86,16 +88,16 @@ in
     };
 
     systemd.services."sat-bot" = let
-        runner = pkgs.writeShellScript "run-sat-bot" ''
-          export DISCORD_TOKEN=$(cat "${cfg.settings.discordToken}");
-          export DATABASE_PATH="${cfg.settings.databasePath}";
-          export GUILD_ID=$(cat "${cfg.settings.guildId}");
-          export N2YO_KEY=$(cat "${cfg.settings.n2yoKey}");
-          ${getExe cfg.package}
-        '';
-      in {
+      runner = pkgs.writeShellScript "run-sat-bot" ''
+        export DISCORD_TOKEN=$(cat "${cfg.settings.discordToken}");
+        export DATABASE_PATH="${cfg.settings.databasePath}";
+        export GUILD_ID=$(cat "${cfg.settings.guildId}");
+        export N2YO_KEY=$(cat "${cfg.settings.n2yoKey}");
+        ${getExe cfg.package}
+      '';
+    in {
       description = "Sat Bot";
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
 
       serviceConfig = {
         inherit (cfg) user group;

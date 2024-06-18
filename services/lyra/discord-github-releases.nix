@@ -1,9 +1,12 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkOption mkIf types getExe;
   cfg = config.services.discord-github-releases;
-in
-{
+in {
   options.services.discord-github-releases = {
     enable = mkEnableOption "discord-github-releases";
 
@@ -112,16 +115,16 @@ in
     };
 
     systemd.services."discord-github-releases" = let
-        configLocation = "/etc/discord-github-releases/config.json";
-        replaceConfigValues = pkgs.writeShellScript "replace-config-values" ''
-          for webhook in ${lib.concatStringsSep " " cfg.settings.discord_webhook_urls}; do
-            sed -i "s|$webhook|$(cat $webhook)|g" ${configLocation}
-          done
-        '';
-      in {
+      configLocation = "/etc/discord-github-releases/config.json";
+      replaceConfigValues = pkgs.writeShellScript "replace-config-values" ''
+        for webhook in ${lib.concatStringsSep " " cfg.settings.discord_webhook_urls}; do
+          sed -i "s|$webhook|$(cat $webhook)|g" ${configLocation}
+        done
+      '';
+    in {
       description = "Discord GitHub Releases";
-      wantedBy = [ "multi-user.target" ];
-      script =  ''
+      wantedBy = ["multi-user.target"];
+      script = ''
         ${getExe cfg.package} ${configLocation}
       '';
 

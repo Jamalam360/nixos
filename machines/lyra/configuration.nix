@@ -4,9 +4,12 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  fetchSculkModpack = pkgs.callPackage ../../custom/sculk-modpack.nix {};
+in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.nix-minecraft.nixosModules.minecraft-servers
 
     ./hardware-configuration.nix
     ./disk-configuration.nix
@@ -20,6 +23,10 @@
     ./../../services/lyra/static/cdn.nix
     ./../../services/lyra/static/its-clearing-up.nix
     ./../../services/lyra/static/teach-man-fish.nix
+  ];
+
+  nixpkgs.overlays = [
+    inputs.nix-minecraft.overlay
   ];
 
   boot.loader.grub.enable = true;
@@ -39,21 +46,22 @@
 
   networking.hostName = "lyra";
   networking.networkmanager.enable = true;
+  time.timeZone = "Europe/Berlin";
 
   sops = pkgs.lib.mkMerge (map (secret: {
-    secrets.${secret} = {
-      neededForUsers = true;
-    };
-  }) [
-    "lyra-password"
-    "restic-remote-env"
-    "restic-remote-password"
-    "discord-github-releases-webhook"
-    "sat-bot-discord-token"
-    "sat-bot-guild-id"
-    "sat-bot-n2yo-key"
-  ]);
-  
+      secrets.${secret} = {
+        neededForUsers = true;
+      };
+    }) [
+      "lyra-password"
+      "restic-remote-env"
+      "restic-remote-password"
+      "discord-github-releases-webhook"
+      "sat-bot-discord-token"
+      "sat-bot-guild-id"
+      "sat-bot-n2yo-key"
+    ]);
+
   # https://nixos.wiki/wiki/Binary_Cache
   services.nix-serve = {
     enable = true;
@@ -110,6 +118,37 @@
           }
         ];
       };
+    };
+  };
+
+  services.minecraft-servers.servers.minecraft-server = let
+    modpack = fetchSculkModpack {
+      modpackOwner = "Jamalam360";
+      modpackRepo = "pack";
+      modpackRev = "74946b6c726204769120cffab8ee6ca46ccad262";
+      modpackHash = pkgs.lib.fakeSha256;
+      derivationHash = pkgs.lib.fakeSha256;
+    };
+  in {
+    enable = true;
+    eula = true;
+    openFirewall = true;
+    dataDir = "/var/lib/minecraft-servers";
+
+    servers.personal-mc-server = {
+      enable = true;
+      package = pkgs.minecraftServers.fabric-1_20_1;
+      autoStart = true;
+      restart = "always";
+      symlinks = {
+        "mods" = "${modpack}/mods";
+        "config" = "${modpack}/config";
+      };
+      serverProperties = {
+        server-port = 25565;
+        white-list = true;
+      };
+      jvmOpts = "-Xmx8G -Xms8G";
     };
   };
 
