@@ -4,9 +4,7 @@
   pkgs,
   config,
   ...
-}: let
-  fetchSculkModpack = pkgs.callPackage ../../custom/sculk-modpack.nix {};
-in {
+}: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
     inputs.nix-minecraft.nixosModules.minecraft-servers
@@ -27,6 +25,7 @@ in {
 
   nixpkgs.overlays = [
     inputs.nix-minecraft.overlay
+    inputs.sculk.overlay
   ];
 
   # == System Configuration ==
@@ -128,12 +127,9 @@ in {
 
   # == Minecraft ==
   services.minecraft-servers = let
-    modpack = fetchSculkModpack {
-      modpackOwner = "Jamalam360";
-      modpackRepo = "pack";
-      modpackRev = "e1546639bec2a8500e28bc5e4d848d1ee76fad88";
-      modpackHash = "sha256-MuV+u2azaOqszYQOJdn9Y8srDCwvlvHZf/qUG2TUdys=";
-      derivationHash = "sha256-CGkx1IfGpSAK6UdzKGCkU0bGojLBaIVc8/eAkA4zv3Q=";
+    modpack = inputs.sculk.nixFunctions.fetchSculkModpack { inherit (pkgs) stdenvNoCC sculk jre_headless; } {
+      url = "https://raw.githubusercontent.com/Jamalam360/pack/e1546639bec2a8500e28bc5e4d848d1ee76fad88";
+      hash = "sha256-CGkx1IfGpSAK6UdzKGCkU0bGojLBaIVc8/eAkA4zv3Q=";
     };
 
     # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
