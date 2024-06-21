@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     sculk = {
-      url = "path:/home/james/dev/minecraft/sculk/nix";
+      url = "github:sculk-cli/sculk?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
