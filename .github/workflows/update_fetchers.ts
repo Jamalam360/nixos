@@ -38,14 +38,16 @@ async function update_static_site(path: string) {
 
   const tarball =
     `https://github.com/${owner}/${repo}/archive/${newRev}.tar.gz`;
-  const prefetchData = await new Deno.Command("nix-prefetch-url", {
-    args: ["--unpack", tarball],
-    stdout: "piped",
+
+  const prefetchData = await new Deno.Command("nix", {
+    args: ["store", "prefetch-file", tarball],
+    stderr: "piped",
   }).output();
-  const newHash = new TextDecoder().decode(prefetchData.stdout).trim();
+  const newHash = new TextDecoder().decode(prefetchData.stderr).trim().split("sha256-")[1].split("'")[0];
+  
 
   console.log(`--> New hash: ${newHash}`);
-  const newConfig = config.replace(rev, newRev).replace(hash, newHash);
+  const newConfig = config.replace(rev, newRev).replace(hash, `sha256-${newHash}`);
   await Deno.writeTextFile(path, newConfig);
 }
 
