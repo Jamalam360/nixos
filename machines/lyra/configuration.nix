@@ -130,48 +130,8 @@
     modpack = inputs.sculk.nixFunctions.fetchSculkModpack { inherit (pkgs) stdenvNoCC sculk jre_headless; } {
       # Updated by CI
       # modpack-version-begin
-      url = "https://raw.githubusercontent.com/Jamalam360/pack/795b63d22d660a0661d9506b5491583646a9d847";
-      hash = "sha256-Nix 2.22.1
-Type :? for help.
-error:
-       … from call site
-         at «string»:1:1:
-            1| import ./.github/workflows/fetch_sculk_pack.nix { pkgs = import <nixpkgs> {}; sculk = builtins.getFlake "github:sculk-cli/sculk?dir=nix"; url = "https://raw.githubusercontent.com/Jamalam360/pack/795b63d22d660a0661d9506b5491583646a9d847"; }
-             | ^
-
-       … while calling anonymous lambda
-         at /home/runner/work/nixos/nixos/.github/workflows/fetch_sculk_pack.nix:1:1:
-            1| { pkgs, url, sculk, ... }:
-             | ^
-            2|
-
-       … from call site
-         at /home/runner/work/nixos/nixos/.github/workflows/fetch_sculk_pack.nix:3:2:
-            2|
-            3| (sculk.nixFunctions.fetchSculkModpack { inherit (pkgs) stdenvNoCC jre_headless; sculk = sculk.packages.sculk.x86_64-linux; }) {
-             |  ^
-            4|   inherit url;
-
-       … while calling 'fetchSculkModpack'
-         at /nix/store/xaw9zk57cm232i4hahc17jyvzh288d6w-source/nix/fetch-sculk-modpack.nix:7:23:
-            6| }: let
-            7|   fetchSculkModpack = {
-             |                       ^
-            8|     pname ? "sculk-modpack",
-
-       … while calling the 'import' builtin
-         at «string»:1:58:
-            1| import ./.github/workflows/fetch_sculk_pack.nix { pkgs = import <nixpkgs> {}; sculk = builtins.getFlake "github:sculk-cli/sculk?dir=nix"; url = "https://raw.githubusercontent.com/Jamalam360/pack/795b63d22d660a0661d9506b5491583646a9d847"; }
-             |                                                          ^
-
-       … while realising the context of a path
-
-       … while calling the 'findFile' builtin
-         at «string»:1:65:
-            1| import ./.github/workflows/fetch_sculk_pack.nix { pkgs = import <nixpkgs> {}; sculk = builtins.getFlake "github:sculk-cli/sculk?dir=nix"; url = "https://raw.githubusercontent.com/Jamalam360/pack/795b63d22d660a0661d9506b5491583646a9d847"; }
-             |                                                                 ^
-
-       error: file 'nixpkgs' was not found in the Nix search path (add it using $NIX_PATH or -I)";
+      url = "https://raw.githubusercontent.com/Jamalam360/pack/dad984ff0f9afc6a7c37f4945aca489cc8768124";
+      hash = "sha256-D3M2W7HA6goPNDmcdKb+w+XbOdTFhjsS29kWHVmM4H8=";
       # modpack-version-end
     };
 
