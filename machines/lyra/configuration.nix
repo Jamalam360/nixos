@@ -128,8 +128,11 @@
   # == Minecraft ==
   services.minecraft-servers = let
     modpack = inputs.sculk.nixFunctions.fetchSculkModpack { inherit (pkgs) stdenvNoCC sculk jre_headless; } {
-      url = "https://raw.githubusercontent.com/Jamalam360/pack/e1546639bec2a8500e28bc5e4d848d1ee76fad88";
-      hash = "sha256-CGkx1IfGpSAK6UdzKGCkU0bGojLBaIVc8/eAkA4zv3Q=";
+      # Updated by CI
+      # modpack-version-begin
+      url = "https://raw.githubusercontent.com/Jamalam360/pack/dad984ff0f9afc6a7c37f4945aca489cc8768124";
+      hash = "sha256-D3M2W7HA6goPNDmcdKb+w+XbOdTFhjsS29kWHVmM4H8=";
+      # modpack-version-end
     };
 
     # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
