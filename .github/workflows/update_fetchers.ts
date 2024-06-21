@@ -44,7 +44,6 @@ async function update_static_site(path: string) {
     stderr: "piped",
   }).output();
   const newHash = new TextDecoder().decode(prefetchData.stderr).trim().split("sha256-")[1].split("'")[0];
-  
 
   console.log(`--> New hash: ${newHash}`);
   const newConfig = config.replace(rev, newRev).replace(hash, `sha256-${newHash}`);
