@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1718588625,
-        "narHash": "sha256-8ZbrJq1jcmyzJ4SDkvd8JOZD4/fNUHpL4cpqVe4w3CU=",
+        "lastModified": 1718846788,
+        "narHash": "sha256-9dtXYtEkmXoUJV+PGLqscqF7qTn4AIhAKpFWRFU2NYs=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "8262659fc990cecdf6a8de74c3de7b6ec58c2276",
+        "rev": "e1174d991944a01eaaa04bc59c6281edca4c0e6e",
         "type": "github"
       },
       "original": {
@@ -99,14 +99,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1718760354,
-        "narHash": "sha256-jRp9BePU8ZW2Q9UFOcSNNV1H3NSp3hqXkg/raMNhHMM=",
-        "lastModified": 1718760354,
-        "narHash": "sha256-jRp9BePU8ZW2Q9UFOcSNNV1H3NSp3hqXkg/raMNhHMM=",
+        "lastModified": 1718933050,
+        "narHash": "sha256-u3w73706UFZqEymoCV5lml2OCugC6VBBQ+eo+XwfGv4=",
         "owner": "Infinidoge",
         "repo": "nix-minecraft",
-        "rev": "c50d882ce2510df6e47cb6b392497dde75ed2a2a",
-        "rev": "c50d882ce2510df6e47cb6b392497dde75ed2a2a",
+        "rev": "87e34b6dbd4db2288f1e8ac5b300d64164a43bee",
         "type": "github"
       },
       "original": {
@@ -149,14 +146,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1718530797,
-        "narHash": "sha256-pup6cYwtgvzDpvpSCFh1TEUjw2zkNpk8iolbKnyFmmU=",
-        "lastModified": 1718530797,
-        "narHash": "sha256-pup6cYwtgvzDpvpSCFh1TEUjw2zkNpk8iolbKnyFmmU=",
+        "lastModified": 1718714799,
+        "narHash": "sha256-FUZpz9rg3gL8NVPKbqU8ei1VkPLsTIfAJ2fdAf5qjak=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b60ebf54c15553b393d144357375ea956f89e9a9",
-        "rev": "b60ebf54c15553b393d144357375ea956f89e9a9",
+        "rev": "c00d587b1a1afbf200b1d8f0b0e4ba9deb1c7f0e",
         "type": "github"
       },
       "original": {
@@ -184,14 +178,19 @@
         ]
       },
       "locked": {
-        "lastModified": 1718791938,
-        "narHash": "sha256-tyPSu2hdQ4+A2J4+krevxSCpZz/16LJzDGd4lGuXFlI=",
-        "path": "/home/james/dev/minecraft/sculk/nix",
-        "type": "path"
+        "dir": "nix",
+        "lastModified": 1718791981,
+        "narHash": "sha256-igoIyC7QeW8Yb8UletGZPLElbKWfwkKIVltPzA5x+ts=",
+        "owner": "sculk-cli",
+        "repo": "sculk",
+        "rev": "4405fef956b010f058f39a376ef3f28689feb1dd",
+        "type": "github"
       },
       "original": {
-        "path": "/home/james/dev/minecraft/sculk/nix",
-        "type": "path"
+        "dir": "nix",
+        "owner": "sculk-cli",
+        "repo": "sculk",
+        "type": "github"
       }
     },
     "sops-nix": {

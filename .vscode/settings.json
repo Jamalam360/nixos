@@ -1,6 +1,6 @@
 {
 	"nix.enableLanguageServer": true,
 	"deno.enablePaths": [
-		"./.github/workflows/update_static_sites.ts"
+		"./.github/workflows/update_fetchers.ts"
 	]
 }
