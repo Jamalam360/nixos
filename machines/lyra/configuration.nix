@@ -165,6 +165,7 @@
       serverProperties = {
         server-port = 25565;
         white-list = true;
+        # level-seed = 
       };
       jvmOpts = "-Xmx8G -Xms8G";
     };
