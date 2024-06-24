@@ -67,7 +67,11 @@
   services.restic.backups.remote.paths = [
     "${config.services.reposilite.dataDir}/reposilite.db"
     "${config.services.reposilite.dataDir}/repositories"
-    # TODO: backup Minecraft
+    "/var/lib/minecraft-servers/minecraft-server/DiscordIntegration-Data"
+    "/var/lib/minecraft-servers/minecraft-server/ops.json"
+    "/var/lib/minecraft-servers/minecraft-server/whitelist.json"
+    "/var/lib/minecraft-servers/minecraft-server/audioplayer_uploads"
+    "/var/lib/minecraft-servers/minecraft-server/world"
   ];
 
   # == Nix Cache (https://nixos.wiki/wiki/Binary_Cache) ==
