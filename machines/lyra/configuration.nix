@@ -130,8 +130,8 @@
     modpack = inputs.sculk.nixFunctions.fetchSculkModpack { inherit (pkgs) stdenvNoCC sculk jre_headless; } {
       # Updated by CI
       # modpack-version-begin
-      url = "https://raw.githubusercontent.com/Jamalam360/pack/4de38acd212e739eb5732cab44b6b7b2f695f14c";
-      hash = "sha256-wN93kvD1SbIXsn2JkWwWesiZWK99pIz/boMlbNVaBXI=";
+      url = "https://raw.githubusercontent.com/Jamalam360/pack/7b41c8baf6b4ae5f108f33531abb461632e4c0b7";
+      hash = "sha256-GrRalDBTgeYMARqh4C7cbHQQkeI7EhhRBpN4BQdmBt8=";
       # modpack-version-end
     };
 
