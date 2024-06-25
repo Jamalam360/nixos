@@ -170,8 +170,9 @@
         server-port = 25565;
         white-list = true;
         level-seed = 5716240849493836707;
+        view-distance = 20;
       };
-      jvmOpts = "-Xmx8G -Xms8G";
+      jvmOpts = "-Xmx10G -Xms10G";
     };
   };
   networking.firewall.allowedUDPPorts = [24454]; # Simple Voice Chat mod
