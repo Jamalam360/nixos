@@ -26,7 +26,6 @@ It contains configuration for 2 machines:
 ### Lyra
 
 - Important folders on Lyra are backed up to a Backblaze S3 bucket via Restic.
-- Lyra auto updates every day.
 
 #### Services
 

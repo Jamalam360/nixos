@@ -57,13 +57,6 @@
           ./machines/lyra/configuration.nix
         ];
       };
-
-      testvm = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./machines/testvm/configuration.nix
-        ];
-      };
     };
   };
 }
