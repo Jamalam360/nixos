@@ -99,11 +99,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1719278718,
-        "narHash": "sha256-gWQb4P9CZgKzTn4F4eWMYeUv2AQOXFlcFmFXh2apoyA=",
+        "lastModified": 1719537932,
+        "narHash": "sha256-miUyak3kV48UC1fP5VJWrvHPPmZU0ZdcUq4TPBnTVf4=",
         "owner": "Infinidoge",
         "repo": "nix-minecraft",
-        "rev": "b6ff85f3b416a700ac35e33c214d7c9f4fe071fa",
+        "rev": "1dc754dd507c0507c8b4a6fbeacf8f5b8881d6d7",
         "type": "github"
       },
       "original": {
