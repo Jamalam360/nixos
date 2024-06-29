@@ -4,6 +4,6 @@
     git
     gptfdisk
     parted
-    vim
+    gnupg
   ];
 }

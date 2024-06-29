@@ -18,3 +18,6 @@ deploy-lyra-debug:
 
 deploy-lyra:
 	git add . && nix-shell -p '(nixos{}).nixos-rebuild' --command 'nixos-rebuild switch --fast --flake .#lyra --use-remote-sudo --target-host "james@176.9.22.221" --build-host "james@176.9.22.221"'
+
+deploy-hercules:
+	git add . && sudo nixos-rebuild switch --fast --flake .#hercules 

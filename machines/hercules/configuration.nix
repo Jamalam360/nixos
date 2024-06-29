@@ -8,7 +8,6 @@
     inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
-    ./disk-configuration.nix
 
     ./../../modules/nixos/base.nix
   ];
@@ -18,7 +17,8 @@
   ];
 
   # == System Configuration ==
-  boot.loader.grub.enable = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "hercules";
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/London";
@@ -49,4 +49,25 @@
 
   # == Flatpak ==
   services.flatpak.enable = true;
+
+  # == Desktop ==
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.xkb = {
+    layout = "gb";
+    variant = "";
+  };
+  services.printing.enable = true;
+  console.useXkbConfig = true;
+
+  # == Audio ==
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 }

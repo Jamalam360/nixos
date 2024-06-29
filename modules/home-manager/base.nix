@@ -21,6 +21,24 @@
       delta = {
         enable = true;
       };
+      userName = "Jamalam";
+      userEmail = "james@jamalam.tech";
+      aliases = {
+        cp = "cherry-pick";
+      };
+      signing = {
+        key = "B1B22BA0FC39D4B422405F55D86CD68E8DB2E368";
+        signByDefault = true;
+      };
+    };
+
+    gpg.enable = true;
+  };
+
+  services = {
+    gpg-agent = {
+      enable = true;
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
   };
 }

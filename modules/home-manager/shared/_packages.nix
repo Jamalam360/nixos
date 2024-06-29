@@ -8,6 +8,7 @@
       just
       sops
       nix-prefetch-github
+      pinentry-gnome3
 
       # quality of life
       croc
