@@ -47,6 +47,29 @@
       "hercules-password"
     ]);
 
+  # == Yubikey Security - https://nixos.wiki/wiki/Yubikey ==
+  security.pam.yubico = {
+    enable = true;
+    debug = true;
+    control = "required";
+    mode = "challenge-response";
+    id = [
+      "19649094"
+      "19649058"
+    ];
+  };
+  services.pcscd.enable = true;
+
+  # Uncomment this to lock the screen when the YubiKey is removed
+  # services.udev.extraRules = ''
+  #   ACTION=="remove",\
+  #   ENV{ID_BUS}=="usb",\
+  #   ENV{ID_MODEL_ID}=="0407",\
+  #   ENV{ID_VENDOR_ID}=="1050",\
+  #   ENV{ID_VENDOR}=="Yubico",\
+  #   RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+  # '';
+
   # == Flatpak ==
   services.flatpak.enable = true;
 

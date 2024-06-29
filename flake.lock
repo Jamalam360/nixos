@@ -112,6 +112,21 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1719647737,
+        "narHash": "sha256-OvX/qQQ33zyB5ReRzm+U5+9Hh6EeYxHdd21tXL3p/eY=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "231274268ff2250d4730e274b808f66ef91b6381",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1715266358,
@@ -165,6 +180,7 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "nix-minecraft": "nix-minecraft",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "sculk": "sculk",
         "sops-nix": "sops-nix"

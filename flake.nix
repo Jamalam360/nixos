@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     sculk = {
       url = "github:sculk-cli/sculk?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,11 +49,12 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./machines/hercules/configuration.nix
+          inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
         ];
       };
 
       lyra = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs; };
+        specialArgs = {inherit inputs outputs;};
         modules = [
           ./machines/lyra/configuration.nix
         ];

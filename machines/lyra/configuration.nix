@@ -131,7 +131,7 @@
 
   # == Minecraft ==
   services.minecraft-servers = let
-    modpack = inputs.sculk.nixFunctions.fetchSculkModpack { inherit (pkgs) stdenvNoCC sculk jre_headless; } {
+    modpack = inputs.sculk.nixFunctions.fetchSculkModpack {inherit (pkgs) stdenvNoCC sculk jre_headless;} {
       # Updated by CI
       # modpack-version-begin
       url = "https://raw.githubusercontent.com/Jamalam360/pack/bd19d74601963becab9eb1232d12412133132812";
@@ -163,9 +163,11 @@
       symlinks = {
         "mods" = "${modpack}/mods";
       };
-      files = collectFiles "${modpack}" "config" // {
-        "config/Discord-Integration.toml" = "/var/lib/Discord-Integration.toml";
-      };
+      files =
+        collectFiles "${modpack}" "config"
+        // {
+          "config/Discord-Integration.toml" = "/var/lib/Discord-Integration.toml";
+        };
       serverProperties = {
         server-port = 25565;
         white-list = true;

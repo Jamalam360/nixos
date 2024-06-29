@@ -12,6 +12,7 @@
       pkgs.obsidian
       pkgs._1password-gui
       pkgs.okular
+      pkgs.yubioath-flutter
 
       # == Social ==
       pkgs.discord
