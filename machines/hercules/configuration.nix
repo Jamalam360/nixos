@@ -33,20 +33,21 @@
       james = {
         imports = [
           ./../../modules/home-manager/base.nix
-          ./../../modules/home-manager/hercules/_packages.nix
+          ./../../modules/home-manager/hercules/hercules.nix
         ];
       };
     };
   };
 
   # == Secrets ==
-  sops = pkgs.lib.mkMerge (map (secret: {
-      secrets.${secret} = {
-        neededForUsers = true;
-      };
-    }) [
-      "hercules-password"
-    ]);
+  sops.secrets.hercules-password = {
+    neededForUsers = true;
+  };
+
+  sops.secrets.hercules-env-vars = {
+    owner = "james";
+    path = "/var/lib/env_vars";
+  };
 
   # == Yubikey Security - https://nixos.wiki/wiki/Yubikey ==
   security.pam.yubico = {

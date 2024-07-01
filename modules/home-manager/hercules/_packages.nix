@@ -7,6 +7,10 @@
       pkgs.sculk
       pkgs.jetbrains-toolbox
 
+      # == Java ==
+      # pkgs.temurin-bin-17
+      pkgs.temurin-bin-21
+
       # == Productivity ==
       pkgs.google-chrome
       pkgs.obsidian

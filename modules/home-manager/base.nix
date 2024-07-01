@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./shared/_packages.nix
+    ./_packages.nix
   ];
 
   home = {
