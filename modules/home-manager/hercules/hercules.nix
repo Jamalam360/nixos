@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./_packages.nix
+    ./jdks.nix
   ];
 
   programs = {
@@ -15,6 +16,7 @@
       enable = true;
       shellAliases = {
         cat = "bat";
+        lyra = "ssh james@176.9.22.221";
       };
       initExtra = ''
         export PATH="$PATH:/home/james/.local/share/JetBrains/Toolbox/scripts"

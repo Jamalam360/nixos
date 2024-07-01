@@ -2,19 +2,17 @@
   home = {
     packages = with pkgs; [
       # == Development ==
+      pkgs.deno
+      pkgs.jetbrains-toolbox
+      pkgs.nil
+      pkgs.sculk
       pkgs.vscode
       pkgs.warp-terminal
-      pkgs.sculk
-      pkgs.jetbrains-toolbox
-
-      # == Java ==
-      # pkgs.temurin-bin-17
-      pkgs.temurin-bin-21
 
       # == Productivity ==
+      pkgs._1password-gui
       pkgs.google-chrome
       pkgs.obsidian
-      pkgs._1password-gui
       pkgs.okular
       pkgs.yubioath-flutter
 
@@ -23,9 +21,9 @@
       pkgs.spotify
 
       # == Gaming ==
+      pkgs.obs-studio
       pkgs.prismlauncher
       pkgs.steam
-      pkgs.obs-studio
 
       # == Maker ==
       pkgs.candle
@@ -33,9 +31,9 @@
 
       # == SDR ==
       pkgs.audacity
-      pkgs.sdrpp
-      pkgs.noaa-apt
       pkgs.gpredict
+      pkgs.noaa-apt
+      pkgs.sdrpp
     ];
   };
 }
