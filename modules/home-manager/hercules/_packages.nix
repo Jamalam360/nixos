@@ -2,6 +2,7 @@
   home = {
     packages = with pkgs; [
       # == Development ==
+      blockbench
       deno
       jetbrains-toolbox
       nil
