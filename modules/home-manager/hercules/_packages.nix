@@ -2,6 +2,7 @@
   home = {
     packages = with pkgs; [
       # == Development ==
+      aseprite
       blockbench
       deno
       jetbrains-toolbox
