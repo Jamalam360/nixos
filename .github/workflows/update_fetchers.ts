@@ -3,11 +3,18 @@ const REGEX_REPO = `repo\\s*=\\s*"(.+)"`;
 const REGEX_REV = `rev\\s*=\\s*"(.+)"`;
 const REGEX_HASH = `hash\\s*=\\s*"(.+)"`;
 const REGEX_URL = `url\\s*=\\s*"(.+)"`;
+const GITHUB_TOKEN = Deno.env.get("GITHUB_TOKEN");
 
 async function gh<T>(url: string): Promise<T> {
   const headers = new Headers();
   headers.set("Accept", "application/vnd.github.v3+json");
+  headers.set("Authorization", `Bearer ${GITHUB_TOKEN}`);
   const response = await fetch(url, { headers });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+  }
+
   return await response.json();
 }
 
