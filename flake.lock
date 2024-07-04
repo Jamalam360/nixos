@@ -195,11 +195,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1719837656,
-        "narHash": "sha256-2lGv8V4cUMhRHxp+X2dwe7oxB028oq3R3aahKdoGTag=",
+        "lastModified": 1720086744,
+        "narHash": "sha256-NmZd9PbPFiGGbDfczZYVRiuijQq5lMBy2DUlE8F+mj8=",
         "owner": "sculk-cli",
         "repo": "sculk",
-        "rev": "d48d3ed334b84748043eb9b642f2b4eb4abee406",
+        "rev": "194c20c6e4b520a6ed672d49d854f85c4c96f3be",
         "type": "github"
       },
       "original": {
