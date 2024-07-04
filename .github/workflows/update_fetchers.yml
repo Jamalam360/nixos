@@ -21,7 +21,7 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-      - run: deno run --allow-read --allow-write --allow-run --allow-net .github/workflows/update_fetchers.ts
+      - run: deno run --allow-read --allow-write --allow-run --allow-net --allow-env .github/workflows/update_fetchers.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: stefanzweifel/git-auto-commit-action@v5
