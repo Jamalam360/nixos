@@ -29,6 +29,7 @@
     extraSpecialArgs = {inherit inputs outputs;};
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = ".home_manager_bak";
     users = {
       james = {
         imports = [

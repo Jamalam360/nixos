@@ -1,6 +1,4 @@
 {
-  lib,
-  pkgs,
   ...
 }: {
   imports = [
@@ -22,6 +20,13 @@
         export PATH="$PATH:/home/james/.local/share/JetBrains/Toolbox/scripts"
         source /var/lib/env_vars
       '';
+    };
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/zip" = "org.gnome.Nautilus.desktop";
     };
   };
 }
