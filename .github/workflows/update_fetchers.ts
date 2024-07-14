@@ -92,11 +92,6 @@ async function update_modpack() {
   const { stderr } = await nixCmd.output();  
   const output = new TextDecoder().decode(stderr).trim();
 
-  if (output.includes("error:")) {
-    console.error(`Failed to fetch modpack: ${output}`);
-    Deno.exit(1);
-  }
-
   const newHash = `sha256-${output
     .split("sha256-")
     .pop()!
