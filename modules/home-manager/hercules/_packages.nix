@@ -5,9 +5,11 @@
       aseprite
       blockbench
       deno
+      dotnet-sdk_8
       jetbrains-toolbox
-      nil
+      nil # nix language server
       sculk
+      unityhub
       vscode
       warp-terminal
 
@@ -15,8 +17,8 @@
       _1password-gui
       google-chrome
       obsidian
-      okular
-      yubioath-flutter
+      okular # pdf reader
+      yubioath-flutter # yubico authenticator
 
       # == Social ==
       discord
@@ -28,7 +30,7 @@
       steam
 
       # == Maker ==
-      candle
+      candle # CNC
       flashprint
 
       # == SDR ==
