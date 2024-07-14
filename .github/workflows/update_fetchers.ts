@@ -94,12 +94,6 @@ async function update_modpack() {
 
   if (output.includes("error:")) {
     console.error(`Failed to fetch modpack: ${output}`);
-    const logPath = output.split("run 'nix log ")[1].split("'")[0];
-    const logCmd = new Deno.Command("nix", {
-      args: ["log", logPath],
-      stdout: "piped",
-    }).spawn();
-    await logCmd.status;
     Deno.exit(1);
   }
 
