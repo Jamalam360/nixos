@@ -90,8 +90,20 @@ async function update_modpack() {
   }).spawn();
 
   const { stderr } = await nixCmd.output();  
-  const newHash = `sha256-${new TextDecoder().decode(stderr)
-    .trim()
+  const output = new TextDecoder().decode(stderr).trim();
+
+  if (output.includes("error:")) {
+    console.error(`Failed to fetch modpack: ${output}`);
+    const logPath = output.split("run 'nix log ")[1].split("'")[0];
+    const logCmd = new Deno.Command("nix", {
+      args: ["log", logPath],
+      stdout: "piped",
+    }).spawn();
+    await logCmd.status;
+    Deno.exit(1);
+  }
+
+  const newHash = `sha256-${output
     .split("sha256-")
     .pop()!
     .trim()}`;
