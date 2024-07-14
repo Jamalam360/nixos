@@ -26,6 +26,7 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
+      "text/plain" = "org.gnome.gedit.desktop";
       "application/zip" = "org.gnome.Nautilus.desktop";
     };
   };
