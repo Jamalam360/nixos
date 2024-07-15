@@ -19,6 +19,7 @@
       obsidian
       okular # pdf reader
       oxipng
+      shotcut
       yubioath-flutter # yubico authenticator
 
       # == Social ==
