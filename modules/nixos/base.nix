@@ -3,7 +3,13 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  substituters = [
+    "http://nixcache.jamalam.tech"
+    "https://nix-community.cachix.org"
+    "https://cache.nixos.org/"
+  ];
+in {
   imports = [
     inputs.sops-nix.nixosModules.sops
 
@@ -21,16 +27,14 @@
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
 
-      substituters = [
-        "http://nixcache.jamalam.tech"
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org/"
-      ];
-
+      substituters = substituters;
+      trusted-substituters = substituters;
       trusted-public-keys = [
         "nixcache.jamalam.tech:kK0ZbqNEnH1UMq3LJk8EDsLbI1H2K8ooQAqiiU7/5s0="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
+
+      trusted-users = ["james"];
     };
   };
 

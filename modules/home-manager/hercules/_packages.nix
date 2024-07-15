@@ -18,6 +18,7 @@
       google-chrome
       obsidian
       okular # pdf reader
+      oxipng
       yubioath-flutter # yubico authenticator
 
       # == Social ==
