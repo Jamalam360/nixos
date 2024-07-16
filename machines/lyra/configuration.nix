@@ -173,6 +173,7 @@
         white-list = true;
         level-seed = 5716240849493836707;
         view-distance = 20;
+        difficulty = "hard";
       };
       jvmOpts = "-Xmx10G -Xms10G";
     };
