@@ -134,8 +134,8 @@
     modpack = inputs.sculk.nixFunctions.fetchSculkModpack {inherit (pkgs) stdenvNoCC sculk jre_headless;} {
       # Updated by CI
       # modpack-version-begin
-      url = "https://raw.githubusercontent.com/Jamalam360/pack/0fbe359e4049cd60b1f6b51b574c65ca4c919cec";
-      hash = "sha256-w9JYfm6Bwd94FOxJ41Tg7OWzkV35V5q9VsDORZg1+Bw=";
+      url = "https://raw.githubusercontent.com/Jamalam360/pack/75844eefc810b37e13d4a3fa99a60e6114410aef";
+      hash = "sha256-mnyDKK+JWRGDL0g00lKYcG7BJB0o2MB3IS3JF4Y363U=";
       # modpack-version-end
     };
 
@@ -179,6 +179,25 @@
     };
   };
   networking.firewall.allowedUDPPorts = [24454]; # Simple Voice Chat mod
+
+  systemd.timers."restart-minecraft" = {
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "*-*-* 4:00:00";
+      Unit = "restart-minecraft.service";
+    };
+  };
+
+  systemd.services."restart-minecraft" = {
+    script = ''
+      set -eu
+      systemctl restart minecraft-server-minecraft-server.service
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
 
   # == Reposilite ==
   services.reposilite = {

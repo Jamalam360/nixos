@@ -4,6 +4,9 @@ default:
 update:
 	nix --extra-experimental-features 'flakes nix-command' flake update
 
+update-fetchers:
+	deno run -A .github/workflows/update_fetchers.ts
+
 hash-password:
 	read -s -p "Enter password: " password; echo; echo -n "$$password" | mkpasswd -m sha-512 -s
 

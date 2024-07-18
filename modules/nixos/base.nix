@@ -17,6 +17,9 @@ in {
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-19.1.9"
+  ];
   nix = {
     gc = {
       automatic = true;
