@@ -8,6 +8,8 @@
       dotnet-sdk_8
       jetbrains-toolbox
       nil # nix language server
+      nodejs_22
+      nodePackages.pnpm
       sculk
       unityhub
       vscode
