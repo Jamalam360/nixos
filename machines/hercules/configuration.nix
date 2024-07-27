@@ -57,11 +57,20 @@
     control = "required";
     mode = "challenge-response";
     id = [
-      "19649094"
-      "19649058"
+    "19649094"
+    "19649058"
     ];
   };
-  services.pcscd.enable = true;
+
+  # Lock screen when yubikey is removed
+  services.udev.extraRules = ''
+      ACTION=="remove",\
+       ENV{ID_BUS}=="usb",\
+       ENV{ID_MODEL_ID}=="0407",\
+       ENV{ID_VENDOR_ID}=="1050",\
+       ENV{ID_VENDOR}=="Yubico",\
+       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+  '';
 
   # == Flatpak ==
   services.flatpak.enable = true;
