@@ -61,6 +61,7 @@
     "19649058"
     ];
   };
+  services.pcscd.enable = true;
 
   # Lock screen when yubikey is removed
   services.udev.extraRules = ''
