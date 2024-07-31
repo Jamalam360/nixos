@@ -4,12 +4,16 @@
       # == Development ==
       aseprite
       blockbench
+      cargo
       deno
       dotnet-sdk_8
       jetbrains-toolbox
       nil # nix language server
       nodejs_22
       nodePackages.pnpm
+      rust-analyzer
+      rustc
+      rustfmt
       sculk
       unityhub
       vscode
