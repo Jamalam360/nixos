@@ -19,6 +19,11 @@
         source /var/lib/env_vars
       '';
     };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
 
   xdg.mimeApps = {
