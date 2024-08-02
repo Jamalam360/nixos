@@ -4,9 +4,9 @@
       # == Development ==
       aseprite
       blockbench
-      cargo
       deno
       dotnet-sdk_8
+      insomnia
       jetbrains-toolbox
       nil # nix language server
       nodejs_22
