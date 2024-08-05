@@ -1,16 +1,12 @@
 {pkgs, ...}: {
   home = {
+    # Packages that cannot be managed via devshells or that I want globally
     packages = with pkgs; [
       # == Development ==
       aseprite
       blockbench
-      deno
-      dotnet-sdk_8
       insomnia
       jetbrains-toolbox
-      nil # nix language server
-      nodejs_22
-      nodePackages.pnpm
       sculk
       unityhub
       vscode

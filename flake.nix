@@ -41,8 +41,9 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter.x86_64-linux = pkgs.alejandra;
 
     nixosConfigurations = {
       hercules = nixpkgs.lib.nixosSystem {
@@ -59,6 +60,13 @@
           ./machines/lyra/configuration.nix
         ];
       };
+    };
+
+    devShells.x86_64-linux.default = pkgs.mkShell {
+      buildInputs = with pkgs; [
+        nil # nix language server
+        deno # used in CI
+      ];
     };
   };
 }
