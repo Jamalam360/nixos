@@ -99,11 +99,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1723167436,
-        "narHash": "sha256-sMpLqjB0m+pYuRT7nwAu40S1IoYUM+Kg4Tq9xaQgWMk=",
+        "lastModified": 1723253776,
+        "narHash": "sha256-EIChmYD+Wp2558uJLoQw3dFNRAYmS0u/r1KPlNagpWw=",
         "owner": "Infinidoge",
         "repo": "nix-minecraft",
-        "rev": "273166990e6c513e06d12a1c4d723b5f01fbe8fd",
+        "rev": "3b93cd39408aaef0ce9db7261f779e021fb95aae",
         "type": "github"
       },
       "original": {
@@ -161,11 +161,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1722813957,
-        "narHash": "sha256-IAoYyYnED7P8zrBFMnmp7ydaJfwTnwcnqxUElC1I26Y=",
+        "lastModified": 1723175592,
+        "narHash": "sha256-M0xJ3FbDUc4fRZ84dPGx5VvgFsOzds77KiBMW/mMTnI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "cb9a96f23c491c081b38eab96d22fa958043c9fa",
+        "rev": "5e0ca22929f3342b19569b21b2f3462f053e497b",
         "type": "github"
       },
       "original": {
