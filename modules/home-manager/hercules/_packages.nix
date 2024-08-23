@@ -40,7 +40,7 @@
       noaa-apt
       sdrpp
 
-      # == System ==
+      # == VMs ==
       gnome.gnome-boxes
     ];
   };

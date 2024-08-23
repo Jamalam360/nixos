@@ -103,6 +103,33 @@
     pulse.enable = true;
   };
 
+  # == VMs ==
+  # inspo: https://github.com/erictossell/nixflakes/blob/main/modules/virt/libvirt.nix
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+
+  users.users.james.extraGroups = [ "libvirtd" ];
+  programs.virt-manager.enable = true;
+
+  home-manager.users.james = {
+    dconf.settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
+      };
+    };
+  };
+
   # == Fixes ==
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
 }
