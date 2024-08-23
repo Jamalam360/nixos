@@ -39,6 +39,9 @@
       gpredict
       noaa-apt
       sdrpp
+
+      # == System ==
+      gnome.gnome-boxes
     ];
   };
 }
