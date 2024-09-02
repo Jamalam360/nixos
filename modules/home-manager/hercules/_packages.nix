@@ -41,7 +41,7 @@
       sdrpp
 
       # == VMs ==
-      gnome.gnome-boxes
+      gnome-boxes
     ];
   };
 }
