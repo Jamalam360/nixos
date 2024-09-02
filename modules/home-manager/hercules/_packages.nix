@@ -14,6 +14,7 @@
 
       # == Productivity ==
       _1password-gui
+      eyedropper
       google-chrome
       obsidian
       okular # pdf reader
