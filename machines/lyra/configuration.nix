@@ -202,7 +202,7 @@
   # == Reposilite ==
   services.reposilite = {
     enable = true;
-    package = pkgs.callPackage ../../custom/reposilite.nix {};
+    package = pkgs.reposilite;
     settings = {
       port = 8084;
     };
