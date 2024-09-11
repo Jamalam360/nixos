@@ -46,6 +46,7 @@ async function update_static_site(path: string) {
   const tarball =
     `https://github.com/${owner}/${repo}/archive/${newRev}.tar.gz`;
 
+  // TODO: use nix-prefetch-github instead
   const prefetchData = await new Deno.Command("nix", {
     args: ["store", "prefetch-file", tarball],
     stderr: "piped",
