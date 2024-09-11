@@ -7,16 +7,16 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "sat-bot";
-  version = "38cc4da14671b1d0cc65793f963526fd042f8744";
+  version = "6a68ddcd478ae52f3dce8d0fd66852fd1d200b27";
 
   src = fetchFromGitHub {
     owner = "Jamalam360";
     repo = "${pname}";
     rev = "${version}";
-    hash = "sha256-MUhjaQs+FdI30gWfU+cOeKcBtihNuGo2UBVGdJxRd8M=";
+    hash = "sha256-UTBrIp9Iz/dgc/65uoyJcPw8GcGRu8Cn/ISxLn+gxPU=";
   };
 
-  cargoHash = "sha256-fqL0In45oPzC7zVbtBdFHESqbOnhzk34fyu6uNGDX6M";
+  cargoHash = "sha256-yVpeFQC6lZIWxXhvwGMAfRllDTIlinxv3mHqafvcLNU=";
 
   buildInputs = [openssl];
   nativeBuildInputs = [pkg-config];
