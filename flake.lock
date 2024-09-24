@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726842196,
-        "narHash": "sha256-u9h03JQUuQJ607xmti9F9Eh6E96kKUAGP+aXWgwm70o=",
+        "lastModified": 1727156717,
+        "narHash": "sha256-Ef7UgoTdOB4PGQKSkHGu6SOxnTiArPHGcRf8qGFC39o=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "51994df8ba24d5db5459ccf17b6494643301ad28",
+        "rev": "c61e50b63ad50dda5797b1593ad7771be496efbb",
         "type": "github"
       },
       "original": {
@@ -79,11 +79,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726985855,
-        "narHash": "sha256-NJPGK030Y3qETpWBhj9oobDQRbXdXOPxtu+YgGvZ84o=",
+        "lastModified": 1727111745,
+        "narHash": "sha256-EYLvFRoTPWtD+3uDg2wwQvlz88OrIr3zld+jFE5gDcY=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "04213d1ce4221f5d9b40bcee30706ce9a91d148d",
+        "rev": "21c021862fa696c8199934e2153214ab57150cb6",
         "type": "github"
       },
       "original": {
@@ -99,11 +99,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1727055965,
-        "narHash": "sha256-AwuP8GjQzN25rXCYaTd+oVmHw//ZcQrNB0ecg6EkM+c=",
+        "lastModified": 1727142368,
+        "narHash": "sha256-0d8cr9/n/HRhWgrwBT/YiQrpkMIKMhM8Tc2coZfCx8g=",
         "owner": "Infinidoge",
         "repo": "nix-minecraft",
-        "rev": "854f1325faccc24f37c8e791b34937f99b7fec39",
+        "rev": "4ccf8d373be7382c436123189264a4e5e94dbcab",
         "type": "github"
       },
       "original": {
@@ -161,11 +161,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1726755586,
-        "narHash": "sha256-PmUr/2GQGvFTIJ6/Tvsins7Q43KTMvMFhvG6oaYK+Wk=",
+        "lastModified": 1726937504,
+        "narHash": "sha256-bvGoiQBvponpZh8ClUcmJ6QnsNKw0EMrCQJARK3bI1c=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c04d5652cfa9742b1d519688f65d1bbccea9eb7e",
+        "rev": "9357f4f23713673f310988025d9dc261c20e70c6",
         "type": "github"
       },
       "original": {
@@ -195,11 +195,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1721302129,
-        "narHash": "sha256-+g7yAWLDKPZtUuj+d0Wtx9Y92TWXMLp1DigEM7yK9Lk=",
+        "lastModified": 1727140980,
+        "narHash": "sha256-OwcXh7tO2Kt42SEClQmhOt0PIOtauHAaEZx77BZyx9o=",
         "owner": "sculk-cli",
         "repo": "sculk",
-        "rev": "81e29ad9d9138c2decdd17243761d2ca0398f308",
+        "rev": "06ee5edf7c16d0691fa15b69d734d56a5e2130d0",
         "type": "github"
       },
       "original": {
