@@ -8,10 +8,11 @@ This repository holds my WIP Nix configuration, using:
 - GitHub Actions to update `flake.lock` daily,
 - and Just for aliasing commands.
 
-It contains configuration for 2 machines:
+It contains configuration for 3 machines:
 
 1. Hercules, my Framework laptop.
 2. Lyra, my Hetzner dedicated server.
+3. Leo, my desktop.
 
 ## Folders
 

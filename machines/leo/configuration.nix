@@ -1,7 +1,6 @@
 {
   inputs,
   outputs,
-  pkgs,
   ...
 }: {
   imports = [
@@ -20,7 +19,7 @@
   # == System Configuration ==
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "hercules";
+  networking.hostName = "leo";
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/London";
 
@@ -34,7 +33,7 @@
       james = {
         imports = [
           ./../../modules/home-manager/base.nix
-          ./../../modules/home-manager/desktops/desktops.nix
+          ./../../modules/home-manager/desktops.nix
         ];
       };
     };
@@ -49,29 +48,6 @@
     owner = "james";
     path = "/var/lib/env_vars";
   };
-
-  # == Yubikey Security - https://nixos.wiki/wiki/Yubikey ==
-  security.pam.yubico = {
-    enable = true;
-    debug = true;
-    control = "required";
-    mode = "challenge-response";
-    id = [
-    "19649094"
-    "19649058"
-    ];
-  };
-  services.pcscd.enable = true;
-
-  # Lock screen when yubikey is removed
-  # services.udev.extraRules = ''
-  #     ACTION=="remove",\
-  #      ENV{ID_BUS}=="usb",\
-  #      ENV{ID_MODEL_ID}=="0407",\
-  #      ENV{ID_VENDOR_ID}=="1050",\
-  #      ENV{ID_VENDOR}=="Yubico",\
-  #      RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
-  # '';
 
   # == Flatpak ==
   services.flatpak.enable = true;
@@ -102,34 +78,4 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # == VMs ==
-  # inspo: https://github.com/erictossell/nixflakes/blob/main/modules/virt/libvirt.nix
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
-      };
-    };
-    spiceUSBRedirection.enable = true;
-  };
-
-  users.users.james.extraGroups = [ "libvirtd" ];
-  programs.virt-manager.enable = true;
-
-  home-manager.users.james = {
-    dconf.settings = {
-      "org/virt-manager/virt-manager/connections" = {
-        autoconnect = [ "qemu:///system" ];
-        uris = [ "qemu:///system" ];
-      };
-    };
-  };
-
-  # == Fixes ==
-  services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
 }
