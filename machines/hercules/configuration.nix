@@ -41,7 +41,7 @@
   };
 
   # == Secrets ==
-  sops.secrets.desktops-password = {
+  sops.secrets.hercules-password = {
     neededForUsers = true;
   };
 
