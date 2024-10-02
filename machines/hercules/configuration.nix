@@ -132,4 +132,5 @@
 
   # == Fixes ==
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
+  hardware.graphics.enable32Bit = true; # fixes an issue with steam
 }
