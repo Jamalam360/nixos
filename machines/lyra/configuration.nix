@@ -15,6 +15,7 @@
     ./../../modules/nixos/base.nix
     ./../../services/lyra/discord-github-releases.nix
     ./../../services/lyra/nginx.nix
+    ./../../services/lyra/pinguino-quotes.nix
     ./../../services/lyra/reposilite.nix
     ./../../services/lyra/restic.nix
     ./../../services/lyra/sat-bot.nix
@@ -61,10 +62,12 @@
       "sat-bot-discord-token"
       "sat-bot-guild-id"
       "sat-bot-n2yo-key"
+      "pinguino-quotes-discord-token"
     ]);
 
   # == Restic ==
   services.restic.backups.remote.paths = [
+    "/var/lib/pinguino-quotes/pinguino-quotes.db"
     "${config.services.reposilite.dataDir}/reposilite.db"
     "${config.services.reposilite.dataDir}/repositories"
     "/var/lib/minecraft-servers/minecraft-server/DiscordIntegration-Data"
@@ -216,6 +219,18 @@
       discordToken = config.sops.secrets.sat-bot-discord-token.path;
       guildId = config.sops.secrets.sat-bot-guild-id.path;
       n2yoKey = config.sops.secrets.sat-bot-n2yo-key.path;
+    };
+  };
+
+  # == Pinguino Quotes ==
+  services.pinguino-quotes = {
+    enable = true;
+    package = pkgs.callPackage ./../../custom/pinguino-quotes.nix {};
+    token = config.sops.secrets.pinguino-quotes-discord-token.path;
+    settings = {
+      database = {
+        database_path = "/var/lib/pinguino-quotes/pinguino-quotes.db";
+      };
     };
   };
 }

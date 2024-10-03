@@ -87,7 +87,7 @@ in {
       };
     };
 
-    systemd.services."sat-bot" = let
+    systemd.services.sat-bot = let
       runner = pkgs.writeShellScript "run-sat-bot" ''
         export DISCORD_TOKEN=$(cat "${cfg.settings.discordToken}");
         export DATABASE_PATH="${cfg.settings.databasePath}";
@@ -101,7 +101,6 @@ in {
 
       serviceConfig = {
         inherit (cfg) user group;
-
         WorkingDirectory = cfg.dataDir;
         SuccessExitStatus = 0;
         TimeoutStopSec = 10;
