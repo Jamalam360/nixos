@@ -89,11 +89,11 @@ in {
     };
 
     users = {
-      groups.sat-bot = {
+      groups.pinguino-quotes = {
         name = cfg.group;
       };
 
-      users.sat-bot = {
+      users.pinguino-quotes = {
         group = cfg.group;
         home = cfg.dataDir;
         isSystemUser = true;
