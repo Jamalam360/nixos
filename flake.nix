@@ -54,6 +54,13 @@
         ];
       };
 
+      leo = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./machines/leo/configuration.nix
+        ];
+      };
+
       lyra = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [

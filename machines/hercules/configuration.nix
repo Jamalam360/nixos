@@ -2,6 +2,7 @@
   inputs,
   outputs,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -40,6 +41,8 @@
     };
   };
 
+  users.users.james.extraGroups = [ "docker" "libvirtd" ];
+
   # == Secrets ==
   sops.secrets.hercules-password = {
     neededForUsers = true;
@@ -50,10 +53,14 @@
     path = "/var/lib/env_vars";
   };
 
+  sops.secrets.university-vpn-password = {
+    neededForUsers = true;
+  };
+
   # == Yubikey Security - https://nixos.wiki/wiki/Yubikey ==
   security.pam.yubico = {
     enable = true;
-    debug = true;
+    debug = false;
     control = "required";
     mode = "challenge-response";
     id = [
@@ -103,6 +110,9 @@
     pulse.enable = true;
   };
 
+  # == Docker ==
+  virtualisation.docker.enable = true;
+
   # == VMs ==
   # inspo: https://github.com/erictossell/nixflakes/blob/main/modules/virt/libvirt.nix
   virtualisation = {
@@ -118,7 +128,6 @@
     spiceUSBRedirection.enable = true;
   };
 
-  users.users.james.extraGroups = [ "libvirtd" ];
   programs.virt-manager.enable = true;
 
   home-manager.users.james = {
@@ -129,6 +138,9 @@
       };
     };
   };
+
+  # == University VPN ==
+  # TODO: set up university NetworkManager VPN declaratively
 
   # == Fixes ==
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
