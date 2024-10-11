@@ -2,7 +2,6 @@
   inputs,
   outputs,
   pkgs,
-  config,
   ...
 }: {
   imports = [
@@ -41,7 +40,7 @@
     };
   };
 
-  users.users.james.extraGroups = [ "docker" "libvirtd" ];
+  users.users.james.extraGroups = ["docker" "libvirtd"];
 
   # == Secrets ==
   sops.secrets.hercules-password = {
@@ -64,8 +63,8 @@
     control = "required";
     mode = "challenge-response";
     id = [
-    "19649094"
-    "19649058"
+      "19649094"
+      "19649058"
     ];
   };
   services.pcscd.enable = true;
@@ -122,7 +121,7 @@
         package = pkgs.qemu_kvm;
         swtpm.enable = true;
         ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
+        ovmf.packages = [pkgs.OVMFFull.fd];
       };
     };
     spiceUSBRedirection.enable = true;
@@ -133,8 +132,8 @@
   home-manager.users.james = {
     dconf.settings = {
       "org/virt-manager/virt-manager/connections" = {
-        autoconnect = [ "qemu:///system" ];
-        uris = [ "qemu:///system" ];
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
       };
     };
   };

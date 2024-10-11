@@ -1,7 +1,7 @@
 {
   lib,
   fetchFromGitHub,
-  pkgs
+  pkgs,
 }:
 pkgs.buildGoModule rec {
   pname = "pinguino-quotes";
