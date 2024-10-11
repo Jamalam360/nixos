@@ -33,7 +33,7 @@
       james = {
         imports = [
           ./../../modules/home-manager/base.nix
-          ./../../modules/home-manager/desktops.nix
+          ./../../modules/home-manager/desktops/desktops.nix
         ];
       };
     };
