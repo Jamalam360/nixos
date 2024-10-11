@@ -151,7 +151,7 @@
       path: prefix:
         mapListToAttrs
         (x: builtins.unsafeDiscardStringContext (lib.removePrefix "${path}/" x))
-        (lib.id) (lib.filesystem.listFilesRecursive "${path}/${prefix}");
+        lib.id (lib.filesystem.listFilesRecursive "${path}/${prefix}");
   in {
     enable = true;
     eula = true;

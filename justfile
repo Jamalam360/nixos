@@ -1,6 +1,15 @@
 default:
 	just --list
 
+fmt:
+	nix fmt .
+
+lint:
+	statix check .
+
+fix-lint:
+	statix fix .
+
 update:
 	nix --extra-experimental-features 'flakes nix-command' flake update
 
@@ -24,3 +33,6 @@ deploy-lyra:
 
 deploy-hercules:
 	git add . && sudo nixos-rebuild switch --fast --flake .#hercules 
+
+deploy-leo:
+	git add . && sudo nixos-rebuild switch --fast --flake .#leo 

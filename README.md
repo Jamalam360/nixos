@@ -34,10 +34,28 @@ It contains configuration for 3 machines:
 - **Nginx** - Reverse proxy.
 - **Reposilite** - Maven server.
 - **Sat Bot** - Discord bot.
+- **Pinguino quotes**: Discord bot.
 - **Discord GitHub Releases** - Discord bot.
 - **It's Clearing Up** - Static website.
 - **Teach Man Fish** - Static website.
+- **CDN** - Static website.
 - **Minecraft Server**
+
+## Adding a New Machine
+
+0. Find a constellation to name the machine after :)
+1. Create the base configuration files for the machine (`machines/...`, NixOS module, Home Manager module).
+2. Install NixOS and copy `hardware-configuration.nix` to the repo.
+3. Import personal SSH and GPG keys.
+4. Run the following: 
+	- `mkdir -p ~/.config/sops/age`
+	- `sudo nix-shell -p ssh-to-age --run "ssh-to-age --private-key -i /etc/ssh/ssh_host_ed25519_key > /home/james/.config/sops/age/keys.txt"`
+5. Run `nix-shell -p ssh-to-age --run "cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age"` and add the result to `.sops.yaml`.
+6. Run `just sync-secrets`.
+7. Add a `deploy-...` task for the new machine in the `justfile`.
+8. Clone `git@github.com:Jamalam360/nixos` on the target machine.
+9. Run the deploy task.
+10. Run `direnv allow` after the deployment.
 
 ## Resources and Credits
 

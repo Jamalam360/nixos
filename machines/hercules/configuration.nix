@@ -43,17 +43,15 @@
   users.users.james.extraGroups = ["docker" "libvirtd"];
 
   # == Secrets ==
-  sops.secrets.hercules-password = {
-    neededForUsers = true;
-  };
+  sops.secrets = {
+    hercules-password = {
+      neededForUsers = true;
+    };
 
-  sops.secrets.desktops-env-vars = {
-    owner = "james";
-    path = "/var/lib/env_vars";
-  };
-
-  sops.secrets.university-vpn-password = {
-    neededForUsers = true;
+    desktops-env-vars = {
+      owner = "james";
+      path = "/var/lib/env_vars";
+    };
   };
 
   # == Yubikey Security - https://nixos.wiki/wiki/Yubikey ==

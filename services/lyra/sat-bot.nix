@@ -80,7 +80,7 @@ in {
       };
 
       users.sat-bot = {
-        group = cfg.group;
+        inherit (cfg) group;
         home = cfg.dataDir;
         isSystemUser = true;
         createHome = true;

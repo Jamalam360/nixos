@@ -1,0 +1,39 @@
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v27
+      - run: nix fmt
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: format files"
+          commit_user_name: GitHub Actions
+          commit_options: --no-verify --signoff
+          commit_author: GitHub Actions <actions@github.com>
+          branch: main
+          file_pattern: flake.lock
+          skip_dirty_check: false
+          skip_fetch: true
+
+  statix:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v27
+      - run: nix run nixpkgs#statix -- check

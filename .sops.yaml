@@ -1,7 +1,7 @@
 keys:
   - &hercules age1g3n4mvmsl9wku7307kk9p9mc8g70yw9drm6yz0evuze0kgv65pxqdup7ny
   - &lyra age1p34gq7amcr8ue6uwavxq45mg9fxvwgnr7uraul6juyyhqhqfmggs28p6gu
-  - &leo age1hrrvg0fe0zy52cds0w6y4dznamuatx6tx0uwh4yrwgzl8upj9vqs6hxtkk
+  - &leo age1rtfv5zuhzfgxmv8lfk85mar680ny69x4ld5jq29w9k4fc676d5pq07e32y
 creation_rules:
   - path_regex: secrets/[^/]+(\.(yaml|json|env|ini|conf))?$
     key_groups:

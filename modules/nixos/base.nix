@@ -28,10 +28,10 @@ in {
     };
 
     settings = {
+      inherit substituters;
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
 
-      substituters = substituters;
       trusted-substituters = substituters;
       trusted-public-keys = [
         "nixcache.jamalam.tech:kK0ZbqNEnH1UMq3LJk8EDsLbI1H2K8ooQAqiiU7/5s0="

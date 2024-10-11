@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/base.nix
-    ./../../modules/nixos/hercules/_packages.nix
+    ./../../modules/nixos/leo/_packages.nix
   ];
 
   nixpkgs.overlays = [

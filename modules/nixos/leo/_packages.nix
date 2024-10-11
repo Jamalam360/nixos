@@ -4,11 +4,5 @@
     gnomeExtensions.tiling-assistant
 
     gnome.gnome-tweaks
-
-    # == VMs ==
-    spice
-    spice-gtk
-    spice-protocol
-    virt-viewer
   ];
 }
