@@ -40,7 +40,7 @@
   };
 
   # == Secrets ==
-  sops.secrets.leos-password = {
+  sops.secrets.leo-password = {
     neededForUsers = true;
   };
 
