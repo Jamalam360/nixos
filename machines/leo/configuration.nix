@@ -69,6 +69,9 @@
   services.printing.enable = true;
   console.useXkbConfig = true;
 
+  # == Yubikey ==
+  services.pcscd.enable = true;
+
   # == Audio ==
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
