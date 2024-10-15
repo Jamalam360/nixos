@@ -134,12 +134,20 @@
 
   # == Minecraft ==
   services.minecraft-servers = let
-    modpack = inputs.sculk.nixFunctions.fetchSculkModpack {inherit (pkgs) stdenvNoCC sculk jre_headless;} {
+    modded_modpack = inputs.sculk.nixFunctions.fetchSculkModpack {inherit (pkgs) stdenvNoCC sculk jre_headless;} {
       # Updated by CI
-      # modpack-version-begin
+      # modded-modpack-version-begin
       url = "https://raw.githubusercontent.com/Jamalam360/pack/75844eefc810b37e13d4a3fa99a60e6114410aef";
       hash = "sha256-mnyDKK+JWRGDL0g00lKYcG7BJB0o2MB3IS3JF4Y363U=";
-      # modpack-version-end
+      # modded-modpack-version-end
+    };
+
+    vanilla_modpack = inputs.sculk.nixFunctions.fetchSculkModpack {inherit (pkgs) stdenvNoCC sculk jre_headless;} {
+      # Updated by CI
+      # vanilla-modpack-version-begin
+      url = "https://raw.githubusercontent.com/Jamalam360/vanilla-pack/75844eefc810b37e13d4a3fa99a60e6114410aef";
+      hash = "sha256-mnyDKK+JWRGDL0g00lKYcG7BJB0o2MB3IS3JF4Y363U=";
+      # vanilla-modpack-version-end
     };
 
     # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
@@ -164,10 +172,10 @@
       autoStart = true;
       restart = "always";
       symlinks = {
-        "mods" = "${modpack}/mods";
+        "mods" = "${modded_modpack}/mods";
       };
       files =
-        collectFiles "${modpack}" "config"
+        collectFiles "${modded_modpack}" "config"
         // {
           "config/Discord-Integration.toml" = "/var/lib/Discord-Integration.toml";
         };
@@ -180,7 +188,26 @@
       };
       jvmOpts = "-Xmx10G -Xms10G";
     };
+
+    servers.vanilla-server = {
+      enable = true;
+      package = pkgs.minecraftServers.fabric-1_21_1;
+      autoStart = true;
+      restart = "always";
+      symlinks = {
+        "mods" = "${vanilla_modpack}/mods";
+      };
+      files = collectFiles "${vanilla_modpack}" "config";
+      serverProperties = {
+        server-port = 25566;
+        white-list = true;
+        view-distance = 20;
+        difficulty = "hard";
+      };
+      jvmOpts = "-Xmx4G -Xms4G";
+    };
   };
+
   networking.firewall.allowedUDPPorts = [24454]; # Simple Voice Chat mod
 
   systemd.timers."restart-minecraft" = {
@@ -195,6 +222,7 @@
     script = ''
       set -eu
       systemctl restart minecraft-server-minecraft-server.service
+      systemctl restart minecraft-server-vanilla-server.service
     '';
     serviceConfig = {
       Type = "oneshot";

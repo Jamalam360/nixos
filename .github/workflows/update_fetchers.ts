@@ -58,19 +58,19 @@ async function update_static_site(path: string) {
   await Deno.writeTextFile(path, newConfig);
 }
 
-async function update_modpack() {
+async function update_modpack(name: string, owner: string, repo: string) {
   console.log(`Updating modpack`);
   const config = await Deno.readTextFile("./machines/lyra/configuration.nix");
   const modpackVersions =
-    config.split("# modpack-version-begin")[1].split(
-      "# modpack-version-end",
+    config.split(`# ${name}-version-begin`)[1].split(
+      `# ${name}-version-end`,
     )[0];
-  const url = new RegExp(REGEX_URL).exec(modpackVersions)![1];
+  const originalUrl = new RegExp(REGEX_URL).exec(modpackVersions)![1];
   const hash = new RegExp(REGEX_HASH).exec(modpackVersions)![1];
-  const rev = url.split("/").pop()!;
+  const rev = originalUrl.split("/").pop()!;
 
   const commits = await gh<unknown[]>(
-    `https://api.github.com/repos/Jamalam360/pack/commits`,
+    `https://api.github.com/repos/${owner}/${repo}/commits`,
   );
   const latestCommit = commits[0];
   const newRev = latestCommit["sha"];
@@ -82,7 +82,7 @@ async function update_modpack() {
 
   console.log(`--> Updating from ${rev} to ${newRev}`);
 
-  const newUrl = `https://raw.githubusercontent.com/Jamalam360/pack/${newRev}`;
+  const newUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${newRev}`;
   const nixExpr =
     `:b import ./.github/workflows/fetch_sculk_pack.nix { pkgs = import <nixpkgs> {}; sculk = builtins.getFlake "github:sculk-cli/sculk?dir=nix"; url = "${newUrl}"; }`;
   const nixCmd = new Deno.Command("/bin/sh", {
@@ -100,7 +100,7 @@ async function update_modpack() {
 
   console.log(`--> New hash: ${newHash}`);
   const newModpackVersions = modpackVersions.replace(hash, newHash).replace(
-    url,
+    originalUrl,
     newUrl,
   );
   const newConfig = config.replace(modpackVersions, newModpackVersions);
@@ -117,4 +117,5 @@ for (
   await update_static_site(site);
 }
 
-await update_modpack();
+await update_modpack("modded-modpack", "Jamalam360", "pack");
+await update_modpack("vanilla-modpack", "Jamalam360", "vanilla-pack");
