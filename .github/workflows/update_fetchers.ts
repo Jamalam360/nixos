@@ -118,4 +118,4 @@ for (
 }
 
 await update_modpack("modded-modpack", "Jamalam360", "pack");
-await update_modpack("vanilla-modpack", "Jamalam360", "vanilla-pack");
+await update_modpack("vanilla-modpack", "Jamalam360", "vanilla-server");
