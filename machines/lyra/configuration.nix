@@ -91,7 +91,7 @@
   # == Discord GitHub Releases ==
   services.discord-github-releases = {
     enable = true;
-    package = pkgs.callPackage ../../custom/discord-github-releases.nix {};
+    package = pkgs.callPackage ../../pkgs/discord-github-releases.nix {};
     openFirewall = true;
     settings = {
       port = 8072;
@@ -241,7 +241,7 @@
   # == Sat Bot ==
   services.sat-bot = {
     enable = true;
-    package = pkgs.callPackage ./../../custom/sat-bot.nix {};
+    package = pkgs.callPackage ./../../pkgs/sat-bot.nix {};
     settings = {
       discordToken = config.sops.secrets.sat-bot-discord-token.path;
       guildId = config.sops.secrets.sat-bot-guild-id.path;
@@ -252,7 +252,7 @@
   # == Pinguino Quotes ==
   services.pinguino-quotes = {
     enable = true;
-    package = pkgs.callPackage ./../../custom/pinguino-quotes.nix {};
+    package = pkgs.callPackage ./../../pkgs/pinguino-quotes.nix {};
     token = config.sops.secrets.pinguino-quotes-discord-token.path;
     settings = {
       database = {

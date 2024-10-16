@@ -16,7 +16,7 @@ It contains configuration for 3 machines:
 
 ## Folders
 
-- `custom` contains custom derivations.
+- `pkgs` contains custom derivations.
 - `devshell-templates` contains example devshells that I can copy into my projects.
 - `machines` contains a `configuration.nix` and `hardware-configuration.nix` for each machine.
 - `modules` contains reusable modules used to configure machines.
