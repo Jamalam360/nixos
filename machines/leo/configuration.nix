@@ -9,7 +9,9 @@
     ./hardware-configuration.nix
 
     ./../../modules/nixos/base.nix
-    ./../../modules/nixos/leo/_packages.nix
+    ./../../modules/nixos/audio.nix
+    ./../../modules/nixos/desktop_environment.nix
+    ./../../modules/nixos/virtualisation.nix
   ];
 
   nixpkgs.overlays = [
@@ -20,7 +22,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "leo";
-  networking.networkmanager.enable = true;
   time.timeZone = "Europe/London";
 
   # == Home Manager ==
@@ -40,45 +41,17 @@
   };
 
   # == Secrets ==
-  sops.secrets.leo-password = {
-    neededForUsers = true;
-  };
-
-  sops.secrets.desktops-env-vars = {
-    owner = "james";
-    path = "/var/lib/env_vars";
-  };
-
-  # == Flatpak ==
-  services.flatpak.enable = true;
-
-  # == Desktop ==
-  services.xserver = {
-    enable = true;
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
+  sops.secrets = {
+    leo-password = {
+      neededForUsers = true;
     };
-    desktopManager.gnome.enable = true;
-    xkb = {
-      layout = "gb";
-      variant = "";
+
+    desktops-env-vars = {
+      owner = "james";
+      path = "/var/lib/env_vars";
     };
   };
-
-  services.printing.enable = true;
-  console.useXkbConfig = true;
 
   # == Yubikey ==
   services.pcscd.enable = true;
-
-  # == Audio ==
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 }

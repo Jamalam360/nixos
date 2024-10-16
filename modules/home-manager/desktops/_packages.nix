@@ -1,10 +1,6 @@
 {pkgs, ...}: {
-  home = {
+  home.packages = with pkgs; [
     # Packages that cannot be managed via devshells or that I want globally
-    packages = with pkgs; [
-      # == Gnome Stuff ==
-      gnomeExtensions.emoji-copy
-
       # == Development ==
       aseprite
       blockbench
@@ -47,5 +43,4 @@
       # == VMs ==
       gnome-boxes
     ];
-  };
 }

@@ -32,7 +32,6 @@
   # == System Configuration ==
   boot.loader.grub.enable = true;
   networking.hostName = "lyra";
-  networking.networkmanager.enable = true;
   time.timeZone = "Europe/Berlin";
 
   # == Home Manager ==

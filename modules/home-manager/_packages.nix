@@ -1,18 +1,16 @@
 {pkgs, ...}: {
-  home = {
-    packages = with pkgs; [
-      # fun
-      fastfetch
+  home.packages = with pkgs; [
+    # fun
+    fastfetch
 
-      # development
-      just
-      sops
-      nix-prefetch-github
+    # development
+    just
+    sops
+    nix-prefetch-github
 
-      # quality of life
-      croc
-      unzip
-      wget
-    ];
-  };
+    # quality of life
+    croc
+    unzip
+    wget
+  ];
 }

@@ -16,10 +16,13 @@ in {
     ./_packages.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-19.1.9"
-  ];
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-19.1.9"
+    ];
+  };
+
   nix = {
     gc = {
       automatic = true;
