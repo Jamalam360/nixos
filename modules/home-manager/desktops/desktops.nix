@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./_packages.nix
+    ./desktop_environment.nix
     ./jdks.nix
   ];
 
