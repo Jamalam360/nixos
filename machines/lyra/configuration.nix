@@ -148,17 +148,6 @@
       hash = "sha256-zOakwq82dMu1TsmCwpnMHDkXRu7EkoBXP/DFtj74d08=";
       # vanilla-modpack-version-end
     };
-
-    # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
-    collectFiles = let
-      inherit (pkgs) lib;
-      mapListToAttrs = fn: fv: list:
-        lib.listToAttrs (map (x: lib.nameValuePair (fn x) (fv x)) list);
-    in
-      path: prefix:
-        mapListToAttrs
-        (x: builtins.unsafeDiscardStringContext (lib.removePrefix "${path}/" x))
-        lib.id (lib.filesystem.listFilesRecursive "${path}/${prefix}");
   in {
     enable = true;
     eula = true;
@@ -166,18 +155,17 @@
     dataDir = "/var/lib/minecraft-servers";
 
     servers.minecraft-server = {
-      enable = true;
+      enable = false;
       package = pkgs.minecraftServers.fabric-1_20_1;
       autoStart = true;
       restart = "always";
       symlinks = {
-        "mods" = "${modded_modpack}/mods";
+        mods = "${modded_modpack}/mods";
+        config = "${modded_modpack}/config";
       };
-      files =
-        collectFiles "${modded_modpack}" "config"
-        // {
-          "config/Discord-Integration.toml" = "/var/lib/Discord-Integration.toml";
-        };
+      files = {
+        "config/Discord-Integration.toml" = "/var/lib/Discord-Integration.toml";
+      };
       serverProperties = {
         server-port = 25565;
         white-list = true;
@@ -185,7 +173,7 @@
         view-distance = 20;
         difficulty = "hard";
       };
-      jvmOpts = "-Xmx10G -Xms10G";
+      jvmOpts = "-Xmx6G -Xms6G";
     };
 
     servers.vanilla-server = {
@@ -194,9 +182,9 @@
       autoStart = true;
       restart = "always";
       symlinks = {
-        "mods" = "${vanilla_modpack}/mods";
+        mods = "${vanilla_modpack}/mods";
+        config = "${vanilla_modpack}/config";
       };
-      files = collectFiles "${vanilla_modpack}" "config";
       serverProperties = {
         server-port = 25566;
         white-list = true;
