@@ -34,6 +34,7 @@
       "text/plain" = "org.gnome.gedit.desktop";
       "text/json" = "org.gnome.gedit.desktop";
       "application/zip" = "org.gnome.Nautilus.desktop";
+      "video/mp4" = "org.gnome.Totem.desktop";
     };
   };
 }
