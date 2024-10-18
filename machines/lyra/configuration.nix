@@ -145,7 +145,7 @@
       # Updated by CI
       # vanilla-modpack-version-begin
       url = "https://raw.githubusercontent.com/Jamalam360/vanilla-server/88e198103812722496c9719e0851f9b4f48821a6";
-      hash = "sha256-zOakwq82dMu1TsmCwpnMHDkXRu7EkoBXP/DFtj74d08=";
+      hash = "sha256-zhvigqJfqSc60CiZDvmuOMspXCW+tEnLtOsUyQSMRk0=";
       # vanilla-modpack-version-end
     };
   in {
