@@ -13,6 +13,7 @@
 
     # == Productivity ==
     _1password-gui
+    davinci-resolve
     eyedropper
     google-chrome
     obsidian
