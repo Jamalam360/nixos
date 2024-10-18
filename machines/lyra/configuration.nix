@@ -148,6 +148,17 @@
       hash = "sha256-zhvigqJfqSc60CiZDvmuOMspXCW+tEnLtOsUyQSMRk0=";
       # vanilla-modpack-version-end
     };
+
+    # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
+    collectFiles = let
+      inherit (pkgs) lib;
+      mapListToAttrs = fn: fv: list:
+        lib.listToAttrs (map (x: lib.nameValuePair (fn x) (fv x)) list);
+    in
+      path: prefix:
+        mapListToAttrs
+        (x: builtins.unsafeDiscardStringContext (lib.removePrefix "${path}/" x))
+        lib.id (lib.filesystem.listFilesRecursive "${path}/${prefix}");
   in {
     enable = true;
     eula = true;
@@ -163,9 +174,11 @@
         mods = "${modded_modpack}/mods";
         config = "${modded_modpack}/config";
       };
-      files = {
-        "config/Discord-Integration.toml" = "/var/lib/Discord-Integration.toml";
-      };
+      files =
+        collectFiles "${modded_modpack}" "config"
+        // {
+          "config/Discord-Integration.toml" = "/var/lib/Discord-Integration.toml";
+        };
       serverProperties = {
         server-port = 25565;
         white-list = true;
@@ -183,8 +196,8 @@
       restart = "always";
       symlinks = {
         mods = "${vanilla_modpack}/mods";
-        config = "${vanilla_modpack}/config";
       };
+      files = collectFiles "${vanilla_modpack}" "config";
       serverProperties = {
         server-port = 25566;
         white-list = true;
