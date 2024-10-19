@@ -14,7 +14,7 @@
       accel-profile = "flat";
       speed = 0.5;
     };
-    "/org/gnome/desktop/session" = {
+    "org/gnome/desktop/session" = {
       idle-delay = 0;
     };
     "org/gnome/settings-daemon/plugins/power" = {
