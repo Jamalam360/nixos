@@ -30,6 +30,7 @@
         key = "B1B22BA0FC39D4B422405F55D86CD68E8DB2E368";
         signByDefault = true;
       };
+      extraConfig.pull.rebase = "true";
     };
 
     gpg.enable = true;
