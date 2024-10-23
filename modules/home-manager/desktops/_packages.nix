@@ -13,9 +13,9 @@
 
     # == Productivity ==
     _1password-gui
-    davinci-resolve
     eyedropper
     google-chrome
+    kdePackages.kdenlive
     obsidian
     okular # pdf reader
     oxipng
