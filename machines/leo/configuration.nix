@@ -14,10 +14,6 @@
     ./../../modules/nixos/virtualisation.nix
   ];
 
-  nixpkgs.overlays = [
-    inputs.sculk.overlay
-  ];
-
   # == System Configuration ==
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -4,9 +4,9 @@
   sculk,
   ...
 }:
-(sculk.nixFunctions.fetchSculkModpack {
+(sculk.lib.fetchSculkModpack {
   inherit (pkgs) stdenvNoCC jre_headless;
-  sculk = sculk.packages.sculk.x86_64-linux;
+  sculk = sculk.packages."${builtins.currentSystem}".sculk;
 }) {
   inherit url;
   hash = pkgs.lib.fakeSha256;

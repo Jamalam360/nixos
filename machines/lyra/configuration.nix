@@ -26,7 +26,6 @@
 
   nixpkgs.overlays = [
     inputs.nix-minecraft.overlay
-    inputs.sculk.overlay
   ];
 
   # == System Configuration ==
@@ -133,7 +132,7 @@
 
   # == Minecraft ==
   services.minecraft-servers = let
-    modded_modpack = inputs.sculk.nixFunctions.fetchSculkModpack {inherit (pkgs) stdenvNoCC sculk jre_headless;} {
+    modded_modpack = inputs.sculk.lib.fetchSculkModpack {inherit (pkgs) stdenvNoCC jre_headless; sculk = inputs.sculk.packages.x86_64-linux.sculk; } {
       # Updated by CI
       # modded-modpack-version-begin
       url = "https://raw.githubusercontent.com/Jamalam360/pack/75844eefc810b37e13d4a3fa99a60e6114410aef";
@@ -141,7 +140,7 @@
       # modded-modpack-version-end
     };
 
-    vanilla_modpack = inputs.sculk.nixFunctions.fetchSculkModpack {inherit (pkgs) stdenvNoCC sculk jre_headless;} {
+    vanilla_modpack = inputs.sculk.lib.fetchSculkModpack {inherit (pkgs) stdenvNoCC jre_headless; sculk = inputs.sculk.packages.x86_64-linux.sculk;} {
       # Updated by CI
       # vanilla-modpack-version-begin
       url = "https://raw.githubusercontent.com/Jamalam360/vanilla-server/88e198103812722496c9719e0851f9b4f48821a6";

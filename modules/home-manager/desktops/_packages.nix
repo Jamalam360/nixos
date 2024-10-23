@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   home.packages = with pkgs; [
     # Packages that cannot be managed via devshells or that I want globally
     # == Development ==
@@ -6,7 +6,7 @@
     blockbench
     insomnia
     jetbrains-toolbox
-    sculk
+    inputs.sculk.packages.x86_64-linux.sculk
     unityhub
     vscode
     warp-terminal
