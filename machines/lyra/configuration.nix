@@ -132,21 +132,29 @@
 
   # == Minecraft ==
   services.minecraft-servers = let
-    modded_modpack = inputs.sculk.lib.fetchSculkModpack {inherit (pkgs) stdenvNoCC jre_headless; sculk = inputs.sculk.packages.x86_64-linux.sculk; } {
-      # Updated by CI
-      # modded-modpack-version-begin
-      url = "https://raw.githubusercontent.com/Jamalam360/pack/75844eefc810b37e13d4a3fa99a60e6114410aef";
-      hash = "sha256-mnyDKK+JWRGDL0g00lKYcG7BJB0o2MB3IS3JF4Y363U=";
-      # modded-modpack-version-end
-    };
+    modded_modpack =
+      inputs.sculk.lib.fetchSculkModpack {
+        inherit (pkgs) stdenvNoCC jre_headless;
+        inherit (inputs.sculk.packages.x86_64-linux) sculk;
+      } {
+        # Updated by CI
+        # modded-modpack-version-begin
+        url = "https://raw.githubusercontent.com/Jamalam360/pack/75844eefc810b37e13d4a3fa99a60e6114410aef";
+        hash = "sha256-mnyDKK+JWRGDL0g00lKYcG7BJB0o2MB3IS3JF4Y363U=";
+        # modded-modpack-version-end
+      };
 
-    vanilla_modpack = inputs.sculk.lib.fetchSculkModpack {inherit (pkgs) stdenvNoCC jre_headless; sculk = inputs.sculk.packages.x86_64-linux.sculk;} {
-      # Updated by CI
-      # vanilla-modpack-version-begin
-      url = "https://raw.githubusercontent.com/Jamalam360/vanilla-server/88e198103812722496c9719e0851f9b4f48821a6";
-      hash = "sha256-zhvigqJfqSc60CiZDvmuOMspXCW+tEnLtOsUyQSMRk0=";
-      # vanilla-modpack-version-end
-    };
+    vanilla_modpack =
+      inputs.sculk.lib.fetchSculkModpack {
+        inherit (pkgs) stdenvNoCC jre_headless;
+        inherit (inputs.sculk.packages.x86_64-linux) sculk;
+      } {
+        # Updated by CI
+        # vanilla-modpack-version-begin
+        url = "https://raw.githubusercontent.com/Jamalam360/vanilla-server/88e198103812722496c9719e0851f9b4f48821a6";
+        hash = "sha256-zhvigqJfqSc60CiZDvmuOMspXCW+tEnLtOsUyQSMRk0=";
+        # vanilla-modpack-version-end
+      };
 
     # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
     collectFiles = let
