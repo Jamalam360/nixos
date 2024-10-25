@@ -27,4 +27,9 @@
       default-folder-viewer = "list-view";
     };
   };
+
+  home.file.".config/gtk-3.0/bookmarks".text = ''
+    file:///home/james/dev dev
+    file:///home/james/dev/minecraft minecraft
+  '';
 }
