@@ -18,12 +18,7 @@ jobs:
       - uses: cachix/install-nix-action@v27
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - uses: denoland/setup-deno@v2
-        with:
-          deno-version: v1.x
-      - run: deno run --allow-read --allow-write --allow-run --allow-net --allow-env .github/workflows/update_fetchers.ts
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: .github/workflows/update.sh
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update fetchers"

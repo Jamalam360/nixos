@@ -72,7 +72,6 @@
     devShells.x86_64-linux.default = pkgs.mkShell {
       buildInputs = with pkgs; [
         nil # nix language server
-        deno # used in CI
         statix # used in CI
       ];
     };
