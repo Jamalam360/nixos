@@ -73,6 +73,7 @@
       buildInputs = with pkgs; [
         nil # nix language server
         statix # used in CI
+        nix-prefetch-github # used in CI
       ];
     };
   };
