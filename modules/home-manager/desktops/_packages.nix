@@ -23,6 +23,7 @@
     obsidian
     okular # pdf reader
     oxipng
+    pinentry-gnome3
     shotcut
     yubioath-flutter # yubico authenticator
 
