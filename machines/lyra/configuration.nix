@@ -132,8 +132,8 @@
 
   # == Minecraft ==
   services.minecraft-servers = let
-    modded_modpack = import ../../services/lyra/static/modpacks/modded.nix { inherit pkgs inputs; };
-    vanilla_modpack = import ../../services/lyra/static/modpacks/vanilla.nix { inherit pkgs inputs; };
+    modded_modpack = import ../../services/lyra/static/modpacks/modded.nix {inherit pkgs inputs;};
+    vanilla_modpack = import ../../services/lyra/static/modpacks/vanilla.nix {inherit pkgs inputs;};
 
     # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
     collectFiles = let

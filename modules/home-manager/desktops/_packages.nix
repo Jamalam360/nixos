@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -10,7 +9,7 @@
     blockbench
     insomnia
     jetbrains-toolbox
-    inputs.sculk.packages.x86_64-linux.sculk
+    sculk
     unityhub
     vscode
     warp-terminal
@@ -38,7 +37,7 @@
 
     # == Maker ==
     candle # CNC
-    flashprint
+    flashprint # 3D printing
 
     # == SDR ==
     audacity
