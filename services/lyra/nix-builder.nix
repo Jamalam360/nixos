@@ -7,8 +7,11 @@
     git clone https://github.com/Jamalam360/nixos "$dir"
     cd "$dir"
 
+    echo "Building Hercules"
     nixos-rebuild build --accept-flake-config --flake .#hercules
+    echo "Building Leo"
     nixos-rebuild build --accept-flake-config --flake .#leo
+    echo "Building Lyra"
     nixos-rebuild build --accept-flake-config --flake .#lyra
   '';
 in {

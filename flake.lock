@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730045523,
-        "narHash": "sha256-W5Avk1THhZALXITHGazKfZbIZ5+Bc4nSYvAYHUn96EU=",
+        "lastModified": 1730125078,
+        "narHash": "sha256-Cowae06J+l8SfnQ0XMed5NTH72lJlXLX6Yuc3S4GrYs=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "89e458a3bb3693e769bfb2b2447c3fe72092d498",
+        "rev": "3163b2724c6adec071ce317e038ae71ce3ab5974",
         "type": "github"
       },
       "original": {
@@ -195,11 +195,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1729967516,
-        "narHash": "sha256-MrdXLgSjtuAe7nGLxcQvCTlXHcJEtg2hcNwX0e2A6MI=",
+        "lastModified": 1730130971,
+        "narHash": "sha256-09llzpar2iTKKRfNxfZmC5vb9JqJKOQI1LpOLGEdQYE=",
         "owner": "sculk-cli",
         "repo": "sculk",
-        "rev": "3361a0764bdcb78d75a0eaa8f8184ab4c1285a93",
+        "rev": "0712b4cb399ba04f03d94510cabb01e0d913ec2f",
         "type": "github"
       },
       "original": {
