@@ -54,7 +54,7 @@ update_modpack() {
 	echo "    Building $owner/$repo"
 	sed -i -e "s/$rev/$new_rev/" "$1"
 	sed -i -e "s~\"$hash\"~pkgs.lib.fakeHash~" "$1"
-	build_output=$(nix build --file "$1" --json --arg pkgs "import <nixpkgs> {}" --arg inputs "{ sculk = builtins.getFlake "github:sculk-cli/sculk?dir=nix"; }" 2>&1)
+	build_output=$(nix build --file "$1" --json --arg pkgs "import <nixpkgs> { overlays = [ (final: prev: { inherit ((builtins.getFlake "github:sculk-cli/sculk?dir=nix").packages.x86_64-linux) sculk; }) ]; }" --arg inputs "{ sculk = builtins.getFlake "github:sculk-cli/sculk?dir=nix"; }" 2>&1)
 	new_hash=$(echo "$build_output" | grep "got" | cut -d "-" -f 2)
 
 	if [[ -z $new_hash ]]; then

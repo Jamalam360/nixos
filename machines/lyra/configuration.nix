@@ -13,8 +13,10 @@
     ./disk-configuration.nix
 
     ./../../modules/nixos/base.nix
+    ./../../modules/nixos/overlays.nix
     ./../../services/lyra/discord-github-releases.nix
     ./../../services/lyra/nginx.nix
+    ./../../services/lyra/nix-builder.nix
     ./../../services/lyra/pinguino-quotes.nix
     ./../../services/lyra/reposilite.nix
     ./../../services/lyra/restic.nix

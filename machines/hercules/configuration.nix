@@ -12,6 +12,7 @@
     ./../../modules/nixos/base.nix
     ./../../modules/nixos/audio.nix
     ./../../modules/nixos/desktop_environment.nix
+    ./../../modules/nixos/overlays.nix
     ./../../modules/nixos/virtualisation.nix
   ];
 
