@@ -11,7 +11,7 @@ fix-lint:
 	statix fix .
 
 update:
-	nix --extra-experimental-features 'flakes nix-command' flake update
+	nix --extra-experimental-features 'flakes nix-command' --accept-flake-config flake update
 
 update-fetchers:
 	deno run -A .github/workflows/update_fetchers.ts
@@ -25,14 +25,11 @@ edit-secrets:
 sync-secrets:
 	sops updatekeys secrets/secrets.yaml
 
-deploy-lyra-debug:
-	git add . && NIX_DEBUG=7 nix-shell -p '(nixos{}).nixos-rebuild' --command 'nixos-rebuild switch -L --fast --flake .#lyra --use-remote-sudo --target-host "james@176.9.22.221" --build-host "james@176.9.22.221"'
-
 deploy-lyra:
-	git add . && nix-shell -p '(nixos{}).nixos-rebuild' --command 'nixos-rebuild switch --fast --flake .#lyra --use-remote-sudo --target-host "james@176.9.22.221" --build-host "james@176.9.22.221"'
+	git add . && nix-shell -p '(nixos{}).nixos-rebuild' --command 'nixos-rebuild switch --accept-flake-config --fast --flake .#lyra --use-remote-sudo --target-host "james@176.9.22.221" --build-host "james@176.9.22.221"'
 
 deploy-hercules:
-	git add . && sudo nixos-rebuild switch --fast --flake .#hercules 
+	git add . && sudo nixos-rebuild switch --accept-flake-config --fast --flake .#hercules 
 
 deploy-leo:
-	git add . && sudo nixos-rebuild switch --fast --flake .#leo 
+	git add . && sudo nixos-rebuild switch --accept-flake-config --fast --flake .#leo 
