@@ -11,9 +11,9 @@
     echo "Building Hercules"
     /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#hercules
     echo "Building Leo"
-    /run/current-system/sw/bin/nixos-rebuild --accept-flake-config --flake .#leo
+    /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#leo
     echo "Building Lyra"
-    /run/current-system/sw/bin/nixos-rebuild --accept-flake-config --flake .#lyra
+    /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#lyra
   '';
 in {
   systemd.timers."nix-builder" = {
