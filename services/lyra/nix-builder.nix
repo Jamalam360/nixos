@@ -5,15 +5,15 @@
   buildSystems = pkgs.writeShellScript "build-systems.sh" ''
     dir="/tmp/system-build-$(date -Iseconds)"
     mkdir dir
-    git clone https://github.com/Jamalam360/nixos "$dir"
+    /run/current-system/sw/bin/git clone https://github.com/Jamalam360/nixos "$dir"
     cd "$dir"
 
     echo "Building Hercules"
-    nixos-rebuild build --accept-flake-config --flake .#hercules
+    /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#hercules
     echo "Building Leo"
-    nixos-rebuild build --accept-flake-config --flake .#leo
+    /run/current-system/sw/bin/nixos-rebuild --accept-flake-config --flake .#leo
     echo "Building Lyra"
-    nixos-rebuild build --accept-flake-config --flake .#lyra
+    /run/current-system/sw/bin/nixos-rebuild --accept-flake-config --flake .#lyra
   '';
 in {
   systemd.timers."nix-builder" = {
@@ -31,7 +31,7 @@ in {
     '';
     serviceConfig = {
       Type = "oneshot";
-      User = "james";
+      User = "root";
     };
   };
 }
