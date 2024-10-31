@@ -9,11 +9,11 @@
     cd "$dir"
 
     echo "Building Hercules"
-    nix-shell -p '(nixos{}).nixos-rebuild' --command "nixos-rebuild build --accept-flake-config --flake .#hercules"
+    nixos-rebuild build --accept-flake-config --flake .#hercules
     echo "Building Leo"
-    nix-shell -p '(nixos{}).nixos-rebuild' --command "nixos-rebuild build --accept-flake-config --flake .#leo"
+    nixos-rebuild build --accept-flake-config --flake .#leo
     echo "Building Lyra"
-    nix-shell -p '(nixos{}).nixos-rebuild' --command "nixos-rebuild build --accept-flake-config --flake .#lyra"
+    nixos-rebuild build --accept-flake-config --flake .#lyra
   '';
 in {
   systemd.timers."nix-builder" = {
@@ -31,7 +31,7 @@ in {
     '';
     serviceConfig = {
       Type = "oneshot";
-      User = "root";
+      User = "james";
     };
   };
 }
