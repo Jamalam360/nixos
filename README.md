@@ -1,11 +1,11 @@
 # NixOS
 
-This repository holds my WIP Nix configuration, using:
+This repository holds my Nix configuration, using:
 
-- Nix Flakes,
+- Flakes,
 - [Home Manager](https://github.com/nix-community/home-manager),
 - [Sops](https://github.com/Mic92/sops-nix) for managing secrets,
-- GitHub Actions to update `flake.lock` daily,
+- GitHub Actions to update `flake.lock` daily and linting,
 - and Just for aliasing commands.
 
 It contains configuration for 3 machines:
