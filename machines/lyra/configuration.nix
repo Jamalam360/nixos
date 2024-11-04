@@ -16,7 +16,7 @@
     ./../../modules/nixos/overlays.nix
     ./../../services/lyra/discord-github-releases.nix
     ./../../services/lyra/nginx.nix
-    ./../../services/lyra/nix-builder.nix
+    ./../../services/lyra/nix-cache.nix
     ./../../services/lyra/pinguino-quotes.nix
     ./../../services/lyra/reposilite.nix
     ./../../services/lyra/restic.nix
@@ -76,18 +76,6 @@
     "/var/lib/minecraft-servers/minecraft-server/audioplayer_uploads"
     "/var/lib/minecraft-servers/minecraft-server/world"
   ];
-
-  # == Nix Cache (https://nixos.wiki/wiki/Binary_Cache) ==
-  services.nix-serve = {
-    enable = true;
-    secretKeyFile = "/var/cache-private-key.pem";
-  };
-
-  services.nginx.virtualHosts."nixcache.jamalam.tech" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
-  };
 
   # == Discord GitHub Releases ==
   services.discord-github-releases = {

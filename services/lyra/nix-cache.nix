@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }: let
   buildSystems = pkgs.writeShellScript "build-systems.sh" ''
@@ -16,6 +17,17 @@
     /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#lyra
   '';
 in {
+  services.nix-serve = {
+    enable = true;
+    secretKeyFile = "/var/cache-private-key.pem";
+  };
+
+  services.nginx.virtualHosts."nixcache.jamalam.tech" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+  };
+
   systemd.timers."nix-builder" = {
     wantedBy = [ "timers.target" ];
       timerConfig = {
