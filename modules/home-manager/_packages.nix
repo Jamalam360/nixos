@@ -10,6 +10,7 @@
 
     # quality of life
     croc
+    csvlens
     unzip
     wget
   ];
