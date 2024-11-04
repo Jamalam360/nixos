@@ -15,6 +15,7 @@
     ./../../modules/nixos/base.nix
     ./../../modules/nixos/overlays.nix
     ./../../services/lyra/discord-github-releases.nix
+    ./../../services/lyra/gitlab-runner.nix
     ./../../services/lyra/nginx.nix
     ./../../services/lyra/nix-cache.nix
     ./../../services/lyra/pinguino-quotes.nix
@@ -55,14 +56,15 @@
         neededForUsers = true;
       };
     }) [
+      "discord-github-releases-webhook"
+      "gitlab-runner-token"
       "lyra-password"
+      "pinguino-quotes-discord-token"
       "restic-remote-env"
       "restic-remote-password"
-      "discord-github-releases-webhook"
       "sat-bot-discord-token"
       "sat-bot-guild-id"
       "sat-bot-n2yo-key"
-      "pinguino-quotes-discord-token"
     ]);
 
   # == Restic ==

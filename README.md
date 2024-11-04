@@ -40,6 +40,7 @@ It contains configuration for 3 machines:
 - **Teach Man Fish** - Static website.
 - **CDN** - Static website.
 - **Minecraft Server**
+- **GitLab CI Runner**
 
 ## Adding a New Machine
 
