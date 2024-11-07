@@ -33,7 +33,7 @@ in {
     settings = {
       inherit substituters;
 
-      always-allow-substiters = true;
+      always-allow-substitutes = true;
       accept-flake-config = true;
       auto-optimise-store = true;
       download-buffer-size = 268435456; # 4x default
