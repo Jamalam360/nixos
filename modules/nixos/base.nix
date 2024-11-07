@@ -27,21 +27,26 @@ in {
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 3d";
     };
 
     settings = {
       inherit substituters;
-      experimental-features = "nix-command flakes";
+
+      always-allow-substiters = true;
+      accept-flake-config = true;
       auto-optimise-store = true;
+      download-buffer-size = 268435456; # 4x default
+      experimental-features = "nix-command flakes";
+      max-jobs = "auto";
+      min-free = 1073741824; # 1GiB
+      trusted-users = ["james"];
 
       trusted-substituters = substituters;
       trusted-public-keys = [
         "nixcache.jamalam.tech:kK0ZbqNEnH1UMq3LJk8EDsLbI1H2K8ooQAqiiU7/5s0="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
-
-      trusted-users = ["james"];
     };
   };
 
