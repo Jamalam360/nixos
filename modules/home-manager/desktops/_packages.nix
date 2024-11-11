@@ -1,7 +1,9 @@
 {
   pkgs,
   ...
-}: {
+}: let 
+  copy-artifacts-to-prism = pkgs.writeShellScriptBin "copy-artifacts-to-prism" (import ././../../../scripts/copy-artifacts-to-prism.nix);
+in {
   home.packages = with pkgs; [
     # Packages that cannot be managed via devshells or that I want globally
     # == Development ==
@@ -47,5 +49,8 @@
 
     # == VMs ==
     gnome-boxes
+
+    # == Scripts ==
+    copy-artifacts-to-prism
   ];
 }
