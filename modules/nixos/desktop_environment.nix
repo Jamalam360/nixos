@@ -17,8 +17,9 @@
   hardware.graphics.enable32Bit = true; # fixes an issue with steam
 
   environment.systemPackages = with pkgs; [
-    gnomeExtensions.tiling-assistant
     gnomeExtensions.emoji-copy
+    gnomeExtensions.tiling-assistant
+    gnomeExtensions.wallpaper-slideshow
     gnome-tweaks
   ];
 }

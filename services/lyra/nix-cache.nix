@@ -29,12 +29,12 @@ in {
   };
 
   systemd.timers."nix-builder" = {
-    wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "07:00";
-        Persistent = true;
-        Unit = "nix-builder.service";
-      };
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "07:00";
+      Persistent = true;
+      Unit = "nix-builder.service";
+    };
   };
 
   systemd.services."nix-builder" = {

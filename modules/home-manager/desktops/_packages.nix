@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let 
+{pkgs, ...}: let
   copy-artifacts-to-prism = pkgs.writeShellScriptBin "copy-artifacts-to-prism" (import ././../../../scripts/copy-artifacts-to-prism.nix);
 in {
   home.packages = with pkgs; [

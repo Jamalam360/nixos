@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   virtualisation.docker.enable = true;
   services.gitlab-runner = {
     enable = true;

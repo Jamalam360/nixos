@@ -3,10 +3,11 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
-        "tiling-assistant@leleat-on-github"
-        "system-monitor@gnome-shell-extensions.gcampax.github.com"
+        "azwallpaper@azwallpaper.gitlab.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "emoji-copy@felipeftn"
+        "system-monitor@gnome-shell-extensions.gcampax.github.com"
+        "tiling-assistant@leleat-on-github"
       ];
     };
     "org/gnome/desktop/peripherals/mouse" = {
@@ -25,6 +26,9 @@
     };
     "org/gnome/nautilus/preferences" = {
       default-folder-viewer = "list-view";
+    };
+    "/org/gnome/shell/extensions/azwallpaper" = {
+      slideshow-directory = "/home/james/Documents/wallpapers";
     };
   };
 
