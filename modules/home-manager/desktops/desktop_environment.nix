@@ -27,7 +27,7 @@
     "org/gnome/nautilus/preferences" = {
       default-folder-viewer = "list-view";
     };
-    "/org/gnome/shell/extensions/azwallpaper" = {
+    "org/gnome/shell/extensions/azwallpaper" = {
       slideshow-directory = "/home/james/Documents/wallpapers";
     };
   };
