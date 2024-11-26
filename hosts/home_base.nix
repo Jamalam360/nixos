@@ -3,10 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./_packages.nix
-  ];
-
   home = {
     username = "james";
     homeDirectory = lib.mkMerge [
@@ -14,6 +10,18 @@
     ];
     stateVersion = "23.11";
   };
+
+  home.packages = with pkgs; [
+    # development
+    just
+    sops
+    nix-prefetch-github
+
+    # quality of life
+    croc
+    unzip
+    wget
+  ];
 
   programs = {
     git = {
@@ -34,6 +42,23 @@
     };
 
     gpg.enable = true;
+    zoxide.enable = true;
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
+    bash = {
+      enable = true;
+      shellAliases = {
+        cat = "bat";
+        lyra = "ssh james@176.9.22.221";
+      };
+      initExtra = ''
+        export PATH="$PATH:/home/james/.local/share/JetBrains/Toolbox/scripts"
+        source /var/lib/env_vars
+      '';
+    };
   };
 
   services = {

@@ -1,6 +1,6 @@
 # inspo: https://discourse.nixos.org/t/fix-collision-with-multiple-jdks/10812/5
 {pkgs, ...}: let
-  additionalJDKs = with pkgs; [temurin-bin-17 temurin-bin-21];
+  additionalJDKs = with pkgs; [temurin-bin-17];
 in {
   programs.java = {
     enable = true;

@@ -18,7 +18,7 @@ It contains configuration for 3 machines:
 
 - `pkgs` contains custom derivations.
 - `devshell-templates` contains example devshells that I can copy into my projects.
-- `machines` contains a `configuration.nix` and `hardware-configuration.nix` for each machine.
+- `hosts` contains a `configuration.nix` and `hardware-configuration.nix` for each machine.
 - `modules` contains reusable modules used to configure machines.
 - `secrets` contains secrets encrypted using Sops.
 - `services` contains configs for services (primarily used by Lyra).
@@ -63,5 +63,5 @@ It contains configuration for 3 machines:
 Where I have used resources for a specific expression, I have included comments pointing back to them; other than that I have used:
 
 - The [Nix Pills](https://nixos.org/guides/nix-pills/) for learning the basics.
-- [eh8/chenglab](https://github.com/eh8/chenglab) for substantial inspiration on how to structure everything.
+- [eh8/chenglab](https://github.com/eh8/chenglab) and [Baitinq/nixos-config](https://github.com/Baitinq/nixos-config) for substantial inspiration on how to structure everything.
 - [LGUG2Z/nixos-hetzner-robot-starter](https://github.com/LGUG2Z/nixos-hetzner-robot-starter) for pointers on how to install NixOS on Lyra.

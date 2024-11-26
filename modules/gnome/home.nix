@@ -1,4 +1,19 @@
-{...}: {
+{
+  pkgs,
+  ...
+}: {
+  programs.bat.enable = true;
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/plain" = "org.gnome.gedit.desktop";
+      "text/json" = "org.gnome.gedit.desktop";
+      "application/zip" = "org.gnome.Nautilus.desktop";
+      "video/mp4" = "org.gnome.Totem.desktop";
+    };
+  };
+
   dconf.settings = {
     "org/gnome/shell" = {
       disable-user-extensions = false;
@@ -32,4 +47,39 @@
     file:///home/james/dev dev
     file:///home/james/dev/minecraft minecraft
   '';
+
+  home.packages = with pkgs; [
+    _1password-gui
+    # == Development ==
+    aseprite
+    audacity
+    blockbench
+    candle # CNC
+    sculk
+    discord
+    eyedropper
+    flashprint # 3D printing
+    gnome-boxes
+    google-chrome
+    gpredict
+    insomnia
+    jetbrains-toolbox
+    kdePackages.kdenlive
+    noaa-apt
+    obs-studio
+    obsidian
+    okular # pdf reader
+    pinentry-gnome3
+    prismlauncher
+    sdrpp
+    spotify
+    steam
+    vscode
+    warp-terminal
+    yubioath-flutter # yubico authenticator
+
+    # == Scripts ==
+    # TODO: fix this
+    # copy-artifacts-to-prism
+  ];
 }

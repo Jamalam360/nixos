@@ -4,6 +4,7 @@
   pkgs,
   ...
 }: let
+  root = ./..;
   substituters = [
     "http://nixcache.jamalam.tech"
     "https://nix-community.cachix.org"
@@ -11,15 +12,20 @@
   ];
 in {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     inputs.sops-nix.nixosModules.sops
-
-    ./_packages.nix
   ];
 
-  nixpkgs.config = {
+  nixpkgs = {
+    config = {
     allowUnfree = true;
     permittedInsecurePackages = [
       "electron-19.1.9"
+    ];
+    };
+
+    overlays = [
+      (import /.${root}/overlays { inherit inputs; })
     ];
   };
 
@@ -66,8 +72,12 @@ in {
   };
 
   sops = {
-    defaultSopsFile = ./../../secrets/secrets.yaml;
+    defaultSopsFile = /.${root}/secrets/secrets.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+    secrets.env-vars = {
+      owner = "james";
+      path = "/var/lib/env_vars";
+    };
   };
 
   users.mutableUsers = true;
@@ -81,6 +91,15 @@ in {
     shell = pkgs.bash;
     hashedPasswordFile = config.sops.secrets."${config.networking.hostName}-password".path;
   };
+
+  environment.systemPackages = with pkgs; [
+    efibootmgr
+    git
+    gnupg
+    gptfdisk
+    oxipng
+    parted
+  ];
 
   services = {
     openssh = {
