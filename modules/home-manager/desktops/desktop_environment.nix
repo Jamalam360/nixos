@@ -3,7 +3,6 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
-        "azwallpaper@azwallpaper.gitlab.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         "emoji-copy@felipeftn"
         "system-monitor@gnome-shell-extensions.gcampax.github.com"
@@ -26,9 +25,6 @@
     };
     "org/gnome/nautilus/preferences" = {
       default-folder-viewer = "list-view";
-    };
-    "org/gnome/shell/extensions/azwallpaper" = {
-      slideshow-directory = "/home/james/Documents/wallpapers";
     };
   };
 

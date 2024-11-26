@@ -32,6 +32,7 @@
         imports = [
           ./../../modules/home-manager/base.nix
           ./../../modules/home-manager/desktops/desktops.nix
+          ./../../modules/home-manager/desktops/azwallpaper.nix
         ];
       };
     };
