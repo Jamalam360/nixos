@@ -73,6 +73,32 @@
   #      RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
   # '';
 
+  # == Stylix ==
+  stylix.enable = true;
+  stylix.image = ../../wallpapers/alpine.jpeg;
+  stylix.polarity = "dark";
+  stylix.fonts = {
+    serif = {
+      package = pkgs.cantarell-fonts;
+      name = "Cantarell";
+    };
+
+    sansSerif = {
+      package = pkgs.cantarell-fonts;
+      name = "Cantarell";
+    };
+
+    monospace = {
+      package = pkgs.fira-code;
+      name = "Fira Code";
+    };
+
+    emoji = {
+      package = pkgs.twitter-color-emoji;
+      name = "Twitter Color Emoji";
+    };
+  };
+
   # == Fixes ==
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
 }

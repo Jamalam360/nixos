@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stylix.url = "github:danth/stylix";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     sculk = {
@@ -51,12 +52,14 @@
         modules = [
           ./machines/hercules/configuration.nix
           inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+          inputs.stylix.nixosModules.stylix
         ];
       };
 
       leo = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
+          inputs.stylix.nixosModules.stylix
           ./machines/leo/configuration.nix
         ];
       };
@@ -65,6 +68,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./machines/lyra/configuration.nix
+          inputs.stylix.nixosModules.stylix
         ];
       };
     };
