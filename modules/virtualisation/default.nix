@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # inspo: https://github.com/erictossell/nixflakes/blob/main/modules/virt/libvirt.nix
   virtualisation = {
     libvirtd = {

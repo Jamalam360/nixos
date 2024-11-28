@@ -1,4 +1,4 @@
-final: prev: { 
+final: prev: {
   flashprint = prev.flashprint.overrideAttrs (old: {
     nativeBuildInputs = (old.nativeBuildInputs or []) ++ [final.gnused];
     postInstall =

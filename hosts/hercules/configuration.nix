@@ -3,7 +3,7 @@
   outputs,
   pkgs,
   ...
-}: let 
+}: let
   root = ../..;
   nixos-modules = [
     /.${root}/hosts/base.nix
@@ -37,6 +37,6 @@ in {
   networking.hostName = "hercules";
   time.timeZone = "Europe/London";
   sops.secrets.hercules-password.neededForUsers = true;
-  stylix.image = ../../wallpapers/alpine.jpeg;
+  stylix.image = /.${root}/wallpapers/alpine.jpeg;
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
 }

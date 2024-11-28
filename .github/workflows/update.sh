@@ -72,19 +72,21 @@ update_modpack() {
 
 file=$1
 
-if [[ -n $file ]]; then
-	if [[ $file == "services/lyra/static/modpacks/"* ]]; then
-		update_modpack "$file"
-	else
-		update_fetch_from_gh "$file"
-	fi
-	exit
-fi
+TODO: fix file locations
 
-for file in services/lyra/static/*.nix; do
-	update_fetch_from_gh "$file"
-done
+# if [[ -n $file ]]; then
+# 	if [[ $file == "services/lyra/static/modpacks/"* ]]; then
+# 		update_modpack "$file"
+# 	else
+# 		update_fetch_from_gh "$file"
+# 	fi
+# 	exit
+# fi
 
-for file in services/lyra/static/modpacks/*.nix; do
-	update_modpack "$file"
-done
+# for file in services/lyra/static/*.nix; do
+# 	update_fetch_from_gh "$file"
+# done
+
+# for file in services/lyra/static/modpacks/*.nix; do
+# 	update_modpack "$file"
+# done

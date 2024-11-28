@@ -2,26 +2,22 @@
   inputs,
   outputs,
   ...
-}: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-
+}: let
+  root = ../..;
+  nixos-modules = [
+    /.${root}/hosts/base.nix
     ./hardware-configuration.nix
-
-    ./../../modules/nixos/base.nix
-    ./../../modules/nixos/audio.nix
-    ./../../modules/nixos/desktop_environment.nix
-    ./../../modules/nixos/overlays.nix
-    ./../../modules/nixos/virtualisation.nix
+    /.${root}/modules/gnome
+    /.${root}/modules/virtualisation
   ];
+  home-manager-modules = [
+    /.${root}/hosts/home_base.nix
+    /.${root}/modules/gnome/home.nix
+    /.${root}/modules/jdk/home.nix
+  ];
+in {
+  imports = nixos-modules;
 
-  # == System Configuration ==
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "leo";
-  time.timeZone = "Europe/London";
-
-  # == Home Manager ==
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs;};
     useGlobalPkgs = true;
@@ -29,27 +25,15 @@
     backupFileExtension = ".home_manager_bak";
     users = {
       james = {
-        imports = [
-          ./../../modules/home-manager/base.nix
-          ./../../modules/home-manager/desktops/desktops.nix
-          ./../../modules/home-manager/desktops/azwallpaper.nix
-        ];
+        imports = home-manager-modules;
       };
     };
   };
 
-  # == Secrets ==
-  sops.secrets = {
-    leo-password = {
-      neededForUsers = true;
-    };
-
-    desktops-env-vars = {
-      owner = "james";
-      path = "/var/lib/env_vars";
-    };
-  };
-
-  # == Yubikey ==
-  services.pcscd.enable = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  networking.hostName = "leo";
+  time.timeZone = "Europe/London";
+  sops.secrets.leo-password.neededForUsers = true;
+  stylix.image = /.${root}/wallpapers/budapest.png;
 }

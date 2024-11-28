@@ -18,14 +18,14 @@ in {
 
   nixpkgs = {
     config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-19.1.9"
-    ];
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "electron-19.1.9"
+      ];
     };
 
     overlays = [
-      (import /.${root}/overlays { inherit inputs; })
+      (import /.${root}/overlays {inherit inputs;})
     ];
   };
 
