@@ -98,10 +98,6 @@
       name = "Twitter Color Emoji";
     };
   };
-  stylix.cursor = {
-    package = pkgs.yaru-theme;
-    name = "Yaru";
-  };
 
   # == Fixes ==
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
