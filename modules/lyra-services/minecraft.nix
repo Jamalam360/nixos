@@ -28,13 +28,13 @@ in {
       inputs.sculk.lib.fetchSculkModpack {
         inherit (pkgs) stdenvNoCC jre_headless sculk;
       } {
-        inherit (import ./modpacks/modded.nix {}) url hash;
+        inherit (import ./modpacks/modded.nix) url hash;
       };
     vanilla_modpack =
       inputs.sculk.lib.fetchSculkModpack {
         inherit (pkgs) stdenvNoCC jre_headless sculk;
       } {
-        inherit (import ./modpacks/vanilla.nix {}) url hash;
+        inherit (import ./modpacks/vanilla.nix) url hash;
       };
 
     # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
