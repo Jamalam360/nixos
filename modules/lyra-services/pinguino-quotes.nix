@@ -40,7 +40,7 @@ in {
     wantedBy = ["multi-user.target"];
     script = ''
       export DISCORD_TOKEN=$(cat "${config.sops.secrets.pinguino-quotes-discord-token.path}");
-      export CONFIG_LOCATION="/etc/pinguino-quotes/config.yaml";
+      export CONFIG_PATH="/etc/pinguino-quotes/config.yaml";
       ${lib.getExe pkgs.custom.pinguino-quotes}
     '';
 
