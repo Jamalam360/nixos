@@ -18,23 +18,7 @@ jobs:
       - uses: cachix/install-nix-action@v30
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: ls
-      - name: Update CDN
-        run: nix develop --accept-flake-config -c ".github/workflows/update.sh github modules/lyra-services/cdn.nix"
-      - name: Update It's Clearing Up
-        run: nix develop --accept-flake-config -c ".github/workflows/update.sh github modules/lyra-services/its-clearing-up.nix"
-      - name: Update Minecraft (Vanilla)
-        run: nix develop --accept-flake-config -c ".github/workflows/update.sh modpack modules/lyra-services/minecraft/vanilla.nix"
-      - name: Update Minecraft (Modded)
-        run: nix develop --accept-flake-config -c ".github/workflows/update.sh modpack modules/lyra-services/minecraft/modded.nix"
-      - name: Update Teach Man Fish
-        run: nix develop --accept-flake-config -c ".github/workflows/update.sh github modules/lyra-services/teach-man-fish.nix"
-      - name: Update Discord GitHub Releases
-        run: nix develop --accept-flake-config -c ".github/workflows/update.sh github pkgs/discord-github-releases.nix"
-      - name: Update Pinguino Quotes
-        run: nix develop --accept-flake-config -c ".github/workflows/update.sh github pkgs/pinguino-quotes.nix"
-      - name: Update Sat Bot
-        run: nix develop --accept-flake-config -c ".github/workflows/update.sh github pkgs/sat-bot.nix"
+      - run: nix develop --accept-flake-config -c ".github/workflows/update.sh"
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update fetchers"

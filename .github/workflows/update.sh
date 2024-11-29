@@ -70,11 +70,11 @@ update_modpack() {
 	echo "    Updated $owner/$repo from $rev to $new_rev"
 }
 
-mode=$1
-file=$2
-
-if [[ $mode == "modpack" ]]; then
-	update_modpack "$file"
-elif [[ $mode == "github" ]]; then
-	update_fetch_from_gh "$file"
-fi
+update_fetch_from_gh "modules/lyra-services/cdn.nix"
+update_fetch_from_gh "modules/lyra-services/its-cleaing-up.nix"
+update_modpack "modules/lyra-services/minecraft/vanilla.nix"
+update_modpack "modules/lyra-services/minecraft/modded.nix"
+update_fetch_from_gh "modules/lyra-services/teach-man-fish.nix"
+update_fetch_from_gh "pkgs/discord-github-releases.nix"
+update_fetch_from_gh "pkgs/pinguino-quotes.nix"
+update_fetch_from_gh "pkgs/sat-bot.nix"
