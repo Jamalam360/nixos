@@ -16,6 +16,11 @@ get_attribute_from_json() {
 update_fetch_from_gh() {
 	owner=$(get_attribute_from_fetch_from_gh "$1" "owner")
 	repo=$(get_attribute_from_fetch_from_gh "$1" "repo")
+
+	if [[ $repo == "\${pname}" ]]; then
+		repo=$(sed -n 's/.*pname *= *"\([^"]*\)".*/\1/p' "$1")
+	fi
+
 	rev=$(get_attribute_from_fetch_from_gh "$1" "rev")
 	hash=$(get_attribute_from_fetch_from_gh "$1" "hash")
 	echo "Checking for updates for $owner/$repo"
@@ -71,10 +76,9 @@ update_modpack() {
 }
 
 update_fetch_from_gh "modules/lyra-services/cdn.nix"
-update_fetch_from_gh "modules/lyra-services/its-cleaing-up.nix"
-update_modpack "modules/lyra-services/minecraft/vanilla.nix"
-update_modpack "modules/lyra-services/minecraft/modded.nix"
+update_fetch_from_gh "modules/lyra-services/its-clearing-up.nix"
+update_modpack "modules/lyra-services/modpacks/vanilla.nix"
+update_modpack "modules/lyra-services/modpacks/modded.nix"
 update_fetch_from_gh "modules/lyra-services/teach-man-fish.nix"
 update_fetch_from_gh "pkgs/discord-github-releases.nix"
-update_fetch_from_gh "pkgs/pinguino-quotes.nix"
 update_fetch_from_gh "pkgs/sat-bot.nix"
