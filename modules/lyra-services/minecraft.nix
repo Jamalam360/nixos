@@ -29,7 +29,7 @@ in {
         inherit (pkgs) stdenvNoCC jre_headless sculk;
       } {
         inherit (import ./modpacks/modded.nix {}) url hash;
-};
+      };
     vanilla_modpack =
       inputs.sculk.lib.fetchSculkModpack {
         inherit (pkgs) stdenvNoCC jre_headless sculk;
