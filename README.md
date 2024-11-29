@@ -16,31 +16,13 @@ It contains configuration for 3 machines:
 
 ## Folders
 
-- `pkgs` contains custom derivations.
 - `devshell-templates` contains example devshells that I can copy into my projects.
 - `hosts` contains a `configuration.nix` and `hardware-configuration.nix` for each machine.
 - `modules` contains reusable modules used to configure machines.
+- `overlays` contains nixpkgs overlays with fixes and custom packages from `pkgs`.
+- `pkgs` contains custom derivations.
+- `scripts` contains Bash scripts globally available on my systems.
 - `secrets` contains secrets encrypted using Sops.
-- `services` contains configs for services (primarily used by Lyra).
-
-## Machines
-
-### Lyra
-
-- Important folders on Lyra are backed up to a Backblaze S3 bucket via Restic.
-
-#### Services
-
-- **Nginx** - Reverse proxy.
-- **Reposilite** - Maven server.
-- **Sat Bot** - Discord bot.
-- **Pinguino quotes**: Discord bot.
-- **Discord GitHub Releases** - Discord bot.
-- **It's Clearing Up** - Static website.
-- **Teach Man Fish** - Static website.
-- **CDN** - Static website.
-- **Minecraft Server**
-- **GitLab CI Runner**
 
 ## Adding a New Machine
 

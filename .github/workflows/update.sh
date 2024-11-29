@@ -70,23 +70,11 @@ update_modpack() {
 	echo "    Updated $owner/$repo from $rev to $new_rev"
 }
 
-file=$1
+mode=$1
+file=$2
 
-TODO: fix file locations
-
-# if [[ -n $file ]]; then
-# 	if [[ $file == "services/lyra/static/modpacks/"* ]]; then
-# 		update_modpack "$file"
-# 	else
-# 		update_fetch_from_gh "$file"
-# 	fi
-# 	exit
-# fi
-
-# for file in services/lyra/static/*.nix; do
-# 	update_fetch_from_gh "$file"
-# done
-
-# for file in services/lyra/static/modpacks/*.nix; do
-# 	update_modpack "$file"
-# done
+if [[ $mode == "modpack" ]]; then
+	update_modpack "$file"
+elif [[ $mode == "github" ]]; then
+	update_fetch_from_gh "$file"
+fi

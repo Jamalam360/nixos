@@ -28,15 +28,13 @@ in {
       inputs.sculk.lib.fetchSculkModpack {
         inherit (pkgs) stdenvNoCC jre_headless sculk;
       } {
-        url = "https://raw.githubusercontent.com/Jamalam360/pack/75844eefc810b37e13d4a3fa99a60e6114410aef";
-        hash = "sha256-EANixnhaR35y5FK9OVY5dt3auFLki/1lWAyjem7SLFE=";
-      };
+        inherit (import ./modpacks/modded.nix {}) url hash;
+};
     vanilla_modpack =
       inputs.sculk.lib.fetchSculkModpack {
         inherit (pkgs) stdenvNoCC jre_headless sculk;
       } {
-        url = "https://raw.githubusercontent.com/Jamalam360/vanilla-server/88e198103812722496c9719e0851f9b4f48821a6";
-        hash = "sha256-KJsx+U0OACKxOqd/p+181PlA2JZcVc3si+8UesbUPwQ=";
+        inherit (import ./modpacks/vanilla.nix {}) url hash;
       };
 
     # inspo: https://github.com/Infinidoge/nix-minecraft/pull/43
