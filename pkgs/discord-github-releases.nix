@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "Jamalam360";
     repo = "${pname}";
-    rev = "${version}";
+    rev = "cd112fc9720c33f049938ea9797faefabe2c3475";
     hash = "sha256-dSOkNp7m1H4LloLsgPPlA7RPo4sP6BL5SxT2AzxzA+M=";
   };
 

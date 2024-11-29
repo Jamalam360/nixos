@@ -50,7 +50,7 @@
       hercules = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./machines/hercules/configuration.nix
+          ./hosts/hercules/configuration.nix
           inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
           inputs.stylix.nixosModules.stylix
         ];
@@ -60,14 +60,14 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           inputs.stylix.nixosModules.stylix
-          ./machines/leo/configuration.nix
+          ./hosts/leo/configuration.nix
         ];
       };
 
       lyra = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./machines/lyra/configuration.nix
+          ./hosts/lyra/configuration.nix
           inputs.stylix.nixosModules.stylix
         ];
       };
