@@ -76,7 +76,7 @@
     yubioath-flutter # yubico authenticator
 
     # == Scripts ==
-    # TODO: fix this
-    # copy-artifacts-to-prism
+    scripts.copy-artifacts-to-prism
+    scripts.devshell-init
   ];
 }
