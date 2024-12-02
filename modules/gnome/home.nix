@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  imports = [./vscode.nix];
+
   programs.bat.enable = true;
 
   xdg.mimeApps = {
@@ -71,7 +73,6 @@
     sdrpp
     spotify
     steam
-    vscode
     warp-terminal
     yubioath-flutter # yubico authenticator
 
