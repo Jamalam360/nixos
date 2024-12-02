@@ -8,6 +8,7 @@
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
     /.${root}/modules/gnome
+    /.${root}/modules/nvidia
     /.${root}/modules/virtualisation
   ];
   home-manager-modules = [
