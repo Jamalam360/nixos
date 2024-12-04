@@ -46,33 +46,7 @@
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
   in {
     formatter.x86_64-linux = pkgs.alejandra;
-
-    nixosConfigurations = {
-      hercules = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/hercules/configuration.nix
-          inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
-          inputs.stylix.nixosModules.stylix
-        ];
-      };
-
-      leo = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          inputs.stylix.nixosModules.stylix
-          ./hosts/leo/configuration.nix
-        ];
-      };
-
-      lyra = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/lyra/configuration.nix
-          inputs.stylix.nixosModules.stylix
-        ];
-      };
-    };
+    nixosConfigurations = import ./hosts.nix {inherit inputs outputs nixpkgs;};
 
     devShells.x86_64-linux.default = pkgs.mkShell {
       buildInputs = with pkgs; [

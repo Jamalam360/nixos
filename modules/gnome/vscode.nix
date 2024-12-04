@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.vscode = {
     enable = true;
     userSettings = {
@@ -18,7 +22,7 @@
 
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.detectIndentation" = true;
-      "editor.fontFamily" = "'Inconsolata', 'monospace', monospace";
+      "editor.fontFamily" = lib.mkForce "'Inconsolata', 'monospace', monospace";
       "editor.fontSize" = 16;
       "editor.formatOnSave" = true;
       "editor.formatOnType" = true;

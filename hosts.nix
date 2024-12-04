@@ -1,0 +1,57 @@
+{
+  inputs,
+  outputs,
+  nixpkgs,
+  ...
+}: let
+  mkHosts = hosts:
+    builtins.listToAttrs (builtins.concatMap (host: [
+      {
+        name = host.name;
+        value = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = host.modules;
+        };
+      }
+      {
+        name = "${host.name}-iso";
+        value = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules =
+            host.modules
+            ++ [
+              ({
+                pkgs,
+                modulesPath,
+                ...
+              }: {
+                imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")];
+              })
+            ];
+        };
+      }
+    ]) hosts);
+
+  hosts = [
+    {
+      name = "hercules";
+      modules = [
+        ./hosts/hercules/configuration.nix
+        inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+      ];
+    }
+    {
+      name = "leo";
+      modules = [
+        ./hosts/leo/configuration.nix
+      ];
+    }
+    {
+      name = "lyra";
+      modules = [
+        ./hosts/lyra/configuration.nix
+      ];
+    }
+  ];
+in
+  mkHosts hosts
