@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   programs.bat.enable = true;
+  programs.bash.shellAliases.cat = "bat";
 
   xdg.mimeApps = {
     enable = true;
