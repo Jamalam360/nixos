@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  imports = [./vscode.nix];
+
   programs.bat.enable = true;
   programs.bash.shellAliases.cat = "bat";
 
@@ -72,7 +74,6 @@
     sdrpp
     spotify
     steam
-    vscode
     warp-terminal
     yubioath-flutter # yubico authenticator
 

@@ -8,6 +8,7 @@
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
     /.${root}/modules/gnome
+    /.${root}/modules/nvidia
     /.${root}/modules/virtualisation
   ];
   home-manager-modules = [
@@ -35,5 +36,6 @@ in {
   networking.hostName = "leo";
   time.timeZone = "Europe/London";
   sops.secrets.leo-password.neededForUsers = true;
-  stylix.image = /.${root}/wallpapers/budapest.png;
+  stylix.image = /.${root}/wallpapers/great-wave.jpg;
+  nix.settings.min-free = 1 * 1024 * 1024 * 1024; # 1GiB
 }

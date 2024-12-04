@@ -26,6 +26,7 @@
 
   swapDevices = [];
 
+  networking.wireless.enable = lib.mkForce false; # Installer ISO module sets this to true
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

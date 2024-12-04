@@ -36,6 +36,8 @@ in {
       options = "--delete-older-than 3d";
     };
 
+    optimise.automatic = true;
+
     settings = {
       inherit substituters;
 
