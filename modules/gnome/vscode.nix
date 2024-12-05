@@ -50,6 +50,7 @@
       "window.autoDetectColorScheme" = true;
       "workbench.preferredDarkColorTheme" = "Solarized Dark";
       "workbench.preferredLightColorTheme" = "Solarized Light";
+      "workbench.iconTheme" = "vscode-icons";
       "[markdown]" = {
         "editor.defaultFormatter" = "edbenp.prettier-vscode";
         "editor.wordWrap" = "on";
@@ -64,6 +65,7 @@
         };
       };
     };
+    
     extensions = with pkgs.vscode-marketplace; [
       astro-build.astro-vscode
       barbosshack.crates-io
