@@ -65,7 +65,7 @@
         };
       };
     };
-    
+
     extensions = with pkgs.vscode-marketplace; [
       astro-build.astro-vscode
       barbosshack.crates-io

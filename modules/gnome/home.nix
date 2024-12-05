@@ -15,6 +15,28 @@
   };
 
   dconf.settings = {
+    "org/gnome/desktop/peripherals/mouse" = {
+      accel-profile = "flat";
+      natural-scroll = false;
+      speed = 0.5;
+    };
+
+    "org/gnome/desktop/session" = {
+      idle-delay = 0;
+    };
+
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,maximize,close";
+    };
+
+    "org/gnome/nautilus/preferences" = {
+      default-folder-viewer = "list-view";
+    };
+
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "nothing";
+    };
+
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = [
@@ -24,25 +46,9 @@
         "tiling-assistant@leleat-on-github"
       ];
     };
-    "org/gnome/desktop/peripherals/mouse" = {
-      natural-scroll = false;
-      accel-profile = "flat";
-      speed = 0.5;
-    };
-    "org/gnome/desktop/session" = {
-      idle-delay = 0;
-    };
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = "appmenu:minimize,maximize,close";
-    };
-    "org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-type = "nothing";
-    };
+
     "org/gtk/gtk4/settings/file-chooser" = {
       show-hidden = true;
-    };
-    "org/gnome/nautilus/preferences" = {
-      default-folder-viewer = "list-view";
     };
   };
 
