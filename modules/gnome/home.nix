@@ -32,7 +32,7 @@
     "org/gnome/desktop/session" = {
       idle-delay = 0;
     };
-    "/org/gnome/desktop/wm/preferences" = {
+    "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
     };
     "org/gnome/settings-daemon/plugins/power" = {
