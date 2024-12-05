@@ -7,10 +7,10 @@
   mkHosts = hosts:
     builtins.listToAttrs (builtins.concatMap (host: [
       {
-        name = host.name;
+        inherit (host) name;
         value = nixpkgs.lib.nixosSystem {
+          inherit (host) modules;
           specialArgs = {inherit inputs outputs;};
-          modules = host.modules;
         };
       }
       {
