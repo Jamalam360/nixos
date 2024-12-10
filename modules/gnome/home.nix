@@ -2,7 +2,10 @@
   imports = [./vscode.nix];
 
   programs.bat.enable = true;
-  programs.bash.shellAliases.cat = "bat";
+  programs.bash.shellAliases = {
+    cat = "bat";
+    cd = "z";
+  };
 
   xdg.mimeApps = {
     enable = true;
