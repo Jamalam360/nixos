@@ -16,8 +16,8 @@
     echo "Fabric jar: $fabric_jar"
     echo "Neoforge jar: $neoforge_jar"
 
-    cp "$fabric_jar" "$HOME/.local/share/PrismLauncher/instances/Fabric - $minecraft_version/.minecraft/mods" || exit 1
-    cp "$neoforge_jar" "$HOME/.local/share/PrismLauncher/instances/Neoforge - $minecraft_version/.minecraft/mods" || exit 1
+    cp "$fabric_jar" "$HOME/.local/share/PrismLauncher/instances/Fabric - $minecraft_version/minecraft/mods" || exit 1
+    cp "$neoforge_jar" "$HOME/.local/share/PrismLauncher/instances/Neoforge - $minecraft_version/minecraft/mods" || exit 1
 
     echo "Copied to Prism"
   '';
