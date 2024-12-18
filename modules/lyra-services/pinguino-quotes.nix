@@ -19,6 +19,7 @@ in {
       database = {
         database_path = "${workingDir}/pinguino-quotes.db";
       };
+      token = "$DISCORD_TOKEN";
     };
   };
 

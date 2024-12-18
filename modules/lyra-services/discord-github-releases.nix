@@ -16,7 +16,7 @@ in {
       inherit port;
 
       discord_webhook_urls = [
-        config.sops.secrets.discord-github-releases-webhook.path
+      "WEBHOOK_REPLACE_ME"
       ];
 
       message = {
@@ -68,7 +68,7 @@ in {
   systemd.services.discord-github-releases = let
     configLocation = "/etc/discord-github-releases/config.json";
     replaceConfigValues = pkgs.writeShellScript "replace-config-values" ''
-      sed -i "s|$webhook|$(cat ${config.sops.secrets.discord-github-releases-webhook.path})|g" ${configLocation}
+      sed -i "s|WEBHOOK_REPLACE_ME|$(cat ${config.sops.secrets.discord-github-releases-webhook.path})|g" ${configLocation}
     '';
   in {
     description = "Discord GitHub Releases";
