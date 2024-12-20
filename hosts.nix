@@ -38,7 +38,6 @@
       name = "hercules";
       modules = [
         ./hosts/hercules/configuration.nix
-        inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
       ];
     }
     {

@@ -6,6 +6,7 @@
 }: let
   root = ../..;
   nixos-modules = [
+    inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
     /.${root}/modules/gnome
@@ -38,5 +39,6 @@ in {
   time.timeZone = "Europe/London";
   sops.secrets.hercules-password.neededForUsers = true;
   stylix.image = /.${root}/wallpapers/alpine.jpeg;
+  services.fwupd.enable = true; # Firmware update
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
 }
