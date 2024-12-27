@@ -8,6 +8,7 @@
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
     /.${root}/modules/gnome
+    /.${root}/modules/nix-gc
     /.${root}/modules/nvidia
     /.${root}/modules/virtualisation
   ];

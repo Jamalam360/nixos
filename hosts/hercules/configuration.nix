@@ -10,6 +10,7 @@
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
     /.${root}/modules/gnome
+    /.${root}/modules/nix-gc
     /.${root}/modules/virtualisation
     /.${root}/modules/yubikey-for-login
   ];
