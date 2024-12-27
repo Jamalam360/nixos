@@ -40,5 +40,7 @@ in {
   sops.secrets.hercules-password.neededForUsers = true;
   stylix.image = /.${root}/wallpapers/alpine.jpeg;
   services.fwupd.enable = true; # Firmware update
+  services.tlp.enable = false;
+  services.power-profiles-daemon.enable = false;
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
 }
