@@ -39,6 +39,7 @@ in {
   time.timeZone = "Europe/London";
   sops.secrets.hercules-password.neededForUsers = true;
   stylix.image = /.${root}/wallpapers/alpine.jpeg;
+  stylix.polarity = "light";
   services.fwupd.enable = true; # Firmware update
   services.tlp.enable = false;
   services.power-profiles-daemon.enable = false;

@@ -6,7 +6,6 @@
   imports = [inputs.stylix.nixosModules.stylix];
 
   stylix.enable = true;
-  stylix.polarity = "dark";
   stylix.fonts = {
     serif = {
       package = pkgs.cantarell-fonts;

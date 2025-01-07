@@ -37,5 +37,6 @@ in {
   time.timeZone = "Europe/London";
   sops.secrets.leo-password.neededForUsers = true;
   stylix.image = /.${root}/wallpapers/great-wave.jpg;
+  stylix.polarity = "light";
   nix.settings.min-free = 1 * 1024 * 1024 * 1024; # 1GiB
 }
