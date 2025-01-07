@@ -23,7 +23,6 @@
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.detectIndentation" = true;
       "editor.fontFamily" = lib.mkForce "'Inconsolata', 'monospace', monospace";
-      "editor.fontSize" = 16;
       "editor.formatOnSave" = true;
       "editor.formatOnType" = true;
       "editor.inlineSuggest.enable" = true;
