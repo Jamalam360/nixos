@@ -5,6 +5,8 @@
   programs.bash.shellAliases = {
     cat = "bat";
     cd = "z";
+    # Fixes some Minecraft mod dev bugs
+    gradlew = "LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:$NIX_LD_LIBRARY_PATH\" __GL_THREADED_OPTIMIZATIONS=0 ./gradlew";
   };
 
   xdg.mimeApps = {
