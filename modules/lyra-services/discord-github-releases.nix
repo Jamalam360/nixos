@@ -16,7 +16,7 @@ in {
       inherit port;
 
       discord_webhook_urls = [
-      "WEBHOOK_REPLACE_ME"
+        "WEBHOOK_REPLACE_ME"
       ];
 
       message = {
