@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./audio.nix
     ./stylix.nix
+    ./ld.nix
   ];
 
   services.xserver = {
