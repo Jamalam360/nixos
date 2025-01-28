@@ -34,8 +34,8 @@ update_fetch_from_gh() {
 		return 0
 	fi
 
-	sed -i -e "s/$rev/$new_rev/" "$1"
-	sed -i -e "s/$hash/$new_hash/" "$1"
+	sed -i -e "s#$rev#$new_rev#" "$1"
+	sed -i -e "s;$hash;$new_hash;" "$1"
 	echo "    Updated $owner/$repo from $rev to $new_rev"
 }
 
@@ -76,9 +76,9 @@ update_modpack() {
 }
 
 update_fetch_from_gh "modules/lyra-services/cdn.nix"
-update_fetch_from_gh "modules/lyra-services/its-clearing-up.nix"
-update_modpack "modules/lyra-services/modpacks/vanilla.nix"
-update_modpack "modules/lyra-services/modpacks/modded.nix"
-update_fetch_from_gh "modules/lyra-services/teach-man-fish.nix"
-update_fetch_from_gh "pkgs/discord-github-releases.nix"
-update_fetch_from_gh "pkgs/sat-bot.nix"
+# update_fetch_from_gh "modules/lyra-services/its-clearing-up.nix"
+# update_modpack "modules/lyra-services/modpacks/vanilla.nix"
+# update_modpack "modules/lyra-services/modpacks/modded.nix"
+# update_fetch_from_gh "modules/lyra-services/teach-man-fish.nix"
+# update_fetch_from_gh "pkgs/discord-github-releases.nix"
+# update_fetch_from_gh "pkgs/sat-bot.nix"
