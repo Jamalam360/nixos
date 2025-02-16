@@ -2,11 +2,8 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
-    graphics.enable = true;
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
     };
     nvidia = {
       modesetting.enable = true;

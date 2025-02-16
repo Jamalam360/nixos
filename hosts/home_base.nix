@@ -56,6 +56,8 @@
       initExtra = ''
         export PATH="$PATH:/home/james/.local/share/JetBrains/Toolbox/scripts"
         source /var/lib/env_vars
+        # Not sure how OK this is...
+        export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
       '';
     };
   };
