@@ -40,6 +40,7 @@
 
     "org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-type = "nothing";
+      power-button-action = "interactive";
     };
 
     "org/gnome/shell" = {
