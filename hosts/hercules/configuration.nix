@@ -7,6 +7,7 @@
   root = ../..;
   nixos-modules = [
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+    inputs.fw-fanctrl.nixosModules.default
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
     /.${root}/modules/gnome
@@ -45,4 +46,9 @@ in {
   services.tlp.enable = false;
   services.power-profiles-daemon.enable = true;
   services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
+
+  programs.fw-fanctrl = {
+    enable = true;
+    config.defaultStrategy = "lazy";
+  };
 }
