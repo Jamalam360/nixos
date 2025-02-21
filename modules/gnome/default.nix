@@ -32,4 +32,6 @@
     gnomeExtensions.tiling-assistant
     gnome-tweaks
   ];
+
+  programs.wireshark.enable = true;
 }
