@@ -5,7 +5,7 @@
 }: {
   programs.vscode = {
     enable = true;
-    userSettings = {
+    profiles.default.userSettings = {
       "[astro]"."editor.defaultFormatter" = "astro-build.astro-vscode";
       "[c]"."editor.defaultFormatter" = "ms-vscode.cpptools";
       "[go]"."editor.defaultFormatter" = "golang.go";
@@ -65,7 +65,7 @@
       };
     };
 
-    extensions = with pkgs.vscode-marketplace; [
+    profiles.default.extensions = with pkgs.vscode-marketplace; [
       astro-build.astro-vscode
       barbosshack.crates-io
       bbenoist.nix

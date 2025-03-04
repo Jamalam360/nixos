@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  imports = [./vscode.nix];
+  imports = [
+    ./spotify.nix
+    ./vscode.nix
+  ];
 
   programs.bat.enable = true;
   programs.bash.shellAliases = {
@@ -83,11 +86,9 @@
     noaa-apt
     obs-studio
     obsidian
-    okular # pdf reader
     pinentry-gnome3
     prismlauncher
     sdrpp
-    spotify
     steam
     warp-terminal
     yubioath-flutter # yubico authenticator
