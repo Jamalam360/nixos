@@ -2,8 +2,8 @@
   src = pkgs.fetchFromGitHub {
     owner = "Jamalam360";
     repo = "cdn";
-    rev = "878a763a0a2e4ca809f24fe593b8086b26670604";
-    hash = "sha256-gfd07Hf9G/wyrNPQk76wYU8cMsHxGI8CZCL4JhlHmbk=";
+    rev = "29ed436045829f472d33e45b62c5b53aa615e20b";
+    hash = "sha256-0idhQS/YbrJaDIcj9obEzX4TKV5QUkyygp6A/tU1JKc=";
   };
 in {
   services.nginx.virtualHosts."cdn.jamalam.tech" = {
