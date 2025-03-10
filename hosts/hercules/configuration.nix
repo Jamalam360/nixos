@@ -1,7 +1,6 @@
 {
   inputs,
   outputs,
-  pkgs,
   ...
 }: let
   root = ../..;
@@ -13,7 +12,6 @@
     /.${root}/modules/gnome
     /.${root}/modules/nix-gc
     /.${root}/modules/virtualisation
-    /.${root}/modules/yubikey-for-login
   ];
   home-manager-modules = [
     /.${root}/hosts/home_base.nix
@@ -45,7 +43,6 @@ in {
   services.fwupd.enable = true; # Firmware update
   services.tlp.enable = false;
   services.power-profiles-daemon.enable = true;
-  services.fprintd.enable = pkgs.lib.mkForce false; # fprintd seems broken atm, and I don't use it (it is being set by the hardware module)
 
   programs.fw-fanctrl = {
     enable = true;
