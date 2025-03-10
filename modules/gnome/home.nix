@@ -90,6 +90,7 @@
     spotify
     steam
     warp-terminal
+    wireshark
     yubioath-flutter # yubico authenticator
 
     # == Scripts ==
