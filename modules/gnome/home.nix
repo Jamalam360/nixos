@@ -77,6 +77,7 @@
     discord
     eyedropper
     flashprint # 3D printing
+    ghostty
     gnome-boxes
     google-chrome
     gpredict
