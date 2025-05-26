@@ -91,6 +91,7 @@
     prismlauncher
     sdrpp
     steam
+    ticktick
     warp-terminal
     wireshark
     yubioath-flutter # yubico authenticator

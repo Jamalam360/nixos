@@ -1,8 +1,6 @@
 {
   inputs,
-  lib,
   pkgs,
-  systemConfig,
   ...
 }: {
   imports = [
@@ -24,8 +22,6 @@
     ];
     enabledCustomApps = with spicePkgs.apps; [
       lyricsPlus
-    ];
-    enabledSnippets = with spicePkgs.snippets; [
     ];
 
     # theme = spicePkgs.themes.catppuccin;
