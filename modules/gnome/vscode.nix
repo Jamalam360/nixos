@@ -73,6 +73,7 @@
       bierner.markdown-preview-github-styles
       bradlc.vscode-tailwindcss
       christian-kohler.path-intellisense
+      dart-code.flutter
       dbaeumer.vscode-eslint
       denoland.vscode-deno
       editorconfig.editorconfig
