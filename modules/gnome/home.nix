@@ -70,6 +70,7 @@
     _1password-gui
     # == Development ==
     aseprite
+    android-studio
     audacity
     blockbench
     candle # CNC
