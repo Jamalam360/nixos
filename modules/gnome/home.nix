@@ -74,6 +74,7 @@
     audacity
     blockbench
     candle # CNC
+    darktable
     sculk
     discord
     eyedropper
