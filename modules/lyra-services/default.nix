@@ -4,7 +4,7 @@
     ./discord-github-releases.nix
     ./gitlab-runner.nix
     ./its-clearing-up.nix
-    ./minecraft.nix
+    # ./minecraft.nix
     ./nginx.nix
     ./nix-cache.nix
     ./pinguino-quotes.nix
