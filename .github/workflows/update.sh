@@ -75,10 +75,4 @@ update_modpack() {
 	echo "    Updated $owner/$repo from $rev to $new_rev"
 }
 
-update_fetch_from_gh "modules/lyra-services/cdn.nix"
-# update_fetch_from_gh "modules/lyra-services/its-clearing-up.nix"
-# update_modpack "modules/lyra-services/modpacks/vanilla.nix"
-# update_modpack "modules/lyra-services/modpacks/modded.nix"
-# update_fetch_from_gh "modules/lyra-services/teach-man-fish.nix"
-# update_fetch_from_gh "pkgs/discord-github-releases.nix"
-# update_fetch_from_gh "pkgs/sat-bot.nix"
+update_fetch_from_gh "pkgs/discord-github-releases.nix"
