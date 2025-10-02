@@ -9,6 +9,7 @@
     inputs.fw-fanctrl.nixosModules.default
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
+    /.${root}/modules/android-dev
     /.${root}/modules/gnome
     /.${root}/modules/nix-gc
     /.${root}/modules/virtualisation
