@@ -7,6 +7,7 @@
   nixos-modules = [
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
+    /.${root}/modules/android-dev
     /.${root}/modules/gnome
     /.${root}/modules/nix-gc
     /.${root}/modules/nvidia
