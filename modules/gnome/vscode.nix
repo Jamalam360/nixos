@@ -5,7 +5,7 @@
 }: {
   programs.vscode = {
     enable = true;
-    profiles.default.userSettings = {
+    userSettings = {
       "[astro]"."editor.defaultFormatter" = "astro-build.astro-vscode";
       "[c]"."editor.defaultFormatter" = "ms-vscode.cpptools";
       "[go]"."editor.defaultFormatter" = "golang.go";
@@ -65,7 +65,7 @@
       };
     };
 
-    profiles.default.extensions = with pkgs.vscode-marketplace; [
+    extensions = with pkgs.vscode-marketplace-release; [
       astro-build.astro-vscode
       barbosshack.crates-io
       bbenoist.nix
@@ -73,9 +73,7 @@
       bierner.markdown-preview-github-styles
       bradlc.vscode-tailwindcss
       christian-kohler.path-intellisense
-      dart-code.flutter
       dbaeumer.vscode-eslint
-      denoland.vscode-deno
       editorconfig.editorconfig
       esbenp.prettier-vscode
       formulahendry.auto-rename-tag
@@ -84,7 +82,6 @@
       github.copilot-chat
       github.vscode-github-actions
       golang.go
-      heybourn.headwind
       kamikillerto.vscode-colorize
       mechatroner.rainbow-csv
       mkhl.direnv
@@ -93,7 +90,6 @@
       ms-python.mypy-type-checker
       ms-python.python
       ms-python.vscode-pylance
-      pkgs.vscode-extensions.ms-vscode.cpptools # not provided by nix-vscode-extensions due to needing patching
       redhat.vscode-xml
       redhat.vscode-yaml
       rust-lang.rust-analyzer
@@ -103,7 +99,7 @@
       timonwong.shellcheck
       ultram4rine.vscode-choosealicense
       usernamehw.errorlens
-      vscode-icons-team.vscode-icons
+      # vscode-icons-team.vscode-icons
       wayou.vscode-todo-highlight
       yoavbls.pretty-ts-errors
     ];
