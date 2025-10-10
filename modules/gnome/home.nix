@@ -73,6 +73,7 @@
     android-studio
     audacity
     blockbench
+    btop
     candle # CNC
     darktable
     sculk
@@ -91,7 +92,6 @@
     obsidian
     pinentry-gnome3
     prismlauncher
-    sdrpp
     steam
     ticktick
     warp-terminal
