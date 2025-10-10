@@ -10,15 +10,15 @@
 
   services.xserver = {
     enable = true;
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
-    desktopManager.gnome.enable = true;
     xkb = {
       layout = "gb";
       variant = "";
     };
+  };
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm = {
+    enable = true;
+    wayland = true;
   };
 
   console.useXkbConfig = true;
