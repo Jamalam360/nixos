@@ -35,6 +35,12 @@
 
   hosts = [
     {
+      name = "ara";
+      modules = [
+        ./hosts/ara/configuration.nix
+      ];
+    }
+    {
       name = "hercules";
       modules = [
         ./hosts/hercules/configuration.nix
