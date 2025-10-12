@@ -1,5 +1,5 @@
 # inspo: https://github.com/johnae/world/blob/670709a36223bc9535b1b2c7bfeeb110ac314f47/profiles/restic-backup.nix#L13
-{config, ...}: {
+{config, pkgs, ...}: {
   sops.secrets = {
     restic-remote-env.neededForUsers = true;
     restic-remote-password.neededForUsers = true;
@@ -14,4 +14,6 @@
       timerConfig.OnCalendar = "*-*-* *:00:00";
       timerConfig.RandomizedDelaySec = "5m";
   };
+
+  environment.systemPackages = [ pkgs.restic pkgs.scripts.restic-remote  ];
 }

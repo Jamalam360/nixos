@@ -26,7 +26,10 @@ sync-secrets:
 	sops updatekeys secrets/secrets.yaml
 
 deploy machine:
-	git add . && {{ if machine != "lyra" { "sudo" } else { "" } }} nixos-rebuild switch --accept-flake-config --flake .#{{ machine }} {{ if machine == "lyra" { "--sudo --target-host \"james@176.9.22.221\" --build-host \"james@176.9.22.221\"" } else { "" } }}
+	git add . && sudo nixos-rebuild switch --accept-flake-config --flake .#{{ machine }}
+
+remote-deploy machine:
+	git add . && sudo nixos-rebuild switch --accept-flake-config --flake .#{{ machine }} --sudo --target-host "james@{{ if machine == "lyra" { "176.9.22.221" } else if machine == "ara" { "h46.62.221.196" } else { "" } }}" --build-host "james@{{ if machine == "lyra" { "176.9.22.221" } else if machine == "ara" { "h46.62.221.196" } else { "" } }}"
 
 build-iso machine:
 	git add . && nix build --accept-flake-config .#nixosConfigurations.{{ machine }}-iso.config.system.build.isoImage
