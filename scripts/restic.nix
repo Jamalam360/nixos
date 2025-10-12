@@ -1,13 +1,11 @@
-// inspo: https://github.com/johnae/world/blob/35653ce23a51fa022cc2663d6894da0544547e7d/profiles/restic-helper.nix#L7
+# inspo: https://github.com/johnae/world/blob/35653ce23a51fa022cc2663d6894da0544547e7d/profiles/restic-helper.nix#L7
 {
   pkgs,
   config,
   lib,
   ...
-}: let
-  restic-pkgs =
-    lib.mapAttrsToList (
-      name: value:
+}: lib.mapAttrsToList 
+      (name: value:
         pkgs.writeShellApplication {
           name = "restic-${name}";
           runtimeInputs = [pkgs.restic];
@@ -21,9 +19,6 @@
 
             restic "$@"
           '';
-        }
-    )
-    config.services.restic.backups;
-in {
-  environment.systemPackages = restic-pkgs;
-}
+        })
+    	(lib.attrByPath ["services" "restic" "backups"] {} config)
+    

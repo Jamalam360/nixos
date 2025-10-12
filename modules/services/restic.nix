@@ -15,5 +15,5 @@
       timerConfig.RandomizedDelaySec = "5m";
   };
 
-  environment.systemPackages = [ pkgs.restic pkgs.scripts.restic-remote  ];
+  environment.systemPackages = [ pkgs.restic] ++ pkgs.scripts.restic-remote;
 }
