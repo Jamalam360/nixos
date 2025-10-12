@@ -7,6 +7,7 @@
   nixos-modules = [
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
+    /.${root}/modules/services/ara.nix
   ];
   home-manager-modules = [
     /.${root}/hosts/home_base.nix
@@ -33,5 +34,5 @@ in {
   };
   networking.hostName = "ara";
   time.timeZone = "Europe/Helsinki";
-  sops.secrets.lyra-password.neededForUsers = true;
+  sops.secrets.ara-password.neededForUsers = true;
 }
