@@ -100,6 +100,11 @@ in {
     parted
   ];
 
+  programs.ssh.extraConfig = ''
+    ServerAliveInterval 60
+    ServerAliveCountMax 120
+  '';
+
   services = {
     openssh = {
       enable = true;
