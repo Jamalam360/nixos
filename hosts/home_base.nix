@@ -51,7 +51,6 @@
     bash = {
       enable = true;
       shellAliases = {
-        lyra = "ssh james@176.9.22.221";
         ara = "ssh james@46.62.221.196";
       };
       initExtra = ''
