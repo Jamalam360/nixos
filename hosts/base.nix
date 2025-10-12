@@ -43,17 +43,16 @@ in {
       min-free = 1073741824; # 1GiB
       trusted-users = ["james"];
 
+      # Ensure builds can still complete if one of the substituters is down
+      fallback = true;
+      connect-timeout = 3;
+
       trusted-substituters = substituters;
       trusted-public-keys = [
         "nixcache.jamalam.tech:kK0ZbqNEnH1UMq3LJk8EDsLbI1H2K8ooQAqiiU7/5s0="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
-
-    extraOptions = ''
-      # Ensure systems can still build when substituters are down
-      fallback = true
-    '';
   };
 
   i18n = {
