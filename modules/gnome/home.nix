@@ -73,7 +73,6 @@
     android-studio
     audacity
     blockbench
-    btop
     candle # CNC
     darktable
     sculk

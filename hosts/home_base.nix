@@ -18,6 +18,7 @@
     nix-prefetch-github
 
     # quality of life
+    btop
     croc
     unzip
     wget
