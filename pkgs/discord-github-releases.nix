@@ -23,7 +23,7 @@ stdenv.mkDerivation rec {
     cp $src/index.ts $out/lib/discord-github-releases.ts
     makeWrapper ${lib.getExe deno} $out/bin/discord-github-releases \
       --set DENO_NO_UPDATE_CHECK "1" \
-      --add-flags "run --allow-net --allow-read ${placeholder "out"}/lib/discord-github-releases.ts"
+      --add-flags "run --allow-net --allow-env --allow-read ${placeholder "out"}/lib/discord-github-releases.ts"
     runHook postInstall
   '';
 
