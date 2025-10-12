@@ -17,9 +17,11 @@
     /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#ara
   '';
 in {
+  sops.secrets.nix-cache-private-key.neededForUsers = true;
+
   services.nix-serve = {
     enable = true;
-    secretKeyFile = "/var/cache-private-key.pem";
+    secretKeyFile = config.sops.secrets.nix-cache-private-key.path;
   };
 
   services.nginx.virtualHosts."nixcache.jamalam.tech" = {
