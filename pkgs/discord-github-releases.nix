@@ -7,13 +7,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "discord-github-releases";
-  version = "cd112fc9720c33f049938ea9797faefabe2c3475";
+  version = "acfab742ab27edc86813347154c977848133917b";
 
   src = fetchFromGitHub {
     owner = "Jamalam360";
     repo = "${pname}";
-    rev = "cd112fc9720c33f049938ea9797faefabe2c3475";
-    hash = "sha256-dSOkNp7m1H4LloLsgPPlA7RPo4sP6BL5SxT2AzxzA+M=";
+    rev = "acfab742ab27edc86813347154c977848133917b";
+    hash = "sha256-88nYD9SbZGE64D7/qZe4DZCuHVU9XfQzwIowWr5eR64=";
   };
 
   nativeBuildInputs = [makeWrapper];

@@ -16,7 +16,7 @@ in {
       inherit port;
 
       discord_webhook_urls = [
-        "WEBHOOK_REPLACE_ME"
+        "$DISCORD_WEBHOOK_URL"
       ];
 
       message = {
@@ -67,14 +67,11 @@ in {
 
   systemd.services.discord-github-releases = let
     configLocation = "/etc/discord-github-releases/config.json";
-    replaceConfigValues = pkgs.writeShellScript "replace-config-values" ''
-      sed -i "s|WEBHOOK_REPLACE_ME|$(cat ${config.sops.secrets.discord-github-releases-webhook.path})|g" ${configLocation}
-    '';
   in {
     description = "Discord GitHub Releases";
     wantedBy = ["multi-user.target"];
     script = ''
-      ${lib.getExe pkgs.custom.discord-github-releases} ${configLocation}
+      DISCORD_WEBHOOK_URL=$(cat ${cconfig.sops.secrets.discord-github-releases-webhook.path}) ${lib.getExe pkgs.custom.discord-github-releases} ${configLocation}
     '';
 
     serviceConfig = {
@@ -86,8 +83,6 @@ in {
       TimeoutStopSec = 10;
       Restart = "on-failure";
       RestartSec = 5;
-
-      ExecStartPre = replaceConfigValues;
     };
   };
 }
