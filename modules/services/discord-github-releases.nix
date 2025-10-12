@@ -71,7 +71,7 @@ in {
     description = "Discord GitHub Releases";
     wantedBy = ["multi-user.target"];
     script = ''
-      DISCORD_WEBHOOK_URL=$(cat ${cconfig.sops.secrets.discord-github-releases-webhook.path}) ${lib.getExe pkgs.custom.discord-github-releases} ${configLocation}
+      DISCORD_WEBHOOK_URL=$(cat ${config.sops.secrets.discord-github-releases-webhook.path}) ${lib.getExe pkgs.custom.discord-github-releases} ${configLocation}
     '';
 
     serviceConfig = {
