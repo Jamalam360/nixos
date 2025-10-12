@@ -11,9 +11,8 @@ This repository holds my Nix configuration, using:
 It contains configuration for 3 machines:
 
 1. Hercules, my Framework laptop.
-2. Lyra, my decomissioned Hetzner dedicated server (the configuration is kept for future reference).
-3. Leo, my desktop.
-4. Ara, my Hetzner VPS.
+2. Leo, my desktop.
+3. Ara, my Hetzner VPS.
 
 ## Folders
 

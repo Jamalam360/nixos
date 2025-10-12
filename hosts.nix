@@ -52,12 +52,6 @@
         ./hosts/leo/configuration.nix
       ];
     }
-    {
-      name = "lyra";
-      modules = [
-        ./hosts/lyra/configuration.nix
-      ];
-    }
   ];
 in
   mkHosts hosts

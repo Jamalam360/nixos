@@ -15,7 +15,7 @@
       timerConfig.RandomizedDelaySec = "5m";
   };
 
-# inspo: https://github.com/johnae/world/blob/35653ce23a51fa022cc2663d6894da0544547e7d/profiles/restic-helper.nix#L7
+  # inspo: https://github.com/johnae/world/blob/35653ce23a51fa022cc2663d6894da0544547e7d/profiles/restic-helper.nix#L7
   environment.systemPackages = [ pkgs.restic] ++ lib.mapAttrsToList 
       (name: value:
         pkgs.writeShellApplication {

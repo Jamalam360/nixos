@@ -7,7 +7,7 @@
   nixos-modules = [
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
-    /.${root}/modules/services/ara.nix
+    /.${root}/modules/services
   ];
   home-manager-modules = [
     /.${root}/hosts/home_base.nix
