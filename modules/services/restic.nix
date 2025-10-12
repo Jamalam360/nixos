@@ -5,8 +5,7 @@
     restic-remote-password.neededForUsers = true;
   };
 
-  services.restic.backups = {
-    remote = {
+  services.restic.backups.remote = {
       repository = "s3:s3.us-west-004.backblazeb2.com/jamalam-orion-backup";
 
       initialize = true;
@@ -14,6 +13,5 @@
       passwordFile = config.sops.secrets.restic-remote-password.path;
       timerConfig.OnCalendar = "*-*-* *:00:00";
       timerConfig.RandomizedDelaySec = "5m";
-    };
   };
 }

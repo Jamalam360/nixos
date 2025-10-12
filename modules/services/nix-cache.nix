@@ -13,8 +13,8 @@
     /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#hercules
     echo "Building Leo"
     /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#leo
-    echo "Building Lyra"
-    /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#lyra
+    echo "Building Ara"
+    /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#ara
   '';
 in {
   services.nix-serve = {

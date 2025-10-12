@@ -36,10 +36,9 @@ It contains configuration for 3 machines:
 	- `sudo nix-shell -p ssh-to-age --run "ssh-to-age --private-key -i /etc/ssh/ssh_host_ed25519_key > /home/james/.config/sops/age/keys.txt"`
 5. Run `nix-shell -p ssh-to-age --run "cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age"` and add the result to `.sops.yaml`.
 6. Run `just sync-secrets`.
-7. Add a `deploy-...` task for the new machine in the `justfile`.
-8. Clone `git@github.com:Jamalam360/nixos` on the target machine.
-9. Run the deploy task.
-10. Run `direnv allow` after the deployment.
+7. Clone `git@github.com:Jamalam360/nixos` on the target machine.
+8. Run the deploy task.
+9. Run `direnv allow` after the deployment.
 
 ## Resources and Credits
 
