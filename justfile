@@ -25,8 +25,8 @@ edit-secrets:
 sync-secrets:
 	sops updatekeys secrets/secrets.yaml
 
-deploy machine:
-	git add . && sudo nixos-rebuild switch --accept-flake-config --flake .#{{ machine }}
+deploy machine=`hostname`:
+	{{ if machine == `hostname` { 'git add . && sudo nixos-rebuild switch --accept-flake-config --flake .#' + machine } else { 'echo "Machine does not match current hostname"' } }}
 
 remote-deploy machine:
 	git add . && nixos-rebuild switch --accept-flake-config --flake .#{{ machine }} --sudo --target-host "james@{{ if machine == "ara" { "46.62.221.196" } else { "" } }}" --build-host "james@{{ if machine == "ara" { "46.62.221.196" } else { "" } }}"
