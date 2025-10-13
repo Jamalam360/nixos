@@ -2,7 +2,7 @@
   description = "jamalam-nix";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
     stylix.url = "github:danth/stylix";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
