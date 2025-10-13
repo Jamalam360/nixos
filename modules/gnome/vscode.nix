@@ -40,6 +40,7 @@
       "git.enableSmartCommit" = true;
       "git.openRepositoryInParentFolders" = "never";
       "github.copilot.editor.enableAutoCompletions" = true;
+      "haskell.manageHLS" = "PATH";
       "javascript.updateImportsOnFileMove.enabled" = "always";
       "prettier.printWidth" = 120;
       "redhat.telemetry.enabled" = false;
