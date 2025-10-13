@@ -22,7 +22,7 @@
     fsType = "ext4";
   };
   fileSystems."/nix" = {
-    device = "/dev/disk-by-label/store";
+    device = "/dev/disk/by-label/store";
     fsType = "ext4";
     neededForBoot = true;
   };
