@@ -16,6 +16,8 @@
     echo "Building Ara"
     /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#ara
   '';
+
+  harmonia-port = 8013;
 in {
   sops.secrets.nix-cache-private-key.neededForUsers = true;
 
@@ -33,7 +35,7 @@ in {
   services.harmonia = {
     enable = true;
     signKeyPaths = [ config.sops.secrets.nix-cache-private-key.path ];
-    port = 8013;
+    settings.bind = "[::]:${harmonia-port}";
   };
 
   services.nginx.virtualHosts."nixcache.jamalam.tech" = {
@@ -41,7 +43,7 @@ in {
     forceSSL = true;
 
     locations."/".extraConfig = ''
-      proxy_pass http://127.0.0.1:${config.services.harmonia.port};
+      proxy_pass http://127.0.0.1:${harmonia-port};
       proxy_set_header Host $host;
       proxy_redirect http:// https://;
       proxy_http_version 1.1;
