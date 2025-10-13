@@ -6,7 +6,6 @@
   root = ../..;
   nixos-modules = [
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
-    inputs.fw-fanctrl.nixosModules.default
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
     /.${root}/modules/android-dev
@@ -45,7 +44,7 @@ in {
   services.tlp.enable = false;
   services.power-profiles-daemon.enable = true;
 
-  programs.fw-fanctrl = {
+  hardware.fw-fanctrl = {
     enable = true;
     config.defaultStrategy = "lazy";
   };
