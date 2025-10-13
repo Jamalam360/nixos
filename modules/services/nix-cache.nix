@@ -19,15 +19,36 @@
 in {
   sops.secrets.nix-cache-private-key.neededForUsers = true;
 
-  services.nix-serve = {
+  # services.nix-serve = {
+  #   enable = true;
+  #   secretKeyFile = config.sops.secrets.nix-cache-private-key.path;
+  # };
+
+  # services.nginx.virtualHosts."nixcache.jamalam.tech" = {
+  #   enableACME = true;
+  #   forceSSL = true;
+  #   locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+  # };
+
+  services.harmonia = {
     enable = true;
-    secretKeyFile = config.sops.secrets.nix-cache-private-key.path;
+    signKeyPaths = [ config.sops.secrets.nix-cache-private-key.path ];
+    port = 8013;
   };
 
   services.nginx.virtualHosts."nixcache.jamalam.tech" = {
     enableACME = true;
     forceSSL = true;
-    locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
+
+    locations."/".extraConfig = ''
+      proxy_pass http://127.0.0.1:${config.services.harmonia.port};
+      proxy_set_header Host $host;
+      proxy_redirect http:// https://;
+      proxy_http_version 1.1;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection $connection_upgrade;
+    '';
   };
 
   systemd.timers."nix-builder" = {
