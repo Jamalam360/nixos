@@ -17,7 +17,7 @@
     /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#ara
   '';
 
-  harmonia-port = 8013;
+  harmonia-port = "8013";
 in {
   sops.secrets.nix-cache-private-key.neededForUsers = true;
 

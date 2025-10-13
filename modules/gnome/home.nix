@@ -82,7 +82,6 @@
     ghostty
     gnome-boxes
     google-chrome
-    gpredict
     insomnia
     jetbrains-toolbox
     kdePackages.kdenlive
@@ -93,7 +92,6 @@
     prismlauncher
     steam
     ticktick
-    warp-terminal
     wireshark
     yubioath-flutter # yubico authenticator
 
