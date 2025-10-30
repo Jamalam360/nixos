@@ -23,6 +23,10 @@
   };
 
   dconf.settings = {
+    "org/gnome/mutter" = {
+      workspaces-only-on-primary = false;
+    };
+
     "org/gnome/desktop/peripherals/mouse" = {
       accel-profile = "flat";
       natural-scroll = false;
