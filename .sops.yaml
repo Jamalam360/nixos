@@ -2,6 +2,7 @@ keys:
   - &hercules age1g3n4mvmsl9wku7307kk9p9mc8g70yw9drm6yz0evuze0kgv65pxqdup7ny
   - &leo age1qpjv8tesr04kau4na4qnjccwzpmwkrth7vmnntytteh2re6meurq2zmnlj
   - &ara age1g7cmwhmsn7j45cquphuswgj33lxvy39fh8c6t8y0hx9y497mfamsareakr
+  - &recovery age1cngv0axzw3ly238gv96p5n42un0uusrnvm7dcfjts38s6cms6dtq29vk3q
 creation_rules:
   - path_regex: secrets/[^/]+(\.(yaml|json|env|ini|conf))?$
     key_groups:
@@ -9,3 +10,4 @@ creation_rules:
           - *hercules
           - *leo
           - *ara
+          - *recovery
