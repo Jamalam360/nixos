@@ -95,6 +95,7 @@
     pinentry-gnome3
     prismlauncher
     steam
+    teams-for-linux
     ticktick
     wireshark
     yubioath-flutter # yubico authenticator
