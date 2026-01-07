@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     android-studio-full
+    android-tools
   ];
 
-  programs.adb.enable = true;
   users.users.james.extraGroups = ["adbusers"];
 }
