@@ -25,21 +25,26 @@
   ];
 
   programs = {
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
+
     git = {
       enable = true;
-      delta = {
-        enable = true;
+      settings = {
+        userName = "Jamalam";
+        userEmail = "james@jamalam.tech";
+        aliases = {
+          cp = "cherry-pick";
+        };
+        extraConfig.pull.rebase = "true";
       };
-      userName = "Jamalam";
-      userEmail = "james@jamalam.tech";
-      aliases = {
-        cp = "cherry-pick";
-      };
+
       signing = {
         key = "B1B22BA0FC39D4B422405F55D86CD68E8DB2E368";
         signByDefault = true;
       };
-      extraConfig.pull.rebase = "true";
     };
 
     gpg.enable = true;
