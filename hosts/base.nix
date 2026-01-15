@@ -98,6 +98,7 @@ in {
     gptfdisk
     oxipng
     parted
+    nh
   ];
 
   programs.ssh.extraConfig = ''
