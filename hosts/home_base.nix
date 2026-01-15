@@ -33,12 +33,14 @@
     git = {
       enable = true;
       settings = {
-        userName = "Jamalam";
-        userEmail = "james@jamalam.tech";
+        user = {
+          name = "Jamalam";
+          email = "james@jamalam.tech";
+        };
         aliases = {
           cp = "cherry-pick";
         };
-        extraConfig.pull.rebase = "true";
+        pull.rebase = "true";
       };
 
       signing = {

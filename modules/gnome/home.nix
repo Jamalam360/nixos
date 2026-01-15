@@ -17,8 +17,11 @@
     defaultApplications = {
       "text/plain" = "org.gnome.gedit.desktop";
       "application/json" = "org.gnome.gedit.desktop";
-      "application/zip" = "org.gnome.Nautilus.desktop";
       "video/mp4" = "org.gnome.Totem.desktop";
+      "application/pdf" = "google-chrome.desktop";
+      "text/html" = "google-chrome.desktop";
+      "x-scheme-handler/http" = "google-chrome.desktop";
+      "x-scheme-handler/https" = "google-chrome.desktop";
     };
   };
 
@@ -72,17 +75,16 @@
 
   home.packages = with pkgs; [
     _1password-gui
-    # == Development ==
-    aseprite
     android-studio
+    aseprite
     audacity
     blockbench
-    candle # CNC
+    candle
     darktable
-    sculk
     discord
     eyedropper
-    flashprint # 3D printing
+    file-roller
+    flashprint
     ghostty
     gnome-boxes
     google-chrome
@@ -94,11 +96,12 @@
     obsidian
     pinentry-gnome3
     prismlauncher
+    sculk
     steam
     teams-for-linux
     ticktick
     wireshark
-    yubioath-flutter # yubico authenticator
+    yubioath-flutter
 
     # == Scripts ==
     scripts.copy-artifacts-to-prism
