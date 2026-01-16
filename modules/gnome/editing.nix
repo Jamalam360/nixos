@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-	home.pkgs = [pkgs.davinci-resolve]
+	home.pkgs = [pkgs.davinci-resolve];
 }
