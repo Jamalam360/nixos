@@ -16,6 +16,7 @@
   home-manager-modules = [
     /.${root}/hosts/home_base.nix
     /.${root}/modules/gnome/home.nix
+    /.${root}/modules/gnome/editing.nix
     /.${root}/modules/jdk/home.nix
   ];
 in {
