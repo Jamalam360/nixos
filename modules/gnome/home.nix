@@ -90,7 +90,6 @@
     google-chrome
     insomnia
     jetbrains-toolbox
-    kdePackages.kdenlive
     noaa-apt
     obs-studio
     obsidian
