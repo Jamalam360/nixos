@@ -76,6 +76,7 @@
       christian-kohler.path-intellisense
       dbaeumer.vscode-eslint
       editorconfig.editorconfig
+      ejgallego.coq-lsp
       esbenp.prettier-vscode
       formulahendry.auto-rename-tag
       foxundermoon.shell-format
@@ -98,9 +99,7 @@
       svelte.svelte-vscode
       tamasfe.even-better-toml
       timonwong.shellcheck
-      ultram4rine.vscode-choosealicense
       usernamehw.errorlens
-      # vscode-icons-team.vscode-icons
       wayou.vscode-todo-highlight
       yoavbls.pretty-ts-errors
     ];
