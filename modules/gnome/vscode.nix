@@ -85,6 +85,7 @@
       github.vscode-github-actions
       golang.go
       kamikillerto.vscode-colorize
+      MarlinFirmware.auto-build
       mechatroner.rainbow-csv
       mkhl.direnv
       ms-azuretools.vscode-docker
@@ -92,6 +93,7 @@
       ms-python.mypy-type-checker
       ms-python.python
       ms-python.vscode-pylance
+      platformio.platformio-ide
       redhat.vscode-xml
       redhat.vscode-yaml
       rust-lang.rust-analyzer
