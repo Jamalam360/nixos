@@ -85,7 +85,7 @@
       github.vscode-github-actions
       golang.go
       kamikillerto.vscode-colorize
-      MarlinFirmware.auto-build
+      marlinfirmware.auto-build
       mechatroner.rainbow-csv
       mkhl.direnv
       ms-azuretools.vscode-docker
