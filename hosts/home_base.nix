@@ -41,6 +41,7 @@
           cp = "cherry-pick";
         };
         pull.rebase = "true";
+        advice.detachedHead = "false";
       };
 
       signing = {
