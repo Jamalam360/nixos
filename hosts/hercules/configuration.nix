@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  pkgs,
   ...
 }: let
   root = ../..;
@@ -40,6 +41,13 @@ in {
   sops.secrets.hercules-password.neededForUsers = true;
   stylix.image = /.${root}/wallpapers/alpine.jpeg;
   stylix.polarity = "dark";
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = pkgs.libfprint-2-tod1-goodix;
+    };
+  };
   services.fwupd.enable = true; # Firmware update
   services.tlp.enable = false;
   services.power-profiles-daemon.enable = true;
