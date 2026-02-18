@@ -10,8 +10,8 @@
       libpulseaudio
       libxkbcommon
       wayland
-      xorg.libX11
-      xorg.libXcursor
+      libx11
+      libxcursor
     ];
   };
 }
