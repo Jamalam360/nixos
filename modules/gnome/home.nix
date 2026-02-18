@@ -72,6 +72,10 @@
     file:///home/james/dev dev
     file:///home/james/dev/minecraft minecraft
   '';
+  
+  xdg.configFile."ghostty/config".text = ''
+    font-family = "JetBrainsMono Nerd Font"
+  '';
 
   home.packages = with pkgs; [
     _1password-gui

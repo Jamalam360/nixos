@@ -3,7 +3,9 @@
   lib,
   config,
   ...
-}: {
+}: let
+    configPath = "${config.xdg.configHome}/Code/User/settings.json";
+in {
   programs.vscode = {
     enable = true;
     profiles.default.userSettings = {
@@ -23,7 +25,8 @@
 
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "editor.detectIndentation" = true;
-      "editor.fontFamily" = lib.mkForce "'Inconsolata', 'monospace', monospace";
+      "editor.fontFamily" = lib.mkForce "'JetBrainsMono Nerd Font', 'monospace', monospace";
+      "editor.fontLigatures" = true;
       "editor.formatOnSave" = true;
       "editor.formatOnType" = true;
       "editor.inlineSuggest.enable" = true;
@@ -36,6 +39,7 @@
       "explorer.confirmDragAndDrop" = false;
       "files.autoSave" = "afterDelay";
       "files.autoSaveDelay" = 1000;
+      "coq-lsp.updateIgnores" = "off";
       "git.autoFetch" = true;
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
@@ -110,9 +114,15 @@
 
   # Make the VSCode global settings file writable - a lot of extensions expect to be able to write to it.
   # https://github.com/nix-community/home-manager/issues/1800#issuecomment-2262881846
-  home.activation.makeVSCodeSettingsWritable = let
-    configPath = "${config.xdg.configHome}/Code/User/settings.json";
-  in {
+  home.activation.beforeCheckLinkTargets = {
+    after = [];
+    before = [ "checkLinkTargets" ];
+    data = ''
+      rm -rf "${configPath}"
+    '';
+  };
+
+  home.activation.makeVSCodeSettingsWritable ={
     after = ["writeBoundary"];
     before = [];
     data = ''
