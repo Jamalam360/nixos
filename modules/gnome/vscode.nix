@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   programs.vscode = {
@@ -105,5 +106,17 @@
       wayou.vscode-todo-highlight
       yoavbls.pretty-ts-errors
     ];
+  };
+
+  # Make the VSCode global settings file writable - a lot of extensions expect to be able to write to it.
+  # https://github.com/nix-community/home-manager/issues/1800#issuecomment-2262881846
+  home.activation.makeVSCodeSettingsWritable = let
+    configPath = "${config.xdg.configHome}/Code/User/settings.json";
+  in {
+    after = [ "writeBoundary" ];
+    before = [ ];
+    data = ''
+      install -m 0640 "$(readlink ${configPath})" "${configPath}"
+    '';
   };
 }
