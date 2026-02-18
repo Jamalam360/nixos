@@ -35,7 +35,7 @@ in {
 
   services.harmonia = {
     enable = true;
-    signKeyPaths = [ config.sops.secrets.nix-cache-private-key.path ];
+    signKeyPaths = [config.sops.secrets.nix-cache-private-key.path];
     settings.bind = "[::]:${harmonia-port}";
   };
 

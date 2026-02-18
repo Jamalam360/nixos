@@ -113,8 +113,8 @@
   home.activation.makeVSCodeSettingsWritable = let
     configPath = "${config.xdg.configHome}/Code/User/settings.json";
   in {
-    after = [ "writeBoundary" ];
-    before = [ ];
+    after = ["writeBoundary"];
+    before = [];
     data = ''
       install -m 0640 "$(readlink ${configPath})" "${configPath}"
     '';
