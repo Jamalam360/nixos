@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./espanso.nix
     ./spotify.nix
     ./vscode.nix
   ];
@@ -72,7 +73,7 @@
     file:///home/james/dev dev
     file:///home/james/dev/minecraft minecraft
   '';
-  
+
   xdg.configFile."ghostty/config".text = ''
     font-family = "JetBrainsMono Nerd Font"
   '';

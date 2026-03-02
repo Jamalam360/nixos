@@ -83,7 +83,7 @@ in {
   users.users.james = {
     isNormalUser = true;
     description = "james";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "input"];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFhtjY3U8EsdEmrwbYJQQNwNqQHinZp1kQLqF7wdUkXI"
     ];
@@ -117,6 +117,11 @@ in {
     };
 
     fstrim.enable = true;
+
+    # Neded for Espanso
+    udev.extraRules = ''
+      KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
+    '';
   };
 
   networking = {

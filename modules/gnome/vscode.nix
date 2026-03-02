@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-    configPath = "${config.xdg.configHome}/Code/User/settings.json";
+  configPath = "${config.xdg.configHome}/Code/User/settings.json";
 in {
   programs.vscode = {
     enable = true;
@@ -116,13 +116,13 @@ in {
   # https://github.com/nix-community/home-manager/issues/1800#issuecomment-2262881846
   home.activation.beforeCheckLinkTargets = {
     after = [];
-    before = [ "checkLinkTargets" ];
+    before = ["checkLinkTargets"];
     data = ''
       rm -rf "${configPath}"
     '';
   };
 
-  home.activation.makeVSCodeSettingsWritable ={
+  home.activation.makeVSCodeSettingsWritable = {
     after = ["writeBoundary"];
     before = [];
     data = ''
