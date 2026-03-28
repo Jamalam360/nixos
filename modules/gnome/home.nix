@@ -89,7 +89,6 @@
     discord
     eyedropper
     file-roller
-    flashprint
     ghostty
     gnome-boxes
     google-chrome
@@ -98,6 +97,7 @@
     noaa-apt
     obs-studio
     obsidian
+    orca-slicer
     pinentry-gnome3
     prismlauncher
     sculk
