@@ -26,9 +26,8 @@
 
   swapDevices = [];
 
-  #networking.wireless.enable = lib.mkForce false; # Installer ISO module sets this to true
   networking.useDHCP = lib.mkDefault true;
-  networking.wireless.enable = lib.mkDefault true;
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
   hardware.bluetooth.enable = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
