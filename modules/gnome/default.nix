@@ -24,6 +24,7 @@
   services.pcscd.enable = true;
 
   environment.systemPackages = with pkgs; [
+    gnomeExtensions.colorblind-filters
     gnomeExtensions.emoji-copy
     gnomeExtensions.tiling-assistant
     gnome-tweaks
