@@ -96,7 +96,7 @@ in {
       ms-azuretools.vscode-docker
       ms-python.black-formatter
       ms-python.mypy-type-checker
-      ms-python.python
+      # ms-python.python
       ms-python.vscode-pylance
       platformio.platformio-ide
       redhat.vscode-xml
