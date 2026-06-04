@@ -11,6 +11,7 @@
   boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["nvme"];
   boot.kernelModules = ["kvm-intel"];
+  boot.kernelParams = lib.mkForce (builtins.filter (p: p != "nvme.noacpi=1") config.boot.kernelParams);
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
@@ -24,7 +25,7 @@
     options = ["fmask=0022" "dmask=0022"];
   };
 
-  swapDevices = [];
+  swapDevices = [{ device = "/dev/nvme0n1p3"; }];
 
   networking.useDHCP = lib.mkDefault true;
   hardware.bluetooth.enable = lib.mkDefault true;
