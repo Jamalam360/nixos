@@ -11,7 +11,6 @@
   boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = ["nvme"];
   boot.kernelModules = ["kvm-intel"];
-  boot.kernelParams = lib.mkForce (builtins.filter (p: p != "nvme.noacpi=1") config.boot.kernelParams);
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
