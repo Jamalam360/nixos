@@ -99,6 +99,7 @@
     obsidian
     orca-slicer
     pinentry-gnome3
+    printrun
     prismlauncher
     sculk
     steam
