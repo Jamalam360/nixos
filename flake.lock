@@ -248,6 +248,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-stableish": {
+      "locked": {
+        "lastModified": 1783033157,
+        "narHash": "sha256-KDj3SyFxzSMETWerqsywrmaeLjN7V09EOuTHgU28MsA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9eff7cfc4c222166a964979724d8cd826c09913b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9eff7cfc4c222166a964979724d8cd826c09913b",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1767892417,
@@ -325,6 +341,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-stableish": "nixpkgs-stableish",
         "sculk": "sculk",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",

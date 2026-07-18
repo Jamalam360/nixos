@@ -4,19 +4,28 @@
   nixpkgs,
   ...
 }: let
+  system = builtins.currentSystem or "x86_64-linux";
+  specialArgs = {
+    inherit inputs outputs;
+    pkgs-stableish = import inputs.nixpkgs-stableish {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  };
+
   mkHosts = hosts:
     builtins.listToAttrs (builtins.concatMap (host: [
         {
           inherit (host) name;
           value = nixpkgs.lib.nixosSystem {
             inherit (host) modules;
-            specialArgs = {inherit inputs outputs;};
+            inherit specialArgs;
           };
         }
         {
           name = "${host.name}-iso";
           value = nixpkgs.lib.nixosSystem {
-            specialArgs = {inherit inputs outputs;};
+            inherit specialArgs;
             modules =
               host.modules
               ++ [

@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  pkgs-stableish,
   ...
 }: let
   root = ../..;
@@ -18,7 +19,7 @@ in {
   users.users.root.hashedPassword = "!"; # Disable root login
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs;};
+    extraSpecialArgs = {inherit inputs outputs pkgs-stableish;};
     useGlobalPkgs = true;
     useUserPackages = true;
     users = {

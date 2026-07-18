@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, pkgs-stableish, ...}: {
   imports = [
     ./espanso.nix
     ./spotify.nix
@@ -81,7 +81,7 @@
   home.packages = with pkgs; [
     _1password-gui
     android-studio
-    aseprite
+    pkgs-stableish.aseprite # Build takes AGES
     audacity
     blockbench
     candle

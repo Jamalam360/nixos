@@ -2,6 +2,7 @@
   inputs,
   outputs,
   pkgs,
+  pkgs-stableish,
   ...
 }: let
   root = ../..;
@@ -23,7 +24,7 @@ in {
   imports = nixos-modules;
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs;};
+    extraSpecialArgs = {inherit inputs outputs pkgs-stableish;};
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = ".home_manager_bak";
