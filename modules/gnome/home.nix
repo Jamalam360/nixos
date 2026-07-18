@@ -90,7 +90,7 @@
     eyedropper
     file-roller
     ghostty
-    gnome-boxes
+    # gnome-boxes
     google-chrome
     insomnia
     jetbrains-toolbox
