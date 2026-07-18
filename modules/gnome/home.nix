@@ -104,7 +104,7 @@
     sculk
     steam
     teams-for-linux
-    ticktick
+    # ticktick
     wireshark
     yubioath-flutter
 
