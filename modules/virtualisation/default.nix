@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.bottles];
+  # environment.systemPackages = [pkgs.bottles];
 
   # inspo: https://github.com/erictossell/nixflakes/blob/main/modules/virt/libvirt.nix
   virtualisation = {
