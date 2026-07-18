@@ -18,7 +18,12 @@
   };
 
   console.useXkbConfig = true;
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ 
+      (hplip.override { withPlugin = true; }) 
+    ];
+  };
   hardware.graphics.enable32Bit = true; # fixes an issue with steam
   services.pcscd.enable = true;
 
