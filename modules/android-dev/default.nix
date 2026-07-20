@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    android-studio-full
+    android-studio
     android-tools
   ];
 
