@@ -1,18 +1,20 @@
+name: Check
+
 on:
   push:
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   format:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: cachix/install-nix-action@v30
+      - uses: cachix/install-nix-action@v31
       - run: nix fmt
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
@@ -28,12 +30,9 @@ jobs:
   statix:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: cachix/install-nix-action@v30
+      - uses: cachix/install-nix-action@v31
       - run: nix run nixpkgs#statix -- check
