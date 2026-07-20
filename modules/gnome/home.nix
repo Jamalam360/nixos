@@ -79,7 +79,6 @@
 
   home.packages = with pkgs; [
     _1password-gui
-    android-studio
     pkgs-stableish.aseprite # Build takes AGES
     audacity
     blockbench
