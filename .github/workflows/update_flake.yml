@@ -64,7 +64,7 @@ jobs:
 
       - name: Create pull request
         if: steps.diff.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "deps: update flake.lock"
           committer: GitHub Actions <actions@github.com>
@@ -73,5 +73,5 @@ jobs:
           delete-branch: true
           title: "deps: update flake.lock (${{ steps.build.outcome == 'success' && '✅ build pass' || '❌ build failures' }})"
           body-path: build_report.md
-          labels: flake-update
           add-paths: flake.lock
+          draft: always-true
