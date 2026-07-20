@@ -24,8 +24,8 @@
 
     printing = {
       enable = true;
-      drivers = with pkgs; [ 
-        (hplip.override { withPlugin = true; }) 
+      drivers = with pkgs; [
+        (hplip.override {withPlugin = true;})
       ];
     };
   };

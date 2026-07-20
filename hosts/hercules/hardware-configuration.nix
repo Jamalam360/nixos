@@ -24,7 +24,7 @@
     options = ["fmask=0022" "dmask=0022"];
   };
 
-  swapDevices = [{ device = "/dev/nvme0n1p3"; }];
+  swapDevices = [{device = "/dev/nvme0n1p3";}];
 
   networking.useDHCP = lib.mkDefault true;
   hardware.bluetooth.enable = lib.mkDefault true;

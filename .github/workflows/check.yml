@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   format:
@@ -15,17 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: cachix/install-nix-action@v31
-      - run: nix fmt
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: format files"
-          commit_user_name: GitHub Actions
-          commit_options: --no-verify --signoff
-          commit_author: GitHub Actions <actions@github.com>
-          branch: main
-          file_pattern: flake.lock
-          skip_dirty_check: false
-          skip_fetch: true
+      - run: nix fmt -- --check .
 
   statix:
     runs-on: ubuntu-latest

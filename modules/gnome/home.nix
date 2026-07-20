@@ -1,4 +1,8 @@
-{pkgs, pkgs-stableish, ...}: {
+{
+  pkgs,
+  pkgs-stableish,
+  ...
+}: {
   imports = [
     ./espanso.nix
     ./spotify.nix

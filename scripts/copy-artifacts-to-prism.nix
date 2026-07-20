@@ -20,7 +20,7 @@
       fabric_jar=$(ls fabric/build/libs/*.jar | sed -n "1p;")
       neoforge_jar=$(ls neoforge/build/libs/*.jar | sed -n "1p;")
     fi
-    
+
     fabric_dst="$HOME/.local/share/PrismLauncher/instances/Fabric - $minecraft_version/minecraft/mods"
     neoforge_dst="$HOME/.local/share/PrismLauncher/instances/Neoforge - $minecraft_version/minecraft/mods"
 
