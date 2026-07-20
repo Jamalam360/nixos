@@ -2,28 +2,76 @@ name: Update flake.lock
 
 on:
   schedule:
-    - cron: 0 6 * * *
+    - cron: 0 6 * * 1  # Monday 06:00 UTC
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
-  
-    permissions:
-      contents: write
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Close stale flake-update PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr list --label flake-update --state open --json number --jq '.[].number' | \
+          while read -r pr; do
+            gh pr close "$pr" --delete-branch
+          done
+
       - uses: cachix/install-nix-action@v30
-      - run: nix flake update --accept-flake-config
-      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "deps: update flake.lock"
-          commit_user_name: GitHub Actions
-          commit_options: --no-verify --signoff
-          commit_author: GitHub Actions <actions@github.com>
-          branch: main
-          file_pattern: flake.lock
-          skip_dirty_check: false
-          skip_fetch: true
+          extra_nix_config: |
+            accept-flake-config = true
+
+      - name: Update flake.lock
+        run: nix flake update --accept-flake-config
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet flake.lock; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build all nixosConfigurations
+        if: steps.diff.outputs.changed == 'true'
+        id: build
+        run: |
+          echo "## Build results" > build_report.md
+          status=0
+          for name in $(nix flake show --json --accept-flake-config 2>/dev/null | jq -r '.nixosConfigurations // {} | keys[]'); do
+            echo "### $name" >> build_report.md
+            if nix build ".#nixosConfigurations.$name.config.system.build.toplevel" \
+                --accept-flake-config --no-link -L 2>&1 | tee -a build_report.md; then
+              echo "✅ $name built" >> build_report.md
+            else
+              echo "❌ $name failed" >> build_report.md
+              status=1
+            fi
+          done
+          exit "$status"
+        continue-on-error: true
+
+      - name: Create pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "deps: update flake.lock"
+          committer: GitHub Actions <actions@github.com>
+          author: GitHub Actions <actions@github.com>
+          branch: flake-update-${{ github.run_id }}
+          delete-branch: true
+          title: "deps: update flake.lock (${{ steps.build.outcome == 'success' && '✅ build pass' || '❌ build failures' }})"
+          body-path: build_report.md
+          labels: flake-update
+          add-paths: flake.lock
