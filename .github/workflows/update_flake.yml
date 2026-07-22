@@ -2,7 +2,7 @@ name: Update flake.lock
 
 on:
   schedule:
-    - cron: 0 6 * * 1  # Monday 06:00 UTC
+    - cron: 0 6 * * 1
   workflow_dispatch:
 
 permissions:
@@ -48,18 +48,18 @@ jobs:
         id: build
         run: |
           echo "## Build results" > build_report.md
-          # status=0
-          # for name in $(nix flake show --json --accept-flake-config 2>/dev/null | jq -r '.nixosConfigurations // {} | keys[]'); do
-          #   echo "### $name" >> build_report.md
-          #   if nix build ".#nixosConfigurations.$name.config.system.build.toplevel" \
-          #       --accept-flake-config --no-link -L 2>&1 | tee -a build_report.md; then
-          #     echo "✅ $name built" >> build_report.md
-          #   else
-          #     echo "❌ $name failed" >> build_report.md
-          #     status=1
-          #   fi
-          # done
-          # exit "$status"
+          status=0
+          for name in $(nix flake show --json --accept-flake-config 2>/dev/null | jq -r '.nixosConfigurations // {} | keys[]'); do
+            echo "### $name" >> build_report.md
+            if nix build ".#nixosConfigurations.$name.config.system.build.toplevel" \
+                --accept-flake-config --no-link -L 2>&1 | tee -a build_report.md; then
+              echo "✅ $name built" >> build_report.md
+            else
+              echo "❌ $name failed" >> build_report.md
+              status=1
+            fi
+          done
+          exit "$status"
         continue-on-error: true
 
       - name: Create pull request
@@ -71,7 +71,7 @@ jobs:
           author: GitHub Actions <actions@github.com>
           branch: flake-update-${{ github.run_id }}
           delete-branch: true
-          title: "deps: update flake.lock (${{ steps.build.outcome == 'success' && '✅ build pass' || '❌ build failures' }})"
+          title: "deps: update flake.lock (${{ steps.build.outcome == 'success' && 'build pass' || 'build failures' }})"
           body-path: build_report.md
           add-paths: flake.lock
           draft: always-true
