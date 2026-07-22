@@ -50,12 +50,11 @@ jobs:
           echo "## Build results" > build_report.md
           status=0
           for name in $(nix flake show --json --accept-flake-config 2>/dev/null | jq -r '.nixosConfigurations // {} | keys[]'); do
-            echo "### $name" >> build_report.md
             if nix build ".#nixosConfigurations.$name.config.system.build.toplevel" \
-                --accept-flake-config --no-link -L 2>&1 | tee -a build_report.md; then
-              echo "✅ $name built" >> build_report.md
+                --accept-flake-config --no-link -L 2>&1; then
+              echo "### ✅ $name built" >> build_report.md
             else
-              echo "❌ $name failed" >> build_report.md
+              echo "### ❌ $name failed" >> build_report.md
               status=1
             fi
           done
