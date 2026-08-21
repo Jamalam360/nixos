@@ -51,7 +51,9 @@ jobs:
           status=0
           for name in $(nix flake show --json --accept-flake-config 2>/dev/null | jq -r '.nixosConfigurations // {} | keys[]'); do
             if nix build ".#nixosConfigurations.$name.config.system.build.toplevel" \
-                --accept-flake-config --no-link -L 2>&1; then
+                --accept-flake-config --no-link -L \
+                --option download-attempts 5 \
+                --option connect-timeout 10 2>&1; then
               echo "### ✅ $name built" >> build_report.md
             else
               echo "### ❌ $name failed" >> build_report.md
