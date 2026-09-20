@@ -38,7 +38,7 @@ in {
       accept-flake-config = true;
       auto-optimise-store = true;
       download-buffer-size = 268435456; # 4x default
-      experimental-features = "nix-command flakes";
+      experimental-features = ["nix-command" "flakes"];
       max-jobs = "auto";
       min-free = 1073741824; # 1GiB
       trusted-users = ["james"];
