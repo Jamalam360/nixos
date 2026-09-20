@@ -76,3 +76,4 @@ jobs:
           body-path: build_report.md
           add-paths: flake.lock
           draft: always-true
+          labels: flake-update
