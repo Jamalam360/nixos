@@ -33,7 +33,7 @@ in {
   #   locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
   # };
 
-  services.harmonia = {
+  services.harmonia.cache = {
     enable = true;
     signKeyPaths = [config.sops.secrets.nix-cache-private-key.path];
     settings.bind = "[::]:${harmonia-port}";
