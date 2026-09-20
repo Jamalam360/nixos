@@ -4,7 +4,7 @@
   ...
 }: {
   services.espanso = {
-    enable = true;
+    enable = false;
     configs = {
       default = {
         toggle_key = "RIGHT_CTRL";
