@@ -87,6 +87,7 @@
     audacity
     blockbench
     candle
+    claude-code
     darktable
     discord
     eyedropper
