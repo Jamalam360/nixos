@@ -31,6 +31,7 @@ in {
       "editor.formatOnType" = true;
       "editor.inlineSuggest.enable" = true;
       "editor.insertSpaces" = false;
+      "editor.linkedEditing" = true;
       "editor.minimap.enabled" = false;
       "editor.renderWhitespace" = "trailing";
       "editor.stickScroll.maxLineCount" = 3;
@@ -39,7 +40,6 @@ in {
       "explorer.confirmDragAndDrop" = false;
       "files.autoSave" = "afterDelay";
       "files.autoSaveDelay" = 1000;
-      "coq-lsp.updateIgnores" = "off";
       "git.autoFetch" = true;
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
@@ -53,9 +53,9 @@ in {
       "typescript.updateImportsOnFileMove.enabled" = "always";
       "vsicons.dontShowNewVersionMessage" = true;
       "window.autoDetectColorScheme" = true;
+      "workbench.iconTheme" = "vscode-icons";
       "workbench.preferredDarkColorTheme" = "Solarized Dark";
       "workbench.preferredLightColorTheme" = "Solarized Light";
-      "workbench.iconTheme" = "vscode-icons";
       "[markdown]" = {
         "editor.defaultFormatter" = "edbenp.prettier-vscode";
         "editor.wordWrap" = "on";
@@ -72,23 +72,20 @@ in {
     };
 
     profiles.default.extensions = with pkgs.vscode-marketplace-release; [
+      # timonwong.shellcheck
       astro-build.astro-vscode
       barbosshack.crates-io
-      bbenoist.nix
       bierner.markdown-emoji
       bierner.markdown-preview-github-styles
       bradlc.vscode-tailwindcss
-      christian-kohler.path-intellisense
       dbaeumer.vscode-eslint
       editorconfig.editorconfig
-      ejgallego.coq-lsp
       esbenp.prettier-vscode
-      formulahendry.auto-rename-tag
       foxundermoon.shell-format
-      github.copilot
       github.copilot-chat
       github.vscode-github-actions
       golang.go
+      jnoortheen.nix-ide
       kamikillerto.vscode-colorize
       marlinfirmware.auto-build
       mechatroner.rainbow-csv
@@ -96,8 +93,7 @@ in {
       ms-azuretools.vscode-docker
       ms-python.black-formatter
       ms-python.mypy-type-checker
-      # ms-python.python
-      ms-python.vscode-pylance
+      ms-python.python
       platformio.platformio-ide
       redhat.vscode-xml
       redhat.vscode-yaml
@@ -105,7 +101,6 @@ in {
       sclu1034.justfile
       svelte.svelte-vscode
       tamasfe.even-better-toml
-      timonwong.shellcheck
       usernamehw.errorlens
       wayou.vscode-todo-highlight
       yoavbls.pretty-ts-errors
