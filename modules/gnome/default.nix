@@ -7,7 +7,7 @@
 
   console.useXkbConfig = true;
   hardware.graphics.enable32Bit = true; # fixes an issue with steam
-  systemd.tmpfiles.rules = [ "e /home/james/Downloads - - - 3d" ]; # delete downloads older than 3 days
+  systemd.tmpfiles.rules = ["e /home/james/Downloads - - - 3d"]; # delete downloads older than 3 days
 
   services = {
     desktopManager.gnome.enable = true;
