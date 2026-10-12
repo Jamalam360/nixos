@@ -96,9 +96,10 @@ in {
     git
     gnupg
     gptfdisk
+    jq
+    nh
     oxipng
     parted
-    nh
   ];
 
   programs.ssh.extraConfig = ''
