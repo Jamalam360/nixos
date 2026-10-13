@@ -51,6 +51,8 @@
 
     "org/gnome/nautilus/preferences" = {
       default-folder-viewer = "list-view";
+      show-directory-item-counts = "never";
+      show-image-thumbnails = "never";
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
