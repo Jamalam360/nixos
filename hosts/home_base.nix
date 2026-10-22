@@ -15,6 +15,7 @@
     # development
     just
     sops
+    sshuttle
     nix-prefetch-github
 
     # quality of life
