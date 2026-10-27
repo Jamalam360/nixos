@@ -50,20 +50,46 @@ jobs:
         if: steps.diff.outputs.changed == 'true'
         id: build
         run: |
+          set -o pipefail
           echo "## Build results" > build_report.md
           status=0
+          max_attempts=3
+ 
+          build() {
+            nix build ".#nixosConfigurations.$1.config.system.build.toplevel" \
+              --accept-flake-config --no-link -L --keep-going \
+              --option download-attempts 5 \
+              --option connect-timeout 10 2>&1 | tee "build-$1.log"
+          }
+ 
           for name in $(nix flake show --json --accept-flake-config 2>/dev/null | jq -r '.nixosConfigurations // {} | keys[]'); do
             case "$name" in
               *-iso) continue ;;
             esac
-            if nix build ".#nixosConfigurations.$name.config.system.build.toplevel" \
-                --accept-flake-config --no-link -L \
-                --option download-attempts 5 \
-                --option connect-timeout 10 2>&1; then
-              echo "### ✅ $name built" >> build_report.md
+ 
+            ok=false
+            for attempt in $(seq 1 "$max_attempts"); do
+              echo "::group::$name (attempt $attempt/$max_attempts)"
+              if build "$name"; then ok=true; echo "::endgroup::"; break; fi
+              echo "::endgroup::"
+              [ "$attempt" -lt "$max_attempts" ] && sleep $((attempt * 120))
+            done
+ 
+            if $ok; then
+              note=""; [ "$attempt" -gt 1 ] && note=" (after $attempt attempts)"
+              echo "### ✅ $name built$note" >> build_report.md
             else
-              echo "### ❌ $name failed" >> build_report.md
               status=1
+              {
+                echo "### ❌ $name failed after $max_attempts attempts"
+                echo
+                echo "<details><summary>Errors</summary>"
+                echo
+                echo '```'
+                grep -E '^error: Cannot build|Reason:|^ +> ' "build-$name.log" | grep -v 'dependency failed' | tail -n 40
+                echo '```'
+                echo "</details>"
+              } >> build_report.md
             fi
           done
           exit "$status"
