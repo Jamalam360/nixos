@@ -39,7 +39,7 @@ in {
       download-buffer-size = 268435456; # 4x default
       experimental-features = ["nix-command" "flakes"];
       max-jobs = "auto";
-      min-free = 1073741824; # 1GiB
+      min-free = 1 * 1024 * 1024 * 1024; # 1GiB
       trusted-users = ["james"];
 
       # Ensure builds can still complete if one of the substituters is down
