@@ -13,6 +13,7 @@
     /.${root}/modules/gnome
     /.${root}/modules/nix-gc
     /.${root}/modules/nvidia
+    /.${root}/modules/syncthing
     /.${root}/modules/virtualisation
   ];
   home-manager-modules = [

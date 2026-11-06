@@ -13,6 +13,7 @@
     /.${root}/modules/android-dev
     /.${root}/modules/gnome
     /.${root}/modules/nix-gc
+    /.${root}/modules/syncthing
     /.${root}/modules/virtualisation
   ];
   home-manager-modules = [

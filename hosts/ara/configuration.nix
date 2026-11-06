@@ -9,6 +9,7 @@
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
     /.${root}/modules/services
+    /.${root}/modules/syncthing
   ];
   home-manager-modules = [
     /.${root}/hosts/home_base.nix
