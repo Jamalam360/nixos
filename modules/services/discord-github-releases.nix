@@ -8,7 +8,7 @@
   userAndGroup = "discord-github-releases";
   workingDir = "/var/lib/discord-github-releases";
 in {
-  sops.secrets.discord-github-releases-webhook.neededForUsers = true;
+  sops.secrets.discord-github-releases-webhook.owner = userAndGroup;
 
   environment = {
     systemPackages = [pkgs.custom.discord-github-releases];
@@ -75,9 +75,8 @@ in {
     '';
 
     serviceConfig = {
-      user = userAndGroup;
-      group = userAndGroup;
-
+      User = userAndGroup;
+      Group = userAndGroup;
       WorkingDirectory = workingDir;
       SuccessExitStatus = 0;
       TimeoutStopSec = 10;

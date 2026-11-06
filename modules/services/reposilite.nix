@@ -57,9 +57,8 @@ in {
     '';
 
     serviceConfig = {
-      user = userAndGroup;
-      group = userAndGroup;
-
+      User = userAndGroup;
+      Group = userAndGroup;
       WorkingDirectory = workingDir;
       SuccessExitStatus = 0;
       TimeoutStopSec = 10;
