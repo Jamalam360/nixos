@@ -11,13 +11,20 @@
   };
 
   services.restic.backups.remote = {
-    repository = "s3:s3.us-west-004.backblazeb2.com/jamalam-orion-backup";
-
     initialize = true;
+    repository = "s3:s3.us-west-004.backblazeb2.com/jamalam-orion-backup";
     environmentFile = config.sops.secrets.restic-remote-env.path;
     passwordFile = config.sops.secrets.restic-remote-password.path;
-    timerConfig.OnCalendar = "*-*-* *:00:00";
-    timerConfig.RandomizedDelaySec = "5m";
+    timerConfig = {
+      OnCalendar = "*-*-* *:00:00";
+      RandomizedDelaySec = "5m";
+    };
+    pruneOpts = [
+      "--keep-hourly 48"
+      "--keep-daily 30"
+      "--keep-weekly 12"
+      "--keep-monthly 24"
+    ];
   };
 
   # inspo: https://github.com/johnae/world/blob/35653ce23a51fa022cc2663d6894da0544547e7d/profiles/restic-helper.nix#L7

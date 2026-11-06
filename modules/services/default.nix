@@ -5,5 +5,6 @@
     ./nix-cache.nix
     ./reposilite.nix
     ./restic.nix
+    ./syncthing-hub.nix
   ];
 }
