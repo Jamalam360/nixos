@@ -27,7 +27,6 @@ in {
     };
   };
 
-  networking.firewall.allowedTCPPorts = [8084];
   services.nginx.virtualHosts."maven.jamalam.tech" = {
     enableACME = true;
     forceSSL = true;
