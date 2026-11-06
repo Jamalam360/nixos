@@ -25,7 +25,7 @@ in {
   services.harmonia.cache = {
     enable = true;
     signKeyPaths = [config.sops.secrets.nix-cache-private-key.path];
-    settings.bind = "[::]:${harmonia-port}";
+    settings.bind = "localhost:${harmonia-port}";
   };
 
   services.nginx.virtualHosts."nixcache.jamalam.tech" = {
