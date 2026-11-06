@@ -12,8 +12,10 @@
     };
   };
 
-  services.restic.backups.remote = let vault = "/home/james/Documents/Sync/Personal Knowledge Base"; in {
-    path = [ vault ];
-    exclude = [ "${vault}/.stversions"];
+  services.restic.backups.remote = let
+    vault = "/home/james/Documents/Sync/Personal Knowledge Base";
+  in {
+    path = [vault];
+    exclude = ["${vault}/.stversions"];
   };
 }
