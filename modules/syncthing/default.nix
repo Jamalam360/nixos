@@ -9,16 +9,26 @@
     ara      = "4RQ4DHV-6B256XO-EWNDCAK-PXX6EL3-AOWLLRB-T63Q4WO-WI6AMQI-H7Q4BA3";
     hercules = "B6X33YJ-F2OVMOE-76C4273-JBFDUR3-QFFN7FR-6JOYUGE-GJU2MDW-3OZ6AQR";
     leo      = "ZTCJYKH-ZJDXFAW-COANVNR-CNMD4E7-KO74IWE-PIC72R2-CAQ3T2T-V5KGJAI";
-    # phone    = "...";
+    phone    = "VDCHIDO-MPK6XCP-SNBRUYH-MOFH7JF-UG6A2QU-J4SWTZK-ZFPKEA7-LG5K5QL";
   };
   owner = config.services.syncthing.user;
 in {
   sops.secrets = {
-    syncthing-password = {inherit owner;};
-    "${host}-syncthing-key" = {inherit owner;};
-    "${host}-syncthing-cert" = {inherit owner;};
+    syncthing-password = {
+      inherit owner;
+      restartUnits = ["syncthing-init.service"];
+    };
+    "${host}-syncthing-key" = {
+      inherit owner;
+      restartUnits = ["syncthing.service"];
+    };
+    "${host}-syncthing-cert" = {
+      inherit owner;
+      restartUnits = ["syncthing.service"];
+    };
   };
 
+  systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true";
   services.syncthing = {
     enable = true;
     user = "james";
@@ -26,7 +36,6 @@ in {
     dataDir = "/home/james";
     configDir = "/home/james/.config/syncthing";
     openDefaultPorts = true;
-    extraFlags = ["--no-default-folder"];
     key = config.sops.secrets."${host}-syncthing-key".path;
     cert = config.sops.secrets."${host}-syncthing-cert".path;
     guiPasswordFile = config.sops.secrets.syncthing-password.path;
