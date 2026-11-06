@@ -6,7 +6,7 @@
   buildSystems = pkgs.writeShellScript "build-systems.sh" ''
     nix-collect-garbage
     dir="/tmp/system-build-$(date -Iseconds)"
-    mkdir dir
+    mkdir "$dir"
     /run/current-system/sw/bin/git clone https://github.com/Jamalam360/nixos "$dir"
     cd "$dir"
 
