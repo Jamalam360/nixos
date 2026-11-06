@@ -22,17 +22,6 @@
 in {
   sops.secrets.nix-cache-private-key.neededForUsers = true;
 
-  # services.nix-serve = {
-  #   enable = true;
-  #   secretKeyFile = config.sops.secrets.nix-cache-private-key.path;
-  # };
-
-  # services.nginx.virtualHosts."nixcache.jamalam.tech" = {
-  #   enableACME = true;
-  #   forceSSL = true;
-  #   locations."/".proxyPass = "http://${config.services.nix-serve.bindAddress}:${toString config.services.nix-serve.port}";
-  # };
-
   services.harmonia.cache = {
     enable = true;
     signKeyPaths = [config.sops.secrets.nix-cache-private-key.path];
