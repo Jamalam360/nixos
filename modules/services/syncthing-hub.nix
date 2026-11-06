@@ -15,7 +15,7 @@
   services.restic.backups.remote = let
     vault = "/home/james/Documents/Sync/Personal Knowledge Base";
   in {
-    path = [vault];
+    paths = [vault];
     exclude = ["${vault}/.stversions"];
   };
 }
