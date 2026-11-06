@@ -29,7 +29,7 @@ deploy machine=`hostname`:
 	{{ if machine == `hostname` { 'git add . && sudo nixos-rebuild switch --accept-flake-config --flake .#' + machine } else { 'echo "Machine does not match current hostname"' } }}
 
 remote-deploy machine:
-	git add . && nixos-rebuild switch --accept-flake-config --flake .#{{ machine }} --sudo --target-host "james@{{ if machine == "ara" { "46.62.221.196" } else { "" } }}" --build-host "james@{{ if machine == "ara" { "46.62.221.196" } else { "" } }}"
+	git add . && nixos-rebuild switch --accept-flake-config --flake .#{{ machine }} --sudo --ask-elevate-password --target-host "james@{{ if machine == "ara" { "46.62.221.196" } else { "" } }}" --build-host "james@{{ if machine == "ara" { "46.62.221.196" } else { "" } }}"
 
 build-iso machine:
 	git add . && nix build --accept-flake-config .#nixosConfigurations.{{ machine }}-iso.config.system.build.isoImage
