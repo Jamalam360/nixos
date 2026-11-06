@@ -8,7 +8,10 @@
   userAndGroup = "discord-github-releases";
   workingDir = "/var/lib/discord-github-releases";
 in {
-  sops.secrets.discord-github-releases-webhook.owner = userAndGroup;
+  sops.secrets.discord-github-releases-webhook = {
+    owner = userAndGroup;
+    restartUnits = ["discord-github-releases.service"];
+  };
 
   environment = {
     systemPackages = [pkgs.custom.discord-github-releases];

@@ -1,5 +1,5 @@
 {config, ...}: {
-  sops.secrets.gitlab-runner-token.neededForUsers = true;
+  sops.secrets.gitlab-runner-token = {};
   virtualisation.docker.enable = true;
   services.gitlab-runner = {
     enable = true;

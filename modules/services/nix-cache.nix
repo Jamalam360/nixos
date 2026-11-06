@@ -20,7 +20,7 @@
 
   harmonia-port = "8013";
 in {
-  sops.secrets.nix-cache-private-key.neededForUsers = true;
+  sops.secrets.nix-cache-private-key = {};
 
   services.harmonia.cache = {
     enable = true;

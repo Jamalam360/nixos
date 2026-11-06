@@ -6,8 +6,8 @@
   ...
 }: {
   sops.secrets = {
-    restic-remote-env.neededForUsers = true;
-    restic-remote-password.neededForUsers = true;
+    restic-remote-env = {};
+    restic-remote-password = {};
   };
 
   services.restic.backups.remote = {
