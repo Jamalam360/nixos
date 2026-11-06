@@ -5,6 +5,7 @@
 }: let
   userAndGroup = "reposilite";
   workingDir = "/var/lib/reposilite";
+  dbDump = "${workingDir}/backup/reposilite.db";
   generateConfig = config:
     lib.concatStringsSep "\n" (lib.mapAttrsToList (name: value: "${name}: ${
         (
@@ -16,9 +17,17 @@
       config);
 in {
   services.restic.backups.remote.paths = [
-    "${workingDir}/reposilite.db"
+    dbDump
     "${workingDir}/repositories"
   ];
+
+  # Take a dump of the DB in case it changes mid-backup
+  systemd.services.restic-backups-remote.preStart = ''
+    if [ -f "${workingDir}/reposilite.db" ]; then
+      mkdir -p "$(dirname ${dbDump})"
+      ${lib.getExe pkgs.sqlite} -bail "${workingDir}/reposilite.db" ".backup '${dbDump}'"
+    fi
+  '';
 
   environment = {
     systemPackages = [pkgs.reposilite];
