@@ -34,7 +34,7 @@ in {
       "editor.linkedEditing" = true;
       "editor.minimap.enabled" = false;
       "editor.renderWhitespace" = "trailing";
-      "editor.stickScroll.maxLineCount" = 3;
+      "editor.stickyScroll.maxLineCount" = 3;
       "editor.stickyScroll.enabled" = true;
       "editor.tabSize" = 4;
       "explorer.confirmDragAndDrop" = false;
@@ -57,7 +57,7 @@ in {
       "workbench.preferredDarkColorTheme" = "Solarized Dark";
       "workbench.preferredLightColorTheme" = "Solarized Light";
       "[markdown]" = {
-        "editor.defaultFormatter" = "edbenp.prettier-vscode";
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.wordWrap" = "on";
         "editor.quickSuggestions" = {
           comments = "off";
