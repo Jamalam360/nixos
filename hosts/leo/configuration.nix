@@ -29,7 +29,7 @@ in {
     extraSpecialArgs = {inherit inputs outputs pkgs-stableish;};
     useGlobalPkgs = true;
     useUserPackages = true;
-    backupFileExtension = ".home_manager_bak";
+    backupFileExtension = "home_manager_bak";
     users = {
       james = {
         imports = home-manager-modules;
