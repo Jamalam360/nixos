@@ -35,7 +35,6 @@ in {
       inherit substituters;
 
       always-allow-substitutes = true;
-      accept-flake-config = true;
       auto-optimise-store = true;
       download-buffer-size = 268435456; # 4x default
       experimental-features = ["nix-command" "flakes"];
