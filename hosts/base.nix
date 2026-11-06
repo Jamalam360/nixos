@@ -6,7 +6,7 @@
 }: let
   root = ./..;
   substituters = [
-    "http://nixcache.jamalam.tech"
+    "https://nixcache.jamalam.tech"
     "https://nix-community.cachix.org"
     "https://cache.nixos.org/"
   ];
