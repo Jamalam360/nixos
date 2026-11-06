@@ -4,33 +4,25 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stableish.url = "github:nixos/nixpkgs/9eff7cfc4c222166a964979724d8cd826c09913b"; # 2026-07-01
-    stylix.url = "github:danth/stylix";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    sculk = {
-      url = "github:sculk-cli/sculk?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    sculk.url = "github:sculk-cli/sculk?dir=nix";
+    sculk.inputs.nixpkgs.follows = "nixpkgs";
 
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   nixConfig = {
