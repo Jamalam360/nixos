@@ -5,24 +5,24 @@
 }: let
   buildSystems = pkgs.writeShellScript "build-systems.sh" ''
     set -uo pipefail
+    rev="$1"
 
-    nix-collect-garbage
-    dir="/tmp/system-build-$(date -Iseconds)"
-    mkdir "$dir"
-    /run/current-system/sw/bin/git clone https://github.com/Jamalam360/nixos "$dir" || exit 1
-    cd "$dir" || exit 1
+    rm -rf /tmp/system-build-*
+    dir="/tmp/system-build-$rev"
+    git clone https://github.com/Jamalam360/nixos "$dir" || exit 1
+    cd "$dir" && git checkout "$rev" || exit 1
 
     failed=()
     for host in hercules leo ara; do
       echo "Building $host"
-      if ! /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake ".#$host"; then
+      if ! nixos-rebuild build --accept-flake-config --flake ".#$host"; then
         echo "Build failed for $host"
         failed+=("$host")
       fi
     done
 
     if [ ''${#failed[@]} -gt 0 ]; then
-      echo "Failed builds: ''${failed[*]}"
+      echo "Failed builds at $rev: ''${failed[*]}"
       exit 1
     fi
   '';
@@ -52,23 +52,33 @@ in {
     '';
   };
 
-  systemd.timers."nix-builder" = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnCalendar = "07:00";
-      Persistent = true;
-      Unit = "nix-builder.service";
-    };
-  };
-
-  systemd.services."nix-builder" = {
+  systemd.services.nix-builder = {
     onFailure = ["notify-failure@%n.service"];
-    script = ''
-      ${buildSystems}
-    '';
+    path = [pkgs.git pkgs.nixos-rebuild pkgs.nix];
     serviceConfig = {
       Type = "oneshot";
-      User = "root";
+      StateDirectory = "nix-builder";
+    };
+    script = ''
+      state=/var/lib/nix-builder/last-rev
+      rev=$(git ls-remote https://github.com/Jamalam360/nixos refs/heads/main | cut -f1)
+      [ -n "$rev" ] || { echo "Couldn't read main"; exit 1; }
+
+      if [ "$rev" = "$(cat "$state" 2>/dev/null)" ]; then
+        echo "main unchanged at $rev, nothing to build"
+        exit 0
+      fi
+
+      echo "$rev" > "$state"
+      ${buildSystems} "$rev"
+    '';
+  };
+
+  systemd.timers.nix-builder = {
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "*:0/15";
+      Persistent = true;
     };
   };
 }

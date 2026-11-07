@@ -39,4 +39,5 @@ in {
   time.timeZone = "Europe/Helsinki";
   security.sudo.wheelNeedsPassword = pkgs.lib.mkForce true; # Available over SSH
   sops.secrets.ara-password.neededForUsers = true;
+  nix.settings.max-free = 10 * 1024 * 1024 * 1024;
 }
