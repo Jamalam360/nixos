@@ -28,8 +28,8 @@ sync-secrets:
 deploy machine=`hostname`:
 	{{ if machine == `hostname` { 'git add --intent-to-add . && sudo nixos-rebuild switch --accept-flake-config --flake .#' + machine } else { 'echo "Machine does not match current hostname"' } }}
 
-remote-deploy machine:
-	git add --intent-to-add . && nixos-rebuild switch --accept-flake-config --flake .#{{ machine }} --sudo --ask-elevate-password --target-host "james@{{ if machine == "ara" { "46.62.221.196" } else { "" } }}" --build-host "james@{{ if machine == "ara" { "46.62.221.196" } else { "" } }}"
+remote-deploy-ara:
+	git add --intent-to-add . && nixos-rebuild switch --accept-flake-config --flake .#{{ machine }} --sudo --ask-elevate-password --target-host ara --build-host ara"
 
 build-iso machine:
 	git add --intent-to-add . && nix build --accept-flake-config .#nixosConfigurations.{{ machine }}-iso.config.system.build.isoImage
