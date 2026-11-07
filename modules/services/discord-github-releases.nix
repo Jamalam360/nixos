@@ -52,7 +52,7 @@ in {
     };
   };
 
-  services.nginx.virtualHosts."maven.jamalam.tech" = {
+  services.nginx.virtualHosts."discord-github-releases.jamalam.tech" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = {
