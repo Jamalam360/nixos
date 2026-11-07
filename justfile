@@ -29,7 +29,7 @@ deploy machine=`hostname`:
 	{{ if machine == `hostname` { 'git add --intent-to-add . && sudo nixos-rebuild switch --accept-flake-config --flake .#' + machine } else { 'echo "Machine does not match current hostname"' } }}
 
 remote-deploy-ara:
-	git add --intent-to-add . && nixos-rebuild switch --accept-flake-config --flake .#{{ machine }} --sudo --ask-elevate-password --target-host ara --build-host ara"
+	git add --intent-to-add . && nixos-rebuild switch --accept-flake-config --flake .#ara --sudo --ask-elevate-password --target-host ara --build-host ara"
 
 build-iso machine:
 	git add --intent-to-add . && nix build --accept-flake-config .#nixosConfigurations.{{ machine }}-iso.config.system.build.isoImage
