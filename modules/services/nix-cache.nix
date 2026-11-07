@@ -15,7 +15,7 @@
     failed=()
     for host in hercules leo ara; do
       echo "Building $host"
-      if ! nixos-rebuild build --accept-flake-config --flake ".#$host"; then
+      if ! nix build --accept-flake-config ".#nixosConfigurations.$host.config.system.build.toplevel" --out-link "result-$host"; then
         echo "Build failed for $host"
         failed+=("$host")
       fi
