@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  pkgs,
   pkgs-stableish,
   ...
 }: let
@@ -36,6 +37,6 @@ in {
   };
   networking.hostName = "ara";
   time.timeZone = "Europe/Helsinki";
-  security.sudo.wheelNeedsPassword = lib.mkForce true; # Available over SSH
+  security.sudo.wheelNeedsPassword = pkgs.lib.mkForce true; # Available over SSH
   sops.secrets.ara-password.neededForUsers = true;
 }
