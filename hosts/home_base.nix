@@ -7,7 +7,7 @@
   home = {
     username = "james";
     homeDirectory = lib.mkMerge [
-      (lib.mkIf pkgs.stdenv.isLinux "/home/james")
+      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux "/home/james")
     ];
     stateVersion = "23.11";
   };
@@ -69,6 +69,7 @@
     };
     ssh = {
       enable = true;
+      enableDefaultConfig = false;
       includes = [osConfig.sops.secrets.extra-ssh-config.path];
     };
   };
