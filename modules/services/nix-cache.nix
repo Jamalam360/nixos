@@ -53,6 +53,7 @@ in {
   };
 
   systemd.services."nix-builder" = {
+    onFailure = ["notify-failure@%n.service"];
     script = ''
       ${buildSystems}
     '';

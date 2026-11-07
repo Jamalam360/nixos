@@ -10,6 +10,8 @@
     restic-remote-password = {};
   };
 
+  systemd.services.restic-prune-remote;
+
   services.restic.backups.remote = {
     initialize = true;
     repository = "s3:s3.us-west-004.backblazeb2.com/jamalam-orion-backup";
@@ -42,6 +44,7 @@
       RESTIC_PASSWORD_FILE = backup.passwordFile;
       RESTIC_CACHE_DIR = "/var/cache/restic-backups-remote";
     };
+    onFailure = ["notify-failure@%n.service"];
     serviceConfig = {
       Type = "oneshot";
       EnvironmentFile = backup.environmentFile;
