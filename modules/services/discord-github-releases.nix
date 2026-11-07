@@ -9,7 +9,6 @@
   workingDir = "/var/lib/discord-github-releases";
 in {
   sops.secrets.discord-github-releases-webhook = {
-    owner = userAndGroup;
     restartUnits = ["discord-github-releases.service"];
   };
 
@@ -73,11 +72,13 @@ in {
   in {
     description = "Discord GitHub Releases";
     wantedBy = ["multi-user.target"];
+    onFailure = ["notify-failure@%n.service"];
     script = ''
-      DISCORD_WEBHOOK_URL=$(cat ${config.sops.secrets.discord-github-releases-webhook.path}) ${lib.getExe pkgs.custom.discord-github-releases} ${configLocation}
+      DISCORD_WEBHOOK_URL=$(cat $CREDENTIALS_DIRECTORY/webhook) ${lib.getExe pkgs.custom.discord-github-releases} ${configLocation}
     '';
 
     serviceConfig = {
+      LoadCredential = "webhook:${config.sops.secrets.discord-github-releases-webhook.path}";
       User = userAndGroup;
       Group = userAndGroup;
       WorkingDirectory = workingDir;

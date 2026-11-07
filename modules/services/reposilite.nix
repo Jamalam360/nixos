@@ -60,6 +60,7 @@ in {
   systemd.services.reposilite = {
     description = "Reposilite";
     wantedBy = ["multi-user.target"];
+    onFailure = ["notify-failure@%n.service"];
     script = ''
       ${lib.getExe pkgs.reposilite} --working-directory "${workingDir}" --local-config "/etc/reposilite/configuration.cdn" --local-configuration-mode auto
     '';
