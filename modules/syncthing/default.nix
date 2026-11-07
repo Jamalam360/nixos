@@ -49,4 +49,13 @@ in {
       };
     };
   };
+
+  systemd.tmpfiles.settings."10-syncthing-stignore" = {
+    "/home/james/Documents/Sync/Personal Knowledge Base/.stignore".f = {
+      user = "james";
+      group = "users";
+      mode = "0644";
+      argument = "#include .stglobalignore";
+    };
+  };
 }
