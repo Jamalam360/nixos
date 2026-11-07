@@ -19,7 +19,7 @@ in {
   imports = nixos-modules;
 
   users.users.root.hashedPassword = "!"; # Disable root login
-broken
+
   home-manager = {
     extraSpecialArgs = {inherit inputs outputs pkgs-stableish;};
     useGlobalPkgs = true;
