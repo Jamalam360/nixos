@@ -10,8 +10,6 @@
     restic-remote-password = {};
   };
 
-  systemd.services.restic-prune-remote;
-
   services.restic.backups.remote = {
     initialize = true;
     repository = "s3:s3.us-west-004.backblazeb2.com/jamalam-orion-backup";
@@ -60,6 +58,40 @@
     timerConfig = {
       OnCalendar = "*-*-* 04:30:00";
       RandomizedDelaySec = "15m";
+      Persistent = true;
+    };
+  };
+
+  systemd.services.restic-check-remote = let
+    backup = config.services.restic.backups.remote;
+  in {
+    description = "Verify integrity of the restic repository";
+    wants = ["network-online.target"];
+    after = ["network-online.target"];
+    onFailure = ["notify-failure@%n.service"];
+    environment = {
+      RESTIC_REPOSITORY = backup.repository;
+      RESTIC_PASSWORD_FILE = backup.passwordFile;
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      EnvironmentFile = backup.environmentFile;
+      ExecStart = lib.escapeShellArgs [
+        "${pkgs.restic}/bin/restic"
+        "check"
+        "--retry-lock"
+        "2h"
+        "--read-data-subset"
+        "5%"
+      ];
+    };
+  };
+
+  systemd.timers.restic-check-remote = {
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnCalendar = "Sun *-*-* 05:30:00";
+      RandomizedDelaySec = "30m";
       Persistent = true;
     };
   };

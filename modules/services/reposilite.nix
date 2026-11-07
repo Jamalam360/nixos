@@ -61,6 +61,8 @@ in {
     description = "Reposilite";
     wantedBy = ["multi-user.target"];
     onFailure = ["notify-failure@%n.service"];
+    wants = ["network-online.target"];
+    after = ["network-online.target"];
     script = ''
       ${lib.getExe pkgs.reposilite} --working-directory "${workingDir}" --local-config "/etc/reposilite/configuration.cdn" --local-configuration-mode auto
     '';
