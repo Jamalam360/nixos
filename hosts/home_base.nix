@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  osConfig,
   ...
 }: {
   home = {
@@ -65,6 +66,10 @@
         export PATH="$PATH:/home/james/.local/share/JetBrains/Toolbox/scripts"
         source /var/lib/env_vars
       '';
+    };
+    ssh = {
+      enable = true;
+      includes = [osConfig.sops.secrets.extra-ssh-config.path];
     };
   };
 

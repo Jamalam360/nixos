@@ -4,18 +4,27 @@
   ...
 }: let
   buildSystems = pkgs.writeShellScript "build-systems.sh" ''
+    set -uo pipefail
+
     nix-collect-garbage
     dir="/tmp/system-build-$(date -Iseconds)"
     mkdir "$dir"
-    /run/current-system/sw/bin/git clone https://github.com/Jamalam360/nixos "$dir"
-    cd "$dir"
+    /run/current-system/sw/bin/git clone https://github.com/Jamalam360/nixos "$dir" || exit 1
+    cd "$dir" || exit 1
 
-    echo "Building Hercules"
-    /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#hercules
-    echo "Building Leo"
-    /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#leo
-    echo "Building Ara"
-    /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake .#ara
+    failed=()
+    for host in hercules leo ara; do
+      echo "Building $host"
+      if ! /run/current-system/sw/bin/nixos-rebuild build --accept-flake-config --flake ".#$host"; then
+        echo "Build failed for $host"
+        failed+=("$host")
+      fi
+    done
+
+    if [ ''${#failed[@]} -gt 0 ]; then
+      echo "Failed builds: ''${failed[*]}"
+      exit 1
+    fi
   '';
 
   harmonia-port = "8013";

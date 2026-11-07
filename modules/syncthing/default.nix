@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  root = ./../..;
   host = config.networking.hostName;
   deviceIds = {
     ara = "4RQ4DHV-6B256XO-EWNDCAK-PXX6EL3-AOWLLRB-T63Q4WO-WI6AMQI-H7Q4BA3";

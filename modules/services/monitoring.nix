@@ -11,7 +11,7 @@
     path = [pkgs.curl pkgs.jq pkgs.systemd];
     serviceConfig = {
       Type = "oneshot";
-      LoadCredential = "webhook:${config.sops.secrets.discord-alerts-webhook.path}";
+      LoadCredential = "webhook:${config.sops.secrets.discord-monitoring-webhook.path}";
     };
     script = ''
       unit="$1"

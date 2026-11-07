@@ -20,6 +20,7 @@
       RandomizedDelaySec = "5m";
     };
   };
+  systemd.services.restic-backups-remote.onFailure = ["notify-failure@%n.service"];
 
   systemd.services.restic-prune-remote = let
     backup = config.services.restic.backups.remote;

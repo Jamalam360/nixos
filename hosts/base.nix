@@ -109,8 +109,6 @@ in {
   ];
 
   programs.ssh.extraConfig = ''
-    Include ${config.sops.secrets.extra-ssh-config.path}
-
     ServerAliveInterval 60
     ServerAliveCountMax 120
     Host ara
