@@ -72,9 +72,14 @@ in {
   sops = {
     defaultSopsFile = /.${root}/secrets/secrets.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-    secrets.env-vars = {
-      owner = "james";
-      path = "/var/lib/env_vars";
+    secrets = {
+      env-vars = {
+        owner = "james";
+        path = "/var/lib/env_vars";
+      };
+      extra-ssh-config = {
+        owner = "james";
+      };
     };
   };
 
@@ -102,11 +107,12 @@ in {
   ];
 
   programs.ssh.extraConfig = ''
+    Include ${config.sops.secrets.extra-ssh-config.path}
+
     ServerAliveInterval 60
     ServerAliveCountMax 120
     Host ara
       Hostname 46.62.221.196
-      Port 22
       User james
   '';
 
