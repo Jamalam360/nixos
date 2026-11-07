@@ -16,6 +16,7 @@ in {
   sops.secrets = {
     syncthing-password = {
       inherit owner;
+      sopsFile = /.${root}/secrets/shared.yaml;
       restartUnits = ["syncthing-init.service"];
     };
     "${host}-syncthing-key" = {

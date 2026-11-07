@@ -19,11 +19,11 @@ update-fetchers:
 hash-password:
 	read -s -p "Enter password: " password; echo; echo -n "$$password" | mkpasswd -m sha-512 -s
 
-edit-secrets:
-	sops secrets/secrets.yaml
+edit-secrets file="shared":
+	sops secrets/{{ file }}.yaml
 
 sync-secrets:
-	sops updatekeys secrets/secrets.yaml
+	for f in secrets/*.yaml; do sops updatekeys -y "$f"; done
 
 deploy machine=`hostname`:
 	{{ if machine == `hostname` { 'git add --intent-to-add . && sudo nixos-rebuild switch --accept-flake-config --flake .#' + machine } else { 'echo "Machine does not match current hostname"' } }}

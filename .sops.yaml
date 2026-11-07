@@ -1,11 +1,14 @@
 keys:
+  - &backup age15fq6djp0tqfjyr47fuq9g5fsddr35qjct6lgt72rpwtplx9hgv7sx7fg6d
   - &hercules age13deh2n5fxykjgrag3fe32wgsurv7nxzxvqxatylgl5gwpu4sw5nqzp7az2
   - &leo age1qpjv8tesr04kau4na4qnjccwzpmwkrth7vmnntytteh2re6meurq2zmnlj
   - &ara age1g7cmwhmsn7j45cquphuswgj33lxvy39fh8c6t8y0hx9y497mfamsareakr
 creation_rules:
-  - path_regex: secrets/[^/]+(\.(yaml|json|env|ini|conf))?$
-    key_groups:
-      - age:
-          - *hercules
-          - *leo
-          - *ara
+  - path_regex: secrets/ara\.yaml$
+    key_groups: [{age: [*backup, *ara]}]
+  - path_regex: secrets/hercules\.yaml$
+    key_groups: [{age: [*backup, *hercules]}]
+  - path_regex: secrets/leo\.yaml$
+    key_groups: [{age: [*backup, *leo]}]
+  - path_regex: secrets/shared\.yaml$
+    key_groups: [{age: [*backup, *hercules, *leo, *ara]}]

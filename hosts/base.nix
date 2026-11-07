@@ -70,14 +70,16 @@ in {
   };
 
   sops = {
-    defaultSopsFile = /.${root}/secrets/secrets.yaml;
+    defaultSopsFile = /.${root}/secrets/${config.networking.hostName}.yaml;
     age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
     secrets = {
       env-vars = {
+        sopsFile = /.${root}/secrets/shared.yaml;
         owner = "james";
         path = "/var/lib/env_vars";
       };
       extra-ssh-config = {
+        sopsFile = /.${root}/secrets/shared.yaml;
         owner = "james";
       };
     };
