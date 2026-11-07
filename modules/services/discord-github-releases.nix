@@ -52,7 +52,13 @@ in {
     };
   };
 
-  networking.firewall.allowedTCPPorts = [port];
+  services.nginx.virtualHosts."maven.jamalam.tech" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:${port}/";
+    };
+  };
 
   users = {
     groups.${userAndGroup} = {
