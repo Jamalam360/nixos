@@ -13,10 +13,11 @@
 
   home.packages = with pkgs; [
     # development
+    github-cli
     just
+    nix-prefetch-github
     sops
     sshuttle
-    nix-prefetch-github
 
     # quality of life
     btop
