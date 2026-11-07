@@ -60,9 +60,6 @@
     };
     bash = {
       enable = true;
-      shellAliases = {
-        ara = "ssh james@46.62.221.196";
-      };
       initExtra = ''
         export PATH="$PATH:/home/james/.local/share/JetBrains/Toolbox/scripts"
         source /var/lib/env_vars

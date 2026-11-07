@@ -104,6 +104,10 @@ in {
   programs.ssh.extraConfig = ''
     ServerAliveInterval 60
     ServerAliveCountMax 120
+    Host ara
+      Hostname 46.62.221.196
+      Port 22
+      User james
   '';
 
   services = {
