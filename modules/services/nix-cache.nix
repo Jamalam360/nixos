@@ -59,7 +59,7 @@ in {
 
   systemd.services.nix-builder = {
     onFailure = ["notify-failure@%n.service"];
-    path = [pkgs.git pkgs.nixos-rebuild pkgs.nix];
+    path = [pkgs.git pkgs.nixos-rebuild pkgs.nix pkgs.jq pkgs.curl];
     serviceConfig = {
       Type = "oneshot";
       StateDirectory = "nix-builder";
