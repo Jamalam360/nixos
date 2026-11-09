@@ -29,7 +29,10 @@
 
   harmonia-port = "8013";
 in {
-  sops.secrets.nix-cache-private-key = {};
+  sops.secrets = {
+    discord-monitoring-webhook = {};
+    nix-cache-private-key = {};
+  };
 
   services.harmonia.cache = {
     enable = true;
@@ -58,6 +61,7 @@ in {
     serviceConfig = {
       Type = "oneshot";
       StateDirectory = "nix-builder";
+      LoadCredential = "webhook:${config.sops.secrets.discord-monitoring-webhook.path}";
     };
     script = ''
       state=/var/lib/nix-builder/last-rev
@@ -71,6 +75,11 @@ in {
 
       echo "$rev" > "$state"
       ${buildSystems} "$rev"
+
+      if [ $? -eq 0 ]; then
+        jq -n --arg content "✅ **Cache built** for $rev on **${config.networking.hostName}**" '{content: $content}' |
+          curl -fsS -H 'Content-Type: application/json' -d @- "$(cat "$CREDENTIALS_DIRECTORY/webhook")"
+      fi
     '';
   };
 
