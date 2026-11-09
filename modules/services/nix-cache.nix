@@ -11,7 +11,7 @@
     dir="/tmp/system-build-$rev"
     git clone https://github.com/Jamalam360/nixos "$dir" || exit 1
     cd "$dir" && git checkout "$rev" || exit 1
-
+  
     failed=()
     for host in hercules leo ara; do
       echo "Building $host"
@@ -25,6 +25,8 @@
       echo "Failed builds at $rev: ''${failed[*]}"
       exit 1
     fi
+
+    nix-store --gc
   '';
 
   harmonia-port = "8013";

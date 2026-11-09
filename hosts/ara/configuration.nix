@@ -9,6 +9,7 @@
   nixos-modules = [
     /.${root}/hosts/base.nix
     ./hardware-configuration.nix
+    /.${root}/modules/nix-gc
     /.${root}/modules/services
     /.${root}/modules/syncthing
   ];
