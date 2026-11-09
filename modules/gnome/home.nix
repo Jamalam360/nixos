@@ -86,8 +86,6 @@
   home.packages = with pkgs; [
     _1password-gui
     pkgs-stableish.aseprite # Build takes AGES
-    audacity
-    blockbench
     candle
     claude-code
     darktable
@@ -95,22 +93,16 @@
     eyedropper
     file-roller
     ghostty
-    # gnome-boxes
     google-chrome
     insomnia
     jetbrains-toolbox
     noaa-apt
-    obs-studio
     obsidian
     orca-slicer
     pinentry-gnome3
-    printrun
-    prismlauncher
-    sculk
+    (prismlauncher.override { jdks = [temurin-bin-25]; })
+    (sculk.override { jre_headless = temurin-bin-25; })
     steam
-    teams-for-linux
-    # ticktick
-    wireshark
     yubioath-flutter
 
     # == Scripts ==

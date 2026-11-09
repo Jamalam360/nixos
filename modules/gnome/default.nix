@@ -12,8 +12,9 @@
   services = {
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    pcscd.enable = true;
     gnome.evolution-data-server.enable = pkgs.lib.mkForce false;
+    pcscd.enable = true;
+    speechd.enable = pkgs.lib.mkForce false;
 
     xserver = {
       enable = true;
@@ -33,7 +34,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      gnomeExtensions.colorblind-filters
       gnomeExtensions.emoji-copy
       gnomeExtensions.tiling-assistant
       gnome-tweaks
@@ -44,13 +44,14 @@
       epiphany
       gnome-calendar
       gnome-clocks
+      gnome-connections
       gnome-contacts
       gnome-logs
       gnome-maps
       gnome-music
       gnome-tecla
+      gnome-tour
       gnome-weather
-      gnome-connections
       simple-scan
       yelp
     ];
