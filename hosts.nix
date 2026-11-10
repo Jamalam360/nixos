@@ -17,14 +17,14 @@
     builtins.listToAttrs (builtins.concatMap (host: [
         {
           inherit (host) name;
-          value = nixpkgs.lib.nixosSystem {
+          value = (host.nixpkgs or nixpkgs).lib.nixosSystem {
             inherit (host) modules;
             inherit specialArgs;
           };
         }
         {
           name = "${host.name}-iso";
-          value = nixpkgs.lib.nixosSystem {
+          value = (host.nixpkgs or nixpkgs).lib.nixosSystem {
             inherit specialArgs;
             modules =
               host.modules
@@ -57,6 +57,7 @@
     }
     {
       name = "leo";
+      nixpkgs = inputs.nixpkgs-leo;
       modules = [
         ./hosts/leo/configuration.nix
       ];
