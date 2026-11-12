@@ -100,13 +100,14 @@
     obsidian
     orca-slicer
     pinentry-gnome3
-    (prismlauncher.override { jdks = [temurin-bin-25]; })
-    (sculk.override { jre_headless = temurin-bin-25; })
+    (prismlauncher.override {jdks = [temurin-bin-25];})
+    (sculk.override {jre_headless = temurin-bin-25;})
     steam
     yubioath-flutter
 
     # == Scripts ==
     scripts.copy-artifacts-to-prism
+    scripts.mcserver
     scripts.devshell-init
   ];
 }
