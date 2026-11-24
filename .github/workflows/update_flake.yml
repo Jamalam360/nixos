@@ -29,7 +29,7 @@ jobs:
       - name: Allow unprivileged user namespaces (needed for some sandboxed tests)
         run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 
-      - uses: cachix/install-nix-action@v31
+      - uses: cachix/install-nix-action@v32
         with:
           extra_nix_config: |
             accept-flake-config = true
